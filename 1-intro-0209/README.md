@@ -1,4 +1,4 @@
-# O. Jooyoung — Godot Game Development Repository
+# Oh Jooyoung — Godot Game Development Repository
 
 This repository is the official Godot engine project for author O. Jooyoung. It collects prototypes, scenes, scripts, assets, and documentation created during the iterative development of small to medium-sized Godot projects. The repository is organized to facilitate reproducible builds, straightforward collaboration, and efficient iteration.
 
