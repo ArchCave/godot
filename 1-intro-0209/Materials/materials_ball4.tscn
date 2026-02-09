@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://n3g1focx0er"]
+
+[ext_resource type="Material" uid="uid://c6djj2egi13cf" path="res://Materials/myfirstmaterials.tres" id="1_nei20"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tvkk5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qjir"]
+albedo_color = Color(1, 0.06999999, 0.79849994, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l7qm"]
+albedo_color = Color(0, 0.6964876, 0.33937186, 1)
+metallic = 0.63
+metallic_specular = 0.42
+roughness = 0.39
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cdwc"]
+transparency = 1
+albedo_color = Color(0.73, 0, 0.012166481, 0.38039216)
+
+[node name="balls" type="Node3D" unique_id=350416159]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1055470801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4013081, 0, 0)
+mesh = SubResource("SphereMesh_tvkk5")
+surface_material_override/0 = SubResource("StandardMaterial3D_7qjir")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1909354730]
+mesh = SubResource("SphereMesh_tvkk5")
+surface_material_override/0 = SubResource("StandardMaterial3D_3l7qm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2025557952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3552454, 0, 0)
+mesh = SubResource("SphereMesh_tvkk5")
+surface_material_override/0 = SubResource("StandardMaterial3D_2cdwc")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1117408687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7104907, 0, 0)
+material_override = ExtResource("1_nei20")
+mesh = SubResource("SphereMesh_tvkk5")

@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){$('body').on('click','.close-modal',function(e){e.preventDefault();e.stopPropagation();$('.jquery-modal.blocker').removeClass('blocker');document.body.style.overflow='';});});

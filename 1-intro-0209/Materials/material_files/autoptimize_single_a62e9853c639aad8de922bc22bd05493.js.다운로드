@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){$('.block-accordion .block__head, .accordion .accordion__head').on('click',function(){$(this).closest('.block__section, .accordion__section').toggleClass('is-active').find('.block__body, .accordion__body').slideToggle().end().siblings().removeClass('is-active').end().siblings().find('.block__body, .accordion__body').slideUp()});});

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dmowniuogo7ox"]
+
+[ext_resource type="Material" uid="uid://c6djj2egi13cf" path="res://Materials/myfirstmaterials.tres" id="1_nu766"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uwv1y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnrag"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jlxq4"]
+
+[node name="Node3D" type="Node3D" unique_id=263703108]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2112627968]
+transform = Transform3D(1.5053163, 0, 0, 0, 1.5053163, 0, 0, 0, 1.5053163, 0, 0, 0)
+material_override = ExtResource("1_nu766")
+mesh = SubResource("SphereMesh_uwv1y")
+surface_material_override/0 = SubResource("StandardMaterial3D_tnrag")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=99466775]
+transform = Transform3D(0.9602415, 0, 0, 0, 0.9602415, 0, 0, 0, 0.9602415, 0, 0.9890467, 0)
+mesh = SubResource("SphereMesh_uwv1y")
+surface_material_override/0 = ExtResource("1_nu766")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=594257867]
+transform = Transform3D(0.64050084, 0, 0, 0, 0.64050084, 0, 0, 0, 0.64050084, 0, 1.632426, 0)
+material_override = ExtResource("1_nu766")
+mesh = SubResource("SphereMesh_uwv1y")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1376342636]
+transform = Transform3D(1.5004058, 0, 0.038607232, 0, 0.102881074, 0, -0.7612323, 0, 0.07609572, 0, 1.095969, 0)
+material_override = ExtResource("1_nu766")
+mesh = SubResource("BoxMesh_jlxq4")

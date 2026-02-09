@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c11omq2lv1pfb"]
+
+[ext_resource type="Texture2D" uid="uid://dh7imw4qsmg3b" path="res://Sprites/Player.png" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c5h6syvi06ca5" path="res://coin.tscn" id="2_0xm2m"]
+
+[node name="Main" type="Node2D" unique_id=1195908997]
+
+[node name="Player" type="Sprite2D" parent="." unique_id=1156359777]
+position = Vector2(161, 152)
+texture = ExtResource("1_ig7tw")
+
+[node name="Coin" parent="." unique_id=637976519 instance=ExtResource("2_0xm2m")]
+position = Vector2(298, 150)
+
+[node name="Coin2" parent="." unique_id=1037644571 instance=ExtResource("2_0xm2m")]
+position = Vector2(363, 149)
+
+[node name="Coin3" parent="." unique_id=819183944 instance=ExtResource("2_0xm2m")]
+position = Vector2(432, 151)
+
+[node name="Coin4" parent="." unique_id=768928576 instance=ExtResource("2_0xm2m")]
+position = Vector2(495, 156)
+
+[node name="Player2" type="Sprite2D" parent="." unique_id=2089727130]
+position = Vector2(347, 371)
+texture = ExtResource("1_ig7tw")
+
+[node name="Player3" type="Sprite2D" parent="." unique_id=1652164240]
+position = Vector2(432, 371)
+scale = Vector2(0.645, 0.645)
+texture = ExtResource("1_ig7tw")
+
+[node name="Player5" type="Sprite2D" parent="." unique_id=798959520]
+position = Vector2(401.00003, 308)
+rotation = 0.7853982
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("1_ig7tw")
+
+[node name="Player6" type="Sprite2D" parent="." unique_id=355421188]
+position = Vector2(300.00003, 308)
+rotation = -0.7853982
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("1_ig7tw")
+
+[node name="Player7" type="Sprite2D" parent="." unique_id=889680049]
+position = Vector2(401.00003, 436.9032)
+rotation = 2.3561945
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("1_ig7tw")
+
+[node name="Player8" type="Sprite2D" parent="." unique_id=727746875]
+position = Vector2(300.00003, 436.9032)
+rotation = 3.926991
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("1_ig7tw")
+
+[node name="Player4" type="Sprite2D" parent="." unique_id=2057166319]
+position = Vector2(268, 370.99997)
+scale = Vector2(0.645, 0.645)
+texture = ExtResource("1_ig7tw")

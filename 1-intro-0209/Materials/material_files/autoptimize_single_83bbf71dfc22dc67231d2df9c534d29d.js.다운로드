@@ -1,0 +1,7 @@
+(($)=>{$(()=>{const urlParams=new URLSearchParams(window.location.search);let zva_src=urlParams.get('zva_src');let a=urlParams.get('a');let utm_source=urlParams.get('utm_source');if('ActiveCampaign'===utm_source){return;}
+if(!zva_src){let referrer=document.referrer;if(referrer&&(window.location.hostname===new URL(referrer).hostname)){referrer='';}
+let utm_content=urlParams.get('utm_content');let utm_campaign=urlParams.get('utm_campaign')
+if(utm_content){zva_src=utm_content;}else if(utm_campaign){zva_src=utm_campaign;}else{zva_src=referrer;}}
+if(zva_src||a){function sentSrc(){$.ajax({type:'POST',url:zvarp_ajax_session.ajaxurl,data:{action:'zvarp_session',zva_src:zva_src,a:a}});}
+function checkCookie(){if(document.cookie.includes('PHPSESSID')){sentSrc();}else{setTimeout(checkCookie,200);}}
+checkCookie();}});})(jQuery);

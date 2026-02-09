@@ -1,0 +1,26 @@
+(()=>{document.addEventListener('DOMContentLoaded',()=>{var player=window.zvaVideo;var seeking=false;var load={loadTime:0,loadTimeStart:new Date().getTime(),firstPlay:false,endedReached:false,videoElementUsed:false,unloaddatasent:false,updateLoadTime:function(){this.loadTime=Math.abs(new Date().getTime()-this.loadTimeStart);},reset:function(){this.loadTime=0;this.loadTimeStart=new Date().getTime();this.firstPlay=false;this.endedReached=false;}}
+var playIntervals={startTime:0,endTime:0,added:false,lastCheckedTime:0,arrayOfTimes:[],overlappingArrayOfTimes:[],sorted:false,totalSecondsFullscreen:0,sortAlgorithm:function(a,b){if(a[0]<b[0])return-1;if(a[0]>b[0])return 1;return 0;},update:function(time){if(time==this.lastCheckedTime+1){if(player.isFullscreen()){this.totalSecondsFullscreen+=1;}}
+if(!(time==this.lastCheckedTime||time==this.lastCheckedTime+1)){this.endTime=this.lastCheckedTime;this.push();this.startTime=time;this.added=false;}
+this.lastCheckedTime=time;},push:function(){this.arrayOfTimes.push([this.startTime,this.endTime]);this.added=true;},getOverlappingArrayOfTimes:function(){if(!this.added){this.endTime=Math.round(player.currentTime());this.push();}
+this.arrayOfTimes=this.arrayOfTimes.sort(this.sortAlgorithm);if(this.arrayOfTimes.length>1){this.overlappingArrayOfTimes.push(this.arrayOfTimes[0]);for(var i=1;i<this.arrayOfTimes.length;i++){if(this.arrayOfTimes[i][0]<=this.overlappingArrayOfTimes[this.overlappingArrayOfTimes.length-1][1]){if(this.arrayOfTimes[i][1]>this.overlappingArrayOfTimes[this.overlappingArrayOfTimes.length-1][1]){var t0=this.overlappingArrayOfTimes[this.overlappingArrayOfTimes.length-1][0];var t1=this.arrayOfTimes[i][1];this.overlappingArrayOfTimes.pop();this.overlappingArrayOfTimes.push([t0,t1]);}}else{this.overlappingArrayOfTimes.push(this.arrayOfTimes[i]);}}}else{this.overlappingArrayOfTimes=this.arrayOfTimes;}
+this.sorted=true;},getTotalPlayTime:function(){if(!this.sorted){this.getOverlappingArrayOfTimes();}
+var TotalPlayTime=0;for(var i=0;i<this.arrayOfTimes.length;i++){TotalPlayTime+=this.arrayOfTimes[i][1]-this.arrayOfTimes[i][0];}
+return Math.round(TotalPlayTime);},getTotalUniquePlayTime:function(){if(!this.sorted){this.getOverlappingArrayOfTimes();}
+var TotalUniquePlayTime=0;for(var i=0;i<this.overlappingArrayOfTimes.length;i++){TotalUniquePlayTime+=this.overlappingArrayOfTimes[i][1]-this.overlappingArrayOfTimes[i][0];}
+return Math.round(TotalUniquePlayTime);},reset:function(){this.startTime=0;this.endTime=0;this.totalSecondsFullscreen=0;this.added=false;this.sorted=false;this.arrayOfTimes=[];this.overlappingArrayOfTimes=[];}};var playTimeLive={totalSeconds:0,totalSecondsFullscreen:0,start:function(){var self=this;this.interval=setInterval(function(){self.totalSeconds+=1;if(player.isFullscreen()){self.totalSecondsFullscreen+=1;}},1000);},pause:function(){clearInterval(this.interval);delete this.interval;},resume:function(){if(!this.interval)this.start();},reset:function(){this.totalSeconds=0;this.totalSecondsFullscreen=0;}};var sourceset=function(){if(load.videoElementUsed){unloadData();}
+load.reset()
+playTimeLive.reset();playIntervals.reset();}
+var loaded=function(){load.videoElementUsed=true;};var canplaythrough=function(){load.updateLoadTime();}
+var timeupdate=function(){var currentTime=Math.round(player.currentTime());playIntervals.update(currentTime);};var playing=function(){seeking=false;if(!load.firstPlay){load.firstPlay=true;}
+if(player.liveTracker.isLive()){if(playTimeLive.totalSeconds==0){playTimeLive.start();}else{playTimeLive.resume();}}}
+var pause=function(){if(player.liveTracker.isLive()){playTimeLive.pause();}}
+var seek=function(){seeking=true;}
+var end=function(){if(player.liveTracker.isLive()){playTimeLive.pause();}};var error=function(){if(load.loadTime==0){load.updateLoadTime();}
+if(player.liveTracker.isLive()){playTimeLive.pause();}
+if('undefined'!=typeof mixpanel){const videojsError=player.error();const properties={errorCode:videojsError.code,errorMessage:videojsError.message}
+mixpanel.track('Bunny Player Error',properties);}};function exit(){if(!load.unloaddatasent){load.unloaddatasent=true;unloadData();}};function unloadData(){var totalPlayTime=playTimeLive.totalSeconds;if(!player.liveTracker.isLive()){totalPlayTime=playIntervals.getTotalPlayTime();}
+if(load.loadTime==0){load.updateLoadTime();}
+if('undefined'!=typeof mixpanel){var properties={courseId:zva_video_mixpanel.course_id,courseName:zva_video_mixpanel.course_name,lessonId:zva_video_mixpanel.lesson_id,lessonName:zva_video_mixpanel.lesson_name,playTime:totalPlayTime}
+mixpanel.track('playbackSummary',properties);}}
+player.on('sourceset',sourceset);player.on('loadedmetadata',loaded);player.on('canplaythrough',canplaythrough);player.on('timeupdate',timeupdate);player.on('playing',playing);window.addEventListener('onbeforeunload',exit,false);window.addEventListener('pagehide',exit,false);player.tempDispose=player.dispose;player.dispose=function(){unloadData();player.tempDispose();}
+player.on('error',error);player.on('ended',end);player.on('pause',pause);player.on('seeked',seek);});})();

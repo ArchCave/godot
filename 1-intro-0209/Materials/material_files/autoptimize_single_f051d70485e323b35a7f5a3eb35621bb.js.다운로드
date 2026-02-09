@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){$('.js-search-trigger').on('click',function(e){e.preventDefault();$('body').toggleClass('has-active-search');});});

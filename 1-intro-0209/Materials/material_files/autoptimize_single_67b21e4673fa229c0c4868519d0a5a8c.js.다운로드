@@ -1,0 +1,2 @@
+jQuery(document).ready(function($){$('.js-nav-trigger').on('click',function(e){e.preventDefault();$('body').toggleClass('has-active-nav');});$('.menu-item-has-children > a').on('click',function(e){if($('.nav-trigger').is(':hidden')){return;}
+const menuItem=$(this).parent();if(!menuItem.is('.is-active')){e.preventDefault();menuItem.addClass('is-active').siblings().removeClass('is-active').find('is-active').removeClass('is-active');}});});

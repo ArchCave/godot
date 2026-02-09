@@ -1,0 +1,1 @@
+(function($){$('.hdq_finsh_button').on('click',function(){$('#lesson-completed').prop('checked',true).trigger('change');});})(jQuery);

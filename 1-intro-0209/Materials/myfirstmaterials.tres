@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6djj2egi13cf"]
+
+[ext_resource type="Texture2D" uid="uid://dh7imw4qsmg3b" path="res://Sprites/Player.png" id="1_wrbi6"]
+
+[resource]
+albedo_texture = ExtResource("1_wrbi6")
+metallic = 0.85
+metallic_specular = 0.88
+roughness = 0.45

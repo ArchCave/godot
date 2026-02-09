@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){$('.tabs__head a').on('click',function(e){e.preventDefault();const target=$(this).attr('href');$(this).parent().add($(target)).addClass('is-active').siblings().removeClass('is-active');});});
