@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://c11omq2lv1pfb"]
 
 [ext_resource type="Texture2D" uid="uid://dh7imw4qsmg3b" path="res://Sprites/Player.png" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://c5h6syvi06ca5" path="res://coin.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://dwheofs81cwdr" path="res://Scripts/intro_to_scripting.gd" id="1_jjyfi"]
+[ext_resource type="PackedScene" uid="uid://c5h6syvi06ca5" path="res://Sprites/coin.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node2D" unique_id=1195908997]
+script = ExtResource("1_jjyfi")
 
 [node name="Player" type="Sprite2D" parent="." unique_id=1156359777]
 position = Vector2(161, 152)
@@ -58,3 +60,7 @@ texture = ExtResource("1_ig7tw")
 position = Vector2(268, 370.99997)
 scale = Vector2(0.645, 0.645)
 texture = ExtResource("1_ig7tw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1304875269]
+position = Vector2(877, 334)
+zoom = Vector2(0.565, 0.565)
