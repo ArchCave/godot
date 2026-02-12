@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="1intro0209"
-run/main_scene="res://Sprites/main.tscn"
+run/main_scene="uid://801dus0j183u"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,3 +28,4 @@ window/stretch/scale=0.75
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true

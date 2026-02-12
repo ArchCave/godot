@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://801dus0j183u"]
+
+[ext_resource type="Script" uid="uid://sy7x4fu6675d" path="res://Scripts/player.gd" id="1_4hr0e"]
+[ext_resource type="Texture2D" uid="uid://dh7imw4qsmg3b" path="res://Sprites/Player.png" id="2_k2pow"]
+[ext_resource type="PackedScene" uid="uid://bydobc5x4iinj" path="res://Scenes/collectable_coin.tscn" id="3_k2pow"]
+[ext_resource type="Texture2D" uid="uid://kqccpihd3ath" path="res://Materials/001.png" id="4_gwxpq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6121w"]
+atlas = ExtResource("2_k2pow")
+region = Rect2(0, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hodm"]
+atlas = ExtResource("2_k2pow")
+region = Rect2(33, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tydut"]
+atlas = ExtResource("2_k2pow")
+region = Rect2(66, 0, 33, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6121w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6121w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hodm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tydut")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwxpq"]
+size = Vector2(62, 65)
+
+[node name="Main" type="Node2D" unique_id=297038773]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=70592011]
+process_mode = 4
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 2
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(3, -38.999996)
+scale = Vector2(0.928, 0.928)
+texture = ExtResource("4_gwxpq")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=565090918]
+texture_filter = 1
+script = ExtResource("1_4hr0e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=829438496]
+process_mode = 3
+position = Vector2(-21.227491, -6.0249987)
+scale = Vector2(3.5662384, 3.803659)
+sprite_frames = SubResource("SpriteFrames_6121w")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1465610330]
+position = Vector2(-23, 4.5)
+shape = SubResource("RectangleShape2D_gwxpq")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=449289754]
+zoom = Vector2(1.74, 1.74)
+limit_left = -700
+limit_top = -350
+limit_right = 700
+limit_bottom = 300
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Coin8" parent="." unique_id=649952429 instance=ExtResource("3_k2pow")]
+texture_filter = 1
+position = Vector2(494, -68)
+
+[node name="Coin" parent="." unique_id=196203454 instance=ExtResource("3_k2pow")]
+texture_filter = 1
+position = Vector2(111, 208)
+
+[node name="Coin2" parent="." unique_id=844593515 instance=ExtResource("3_k2pow")]
+texture_filter = 1
+position = Vector2(-462, 101)
+
+[node name="Coin3" parent="." unique_id=1990377287 instance=ExtResource("3_k2pow")]
+texture_filter = 1
+position = Vector2(-260, 36)
+
+[node name="Coin4" parent="." unique_id=1296863250 instance=ExtResource("3_k2pow")]
+texture_filter = 1
+position = Vector2(-393, -141)
+
+[node name="Coin5" parent="." unique_id=1522476764 instance=ExtResource("3_k2pow")]
+texture_filter = 1
+position = Vector2(388, 76)
+
+[node name="Coin6" parent="." unique_id=345492211 instance=ExtResource("3_k2pow")]
+texture_filter = 1
+position = Vector2(110, -179)
+
+[node name="Coin7" parent="." unique_id=833942914 instance=ExtResource("3_k2pow")]
+texture_filter = 1
+position = Vector2(-197, 167)

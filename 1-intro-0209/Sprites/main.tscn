@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dh7imw4qsmg3b" path="res://Sprites/Player.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dwheofs81cwdr" path="res://Scripts/intro_to_scripting.gd" id="1_jjyfi"]
 [ext_resource type="PackedScene" uid="uid://c5h6syvi06ca5" path="res://Sprites/coin.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://b4nq4d6jxjtci" path="res://Scripts/move.gd" id="3_0guos"]
 
 [node name="Main" type="Node2D" unique_id=1195908997]
 script = ExtResource("1_jjyfi")
@@ -10,6 +11,7 @@ script = ExtResource("1_jjyfi")
 [node name="Player" type="Sprite2D" parent="." unique_id=1156359777]
 position = Vector2(161, 152)
 texture = ExtResource("1_ig7tw")
+script = ExtResource("3_0guos")
 
 [node name="Coin" parent="." unique_id=637976519 instance=ExtResource("2_0xm2m")]
 position = Vector2(298, 150)
