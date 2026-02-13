@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://chswnvu4jc7aw"]
+
+[ext_resource type="Script" uid="uid://dw1geqwxtvlfp" path="res://Ballon Popper/balloon_manager.gd" id="1_6slla"]
+[ext_resource type="PackedScene" uid="uid://c3ckrl6gs1top" path="res://Ballon Popper/balloon.tscn" id="2_5ed27"]
+
+[sub_resource type="Environment" id="Environment_q8ysh"]
+background_mode = 1
+background_color = Color(0.2901961, 0.57254905, 0.6784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ed27"]
+font_size = 55
+
+[node name="Main" type="Node3D" unique_id=231293508]
+script = ExtResource("1_6slla")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2049579013]
+transform = Transform3D(0.99548775, 0, 0.0948902, -0.07625449, 0.5951595, 0.79998153, -0.056474797, -0.80360764, 0.592474, 0, 1.2274528, 1.5641241)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1455638449]
+environment = SubResource("Environment_q8ysh")
+
+[node name="Balloon" parent="." unique_id=68440523 instance=ExtResource("2_5ed27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65868515, 0.8848017, -0.879791)
+
+[node name="Balloon3" parent="." unique_id=485021340 instance=ExtResource("2_5ed27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2375379, 1.0069237, -2.0064943)
+
+[node name="Balloon4" parent="." unique_id=122449381 instance=ExtResource("2_5ed27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6352279, -0.69005513, -0.08980131)
+
+[node name="Balloon5" parent="." unique_id=1204682220 instance=ExtResource("2_5ed27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5558673, -0.6014006, -2.1386552)
+
+[node name="Balloon2" parent="." unique_id=56370855 instance=ExtResource("2_5ed27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8713002, -0.64722335, -0.202573)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=992954861]
+transform = Transform3D(0.9999971, -0.0024260054, 0, 0.0024260054, 0.9999971, 0, 0, 0, 1, -0.42273903, 0, 2.6680365)
+fov = 50.73584
+
+[node name="ScoreText" type="Label" parent="." unique_id=1749928714]
+offset_left = 35.0
+offset_top = 32.0
+offset_right = 356.0
+offset_bottom = 191.0
+text = "Score: 10"
+label_settings = SubResource("LabelSettings_5ed27")

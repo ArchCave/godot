@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c3ckrl6gs1top"]
+
+[ext_resource type="Script" uid="uid://c2ts1olwvb2cg" path="res://Ballon Popper/balloon.gd" id="1_j0u8t"]
+[ext_resource type="Material" uid="uid://x26v2qqyjrkf" path="res://Assets-Godot-Mini-Projects/Godot Mini-Projects - Assets/Balloon Popper/balloon_red.tres" id="2_whods"]
+[ext_resource type="ArrayMesh" uid="uid://dphgitg342jjw" path="res://Assets-Godot-Mini-Projects/Godot Mini-Projects - Assets/Balloon Popper/Balloon.obj" id="3_5vfyu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6slla"]
+radius = 0.53095317
+
+[node name="Balloon" type="Area3D" unique_id=68440523]
+script = ExtResource("1_j0u8t")
+
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1260310606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.050713897, 1.1920929e-07, -0.22566152)
+material_override = ExtResource("2_whods")
+mesh = ExtResource("3_5vfyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1163241092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054656982, 0.07808131, 0)
+shape = SubResource("SphereShape3D_6slla")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -69,10 +69,10 @@ shape = SubResource("RectangleShape2D_gwxpq")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=449289754]
 zoom = Vector2(1.74, 1.74)
-limit_left = -700
-limit_top = -350
-limit_right = 700
-limit_bottom = 300
+limit_left = -485
+limit_top = -236
+limit_right = 530
+limit_bottom = 246
 limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
