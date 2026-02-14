@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c28q1asas0sov"]
+
+[ext_resource type="Material" uid="uid://d162go8p6t468" path="res://Collision/Textures/trunk.tres" id="1_bbrgb"]
+[ext_resource type="Material" uid="uid://dislpip3bruu" path="res://Collision/Textures/tree_leaf.tres" id="2_i1u12"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5dn6e"]
+top_radius = 0.12
+bottom_radius = 0.12
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hraa7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bbrgb"]
+height = 3.416748
+radius = 0.58935547
+
+[node name="Tree" type="StaticBody3D" unique_id=723833987]
+
+[node name="tree_tank" type="MeshInstance3D" parent="." unique_id=1185983850]
+transform = Transform3D(1.6941795, 0, 0, 0, 3.3010316, 0, 0, 0, 1.6941795, 0, 0.74076307, 0)
+material_override = ExtResource("1_bbrgb")
+mesh = SubResource("CylinderMesh_5dn6e")
+
+[node name="tree_leaf" type="MeshInstance3D" parent="." unique_id=398258705]
+transform = Transform3D(1.6941795, 0, 0, 0, 1.0636693, 0, 0, 0, 1.6941795, 0, 0.98055816, 0)
+material_override = ExtResource("2_i1u12")
+mesh = SubResource("SphereMesh_hraa7")
+
+[node name="tree_leaf2" type="MeshInstance3D" parent="." unique_id=2107207673]
+transform = Transform3D(1.2792629, 0, 0, 0, 0.9517936, 0, 0, 0, 1.2792629, 0, 1.6161857, 0)
+material_override = ExtResource("2_i1u12")
+mesh = SubResource("SphereMesh_hraa7")
+
+[node name="tree_leaf3" type="MeshInstance3D" parent="." unique_id=687919467]
+transform = Transform3D(0.9406905, 0, 0, 0, 0.69988996, 0, 0, 0, 0.9406905, 0, 2.1345525, 0)
+material_override = ExtResource("2_i1u12")
+mesh = SubResource("SphereMesh_hraa7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2021353436 groups=["Tree"]]
+transform = Transform3D(1.4294517, 0, 0, 0, 1.4294517, 0, 0, 0, 1.4294517, 0, 0.8067627, 0)
+shape = SubResource("CylinderShape3D_bbrgb")

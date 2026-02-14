@@ -2,7 +2,7 @@
 
 [resource]
 transparency = 1
-albedo_color = Color(0.92156863, 0.30980393, 0.28627452, 0.99215686)
+albedo_color = Color(0.92428344, 0.3036279, 0.27649727, 0.99215686)
 roughness = 0.29
 emission_enabled = true
 emission = Color(0.29667914, 0.120781936, 0.0096771205, 1)

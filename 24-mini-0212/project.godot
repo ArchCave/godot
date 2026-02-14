@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="24mini_0212"
-run/main_scene="uid://bdj2502bbqctv"
+run/main_scene="uid://dokidiy4rgfxg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

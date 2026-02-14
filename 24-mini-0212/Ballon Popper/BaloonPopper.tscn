@@ -5,7 +5,7 @@
 
 [sub_resource type="Environment" id="Environment_q8ysh"]
 background_mode = 1
-background_color = Color(0.2901961, 0.57254905, 0.6784314, 1)
+background_color = Color(0.51383513, 0.7838521, 0.8898842, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ed27"]
 font_size = 55
