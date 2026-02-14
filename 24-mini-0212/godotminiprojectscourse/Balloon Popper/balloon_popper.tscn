@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://p60hpaynidqa"]
+
+[ext_resource type="Script" uid="uid://rwaxxc5r26ni" path="res://Balloon Popper/balloon_manager.gd" id="1_hm4d0"]
+[ext_resource type="PackedScene" uid="uid://cg4pouaudcsnx" path="res://Balloon Popper/balloon.tscn" id="2_bxkad"]
+
+[sub_resource type="Environment" id="Environment_4t30t"]
+background_mode = 1
+background_color = Color(0.621591, 0.876957, 0.881347, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bxkad"]
+font_size = 48
+font_color = Color(1, 0, 0.0166664, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_hm4d0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.303739, 0.937082, 5.53634)
+fov = 40.4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.986726, 0.0793601, 0.141684, -0.162396, 0.482195, 0.860881, -3.83436e-09, -0.872462, 0.488682, 0, 2.17146, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4t30t")
+
+[node name="Balloon" parent="." instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.622841, -0.183079, 0)
+
+[node name="Balloon2" parent="." instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58973, 0.235986, -2.38419e-07)
+
+[node name="Balloon3" parent="." instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285585, 0.986366, -2.38419e-07)
+
+[node name="Balloon4" parent="." instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4112, 1.49466, -2.38419e-07)
+
+[node name="Balloon6" parent="." instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37145, -0.0313196, -2.38419e-07)
+
+[node name="Balloon7" parent="." instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9381, 0.820259, -2.38419e-07)
+
+[node name="Balloon5" parent="." instance=ExtResource("2_bxkad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59581, 2.05104, -2.38419e-07)
+
+[node name="ScoreText" type="Label" parent="."]
+offset_left = 35.0
+offset_top = 29.0
+offset_right = 298.0
+offset_bottom = 93.0
+text = "Score: 10"
+label_settings = SubResource("LabelSettings_bxkad")

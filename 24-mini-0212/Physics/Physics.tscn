@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://bdj2502bbqctv"]
+
+[ext_resource type="Texture2D" uid="uid://b566loy6cb1wl" path="res://Assets-Godot-Mini-Projects/Godot Mini-Projects - Assets/Physics/PhysicsCharacter.png" id="1_8qjul"]
+[ext_resource type="Script" uid="uid://dyiqtqjjswncx" path="res://Physics/physics_player.gd" id="1_ry666"]
+[ext_resource type="PackedScene" uid="uid://can1tebvb35ca" path="res://Physics/crate.tscn" id="3_eghp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry666"]
+size = Vector2(18, 18)
+
+[node name="Main" type="Node2D" unique_id=915066083]
+
+[node name="Player" type="RigidBody2D" parent="." unique_id=444038835]
+mass = 10.0
+gravity_scale = 0.0
+linear_damp = 1.0
+script = ExtResource("1_ry666")
+
+[node name="Sprite" type="Sprite2D" parent="Player" unique_id=79009038]
+texture = ExtResource("1_8qjul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=952821371]
+shape = SubResource("RectangleShape2D_ry666")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=56735872]
+zoom = Vector2(3, 3)
+
+[node name="Crate" parent="." unique_id=1473709660 instance=ExtResource("3_eghp1")]
+position = Vector2(-84, -31)
+
+[node name="Crate2" parent="." unique_id=1544806375 instance=ExtResource("3_eghp1")]
+position = Vector2(-91, 1)
+
+[node name="Crate3" parent="." unique_id=859233011 instance=ExtResource("3_eghp1")]
+position = Vector2(-63, 35)
+
+[node name="Crate4" parent="." unique_id=1511737460 instance=ExtResource("3_eghp1")]
+position = Vector2(-91, 47)
+
+[node name="Crate5" parent="." unique_id=574877129 instance=ExtResource("3_eghp1")]
+position = Vector2(-125, 35)
+
+[node name="Crate6" parent="." unique_id=827660285 instance=ExtResource("3_eghp1")]
+position = Vector2(-137, 11)
+
+[node name="Crate7" parent="." unique_id=1743040054 instance=ExtResource("3_eghp1")]
+position = Vector2(-144, -21)
+
+[node name="Crate8" parent="." unique_id=406856354 instance=ExtResource("3_eghp1")]
+position = Vector2(-144, -63)
+
+[node name="Crate9" parent="." unique_id=1175429501 instance=ExtResource("3_eghp1")]
+position = Vector2(-98, -76)
+
+[node name="Crate10" parent="." unique_id=2045092883 instance=ExtResource("3_eghp1")]
+position = Vector2(-59, -56)
+
+[node name="Crate11" parent="." unique_id=1852271516 instance=ExtResource("3_eghp1")]
+position = Vector2(-23, -54)
+
+[node name="Crate12" parent="." unique_id=1288827809 instance=ExtResource("3_eghp1")]
+position = Vector2(16, -55)
+
+[node name="Crate13" parent="." unique_id=1428194687 instance=ExtResource("3_eghp1")]
+position = Vector2(67, -62)
+
+[node name="Crate14" parent="." unique_id=1963863761 instance=ExtResource("3_eghp1")]
+position = Vector2(67, -62)
+rotation = -0.17036994
+
+[node name="Crate15" parent="." unique_id=1482492522 instance=ExtResource("3_eghp1")]
+position = Vector2(68, -12)
+rotation = -0.17036994
+
+[node name="Crate16" parent="." unique_id=1263357182 instance=ExtResource("3_eghp1")]
+position = Vector2(102, -11)
+
+[node name="Crate19" parent="." unique_id=1686660715 instance=ExtResource("3_eghp1")]
+position = Vector2(109.00001, 37)
+rotation = -1.1199504
+
+[node name="Crate22" parent="." unique_id=1161937620 instance=ExtResource("3_eghp1")]
+position = Vector2(69.99999, 84)
+rotation = -1.1199504
+
+[node name="Crate23" parent="." unique_id=1834995406 instance=ExtResource("3_eghp1")]
+position = Vector2(-36, 84)
+rotation = -1.1199504
+
+[node name="Crate24" parent="." unique_id=613007113 instance=ExtResource("3_eghp1")]
+position = Vector2(-22, 54)
+rotation = -1.1199504
+
+[node name="Crate28" parent="." unique_id=1941056931 instance=ExtResource("3_eghp1")]
+position = Vector2(98, 73)
+rotation = -1.1199504
+
+[node name="Crate29" parent="." unique_id=189980996 instance=ExtResource("3_eghp1")]
+position = Vector2(166, 70)
+rotation = -2.6533852
+
+[node name="Crate30" parent="." unique_id=430908144 instance=ExtResource("3_eghp1")]
+position = Vector2(142, 12)
+rotation = -2.5882225
+
+[node name="Crate31" parent="." unique_id=1580101974 instance=ExtResource("3_eghp1")]
+position = Vector2(137, 64)
+rotation = -2.5882225
+
+[node name="Crate32" parent="." unique_id=1000326636 instance=ExtResource("3_eghp1")]
+position = Vector2(159, 27)
+rotation = -2.5882225
+
+[node name="Crate33" parent="." unique_id=1397820475 instance=ExtResource("3_eghp1")]
+position = Vector2(166.99998, -16.000004)
+rotation = -2.5882225
+
+[node name="Crate34" parent="." unique_id=12016761 instance=ExtResource("3_eghp1")]
+position = Vector2(160, -56.99999)
+rotation = -2.5882225
+
+[node name="Crate35" parent="." unique_id=489224904 instance=ExtResource("3_eghp1")]
+position = Vector2(127, -93)
+rotation = -2.5882225
+
+[node name="Crate36" parent="." unique_id=2021188009 instance=ExtResource("3_eghp1")]
+position = Vector2(105, -80.00001)
+rotation = -2.5882225
+
+[node name="Crate37" parent="." unique_id=822220119 instance=ExtResource("3_eghp1")]
+position = Vector2(60.999992, -84.99999)
+rotation = -2.5882225
+
+[node name="Crate38" parent="." unique_id=615829834 instance=ExtResource("3_eghp1")]
+position = Vector2(10.000004, -82)
+rotation = -2.5882225
+
+[node name="Crate39" parent="." unique_id=1224972155 instance=ExtResource("3_eghp1")]
+position = Vector2(-121, -44)
+rotation = -2.5882225
+
+[node name="Crate40" parent="." unique_id=1447074022 instance=ExtResource("3_eghp1")]
+position = Vector2(-166, -41)
+rotation = -2.5882225
+
+[node name="Crate41" parent="." unique_id=262860770 instance=ExtResource("3_eghp1")]
+position = Vector2(-168, -96)
+rotation = -2.5882225
+
+[node name="Crate42" parent="." unique_id=1169642596 instance=ExtResource("3_eghp1")]
+position = Vector2(-59, -80)
+rotation = -2.5882225
+
+[node name="Crate43" parent="." unique_id=1184664855 instance=ExtResource("3_eghp1")]
+position = Vector2(-42.999996, -5)
+rotation = -2.5882225
+
+[node name="Crate44" parent="." unique_id=309747931 instance=ExtResource("3_eghp1")]
+position = Vector2(-163, 37)
+rotation = -2.5882225
+
+[node name="Crate45" parent="." unique_id=1891626753 instance=ExtResource("3_eghp1")]
+position = Vector2(-60.999985, 73)
+rotation = -2.5882225
+
+[node name="Crate46" parent="." unique_id=1901958370 instance=ExtResource("3_eghp1")]
+position = Vector2(7, 93)
+rotation = -0.7744323
+
+[node name="Crate25" parent="." unique_id=1163441071 instance=ExtResource("3_eghp1")]
+position = Vector2(-102, 72.00001)
+rotation = 0.7853982
+
+[node name="Crate26" parent="." unique_id=1515875931 instance=ExtResource("3_eghp1")]
+position = Vector2(-127, 84.00001)
+rotation = 3.6651917
+
+[node name="Crate27" parent="." unique_id=1953018974 instance=ExtResource("3_eghp1")]
+position = Vector2(-155, 54.999996)
+rotation = 3.6651917
+
+[node name="Crate17" parent="." unique_id=852204171 instance=ExtResource("3_eghp1")]
+position = Vector2(73, 23)
+
+[node name="Crate20" parent="." unique_id=505484472 instance=ExtResource("3_eghp1")]
+position = Vector2(30.000004, 74)
+rotation = 0.2617994
+
+[node name="Crate21" parent="." unique_id=1534422261 instance=ExtResource("3_eghp1")]
+position = Vector2(40.000004, 23.999992)
+rotation = 0.2617994
+
+[node name="Crate18" parent="." unique_id=339514292 instance=ExtResource("3_eghp1")]
+position = Vector2(121, -39)
+rotation = 0.2940593
