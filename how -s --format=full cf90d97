@@ -1,0 +1,5 @@
+[33mcommit cf90d97d65843737204adc0fdcdc7df30726e6b3[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: ArchCave <ohtube1103@google.com>
+Date:   Sat Feb 14 16:59:22 2026 +0900
+
+    Update Godot projects - reorganize collision assets and fix project structure

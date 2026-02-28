@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ypldvgiv1jmm"
-path="res://.godot/imported/Star.png-0813c6fc33ac826b2cc45480f941bdb4.ctex"
+path="res://.godot/imported/Star.png-3d2463ef4f98ea59d22a7cf94b1ff20b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets-Godot-Mini-Projects/Godot Mini-Projects - Assets/Loops/Star.png"
-dest_files=["res://.godot/imported/Star.png-0813c6fc33ac826b2cc45480f941bdb4.ctex"]
+source_file="res://Loops/Star.png"
+dest_files=["res://.godot/imported/Star.png-3d2463ef4f98ea59d22a7cf94b1ff20b.ctex"]
 
 [params]
 
