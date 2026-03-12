@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bss0eonw3g6wd"
-path="res://.godot/imported/player_mask-sheet1.png-da3e6d3a29be2a16d9206dfd62c9d8d2.ctex"
+uid="uid://bhsasnh4y0ecn"
+path="res://.godot/imported/New Piskel.png-01781bae457e8438690baaa62bd2fd91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/duplication/player_mask-sheet1.png"
-dest_files=["res://.godot/imported/player_mask-sheet1.png-da3e6d3a29be2a16d9206dfd62c9d8d2.ctex"]
+source_file="res://Sprite/New Piskel.png"
+dest_files=["res://.godot/imported/New Piskel.png-01781bae457e8438690baaa62bd2fd91.ctex"]
 
 [params]
 
