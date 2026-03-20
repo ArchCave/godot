@@ -2,13 +2,12 @@ extends CharacterBody2D
 
 @export var move_speed : float = 25
 @export var gravity : float = 500
-@export var jump_force : float = 90
+@export var jump_force : float = 200
 
 var move_input : float
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var cam: Camera2D = $"../Camera2D"
 
 func _ready():
 	anim.play("Idle")
@@ -35,14 +34,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	# 플레이어가 화면 중앙 넘으면 카메라 이동
-	var screen_half = get_viewport_rect().size.x / 2
-	if global_position.x > cam.global_position.x + screen_half:
-		cam.global_position.x = global_position.x - screen_half
-
 	update_animation()
-
-
 
 func update_animation():
 	if not is_on_floor():
