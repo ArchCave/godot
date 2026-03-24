@@ -3,18 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://1wqasq5epx5w" path="res://Sprite/spriteletter0-sheet0.png" id="2_akv4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3jae"]
-size = Vector2(27, 68)
+size = Vector2(43, 100)
 
 [node name="Dialogue_area_2d" type="Area2D" unique_id=934119033]
 disable_mode = 2
 
 [node name="IntroDialog" type="Sprite2D" parent="." unique_id=351768186]
-visible = false
-position = Vector2(20, -46)
-scale = Vector2(0.2, 0.2)
+position = Vector2(21.000002, -46.000004)
+scale = Vector2(0.365, 0.365)
 texture = ExtResource("2_akv4j")
 offset = Vector2(0, -100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1408123809]
-position = Vector2(-9.5, 0)
+position = Vector2(-17.5, 16)
 shape = SubResource("RectangleShape2D_n3jae")

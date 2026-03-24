@@ -916,7 +916,7 @@ tile_map_data = PackedByteArray("AAAAAAkAAAAcABMAABAAAAoAAAAcABQAABABAAkAAAAbABM
 tile_set = ExtResource("2_7p6j4")
 
 [node name="Dialogue_area_2d" parent="." unique_id=934119033 instance=ExtResource("3_evi0p")]
-position = Vector2(144, 142)
+position = Vector2(149, 136)
 disable_mode = 0
 script = ExtResource("4_evi0p")
 
@@ -927,7 +927,8 @@ script = ExtResource("4_7p6j4")
 [node name="Camera2D2" type="Camera2D" parent="Player" unique_id=1972069792]
 position = Vector2(123, -168)
 scale = Vector2(1.16, 1)
-offset = Vector2(0, 35)
+offset = Vector2(0, 27.98)
+zoom = Vector2(0.99, 0.99)
 limit_left = 0
 limit_top = -31
 limit_right = 510
