@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://brayu1s2t63x5" path="res://img/pxart5-sheet0.png" id="1_xfk5q"]
 [ext_resource type="TileSet" uid="uid://bqdy8cx3k8fcj" path="res://Sprite/TileSet.tres" id="2_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://d4bvd3be3npgw" path="res://Scenes/Player.tscn" id="3_6444e"]
+[ext_resource type="PackedScene" uid="uid://cyk3jop4wueu4" path="res://Scenes/Dialogue_area_2d.tscn" id="3_evi0p"]
 [ext_resource type="Script" uid="uid://bcbf682pm8hli" path="res://Scripts/player.gd" id="4_7p6j4"]
+[ext_resource type="Script" uid="uid://csnqd1xvbctb0" path="res://Scripts/Dialogue_area_2d.gd" id="4_evi0p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_xfk5q")
@@ -913,7 +915,12 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAkAAAAcABMAABAAAAoAAAAcABQAABABAAkAAAAbABMAABABAAoAAAAbABQAABACAAkAAAAaABMAABACAAoAAAAaABQAABADAAkAAAAZABMAABADAAoAAAAZABQAABAEAAkAAAAbABMAAAAEAAoAAAAbABQAAAAFAAkAAAAZABMAAAAFAAoAAAAZABQAAAAGAAkAAAAaABMAAAAGAAoAAAAaABQAAAAHAAkAAAAbABMAAAAHAAoAAAAbABQAAAAIAAkAAAAZABMAAAAIAAoAAAAZABQAAAAJAAkAAAAaABMAAAAJAAoAAAAaABQAAAAKAAkAAAAbABMAAAAKAAoAAAACABcAAAALAAkAAAAZABMAAAALAAoAAAAZABQAAAAMAAkAAAAaABMAAAAMAAoAAAAaABQAAAANAAkAAAAbABMAAAANAAoAAAAbABQAAAAOAAkAAAAZABMAAAAOAAoAAAAZABQAAAAPAAkAAAAaABMAAAAPAAoAAAAaABQAAAAQAAkAAAAbABMAAAAQAAoAAAAbABQAAAARAAkAAAAZABMAAAARAAoAAAAZABQAAAASAAkAAAAaABMAAAASAAoAAAAaABQAAAATAAkAAAAbABMAAAATAAoAAAAbABQAAAAUAAkAAAAZABMAAAAUAAoAAAAZABQAAAAVAAkAAAAaABMAAAAVAAoAAAAaABQAAAAWAAkAAAAbABMAAAAWAAoAAAAbABQAAAABAAgAAAAbABIAAAAEAAgAAAAbABIAAAAHAAgAAAAbABIAAAAKAAcAAAAbAAoAAAAKAAgAAAAbABIAAAANAAgAAAAbABIAAAAQAAgAAAAbABIAAAATAAgAAAAbABIAAAAWAAgAAAAbABIAAAAXAAkAAAAZABMAAAAXAAoAAAAZABQAAAAYAAkAAAAaABMAAAAYAAoAAAAaABQAAAAZAAgAAAAbABIAAAAZAAkAAAAbABMAAAAZAAoAAAAbABQAAAAaAAkAAAAcABMAAAAaAAoAAAAcABQAAAAbAAkAAAAdABMAAAAbAAoAAAAdABQAAAAcAAkAAAAeABMAAAAcAAoAAAAeABQAAAD//wkAAAAdABMAABD//woAAAAdABQAABA=")
 tile_set = ExtResource("2_7p6j4")
 
-[node name="Player" parent="." unique_id=1457953911 instance=ExtResource("3_6444e")]
+[node name="Dialogue_area_2d" parent="." unique_id=934119033 instance=ExtResource("3_evi0p")]
+position = Vector2(144, 142)
+disable_mode = 0
+script = ExtResource("4_evi0p")
+
+[node name="Player" parent="." unique_id=1457953911 groups=["Player"] instance=ExtResource("3_6444e")]
 position = Vector2(26, 161)
 script = ExtResource("4_7p6j4")
 
@@ -934,3 +941,6 @@ drag_right_margin = 0.51
 drag_bottom_margin = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[connection signal="body_entered" from="Dialogue_area_2d" to="Dialogue_area_2d" method="_on_body_entered"]
+[connection signal="body_exited" from="Dialogue_area_2d" to="Dialogue_area_2d" method="_on_body_exited"]
