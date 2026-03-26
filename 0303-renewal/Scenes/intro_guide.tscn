@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://djj30xi5bbcyc"]
+
+[ext_resource type="Script" uid="uid://xeyvtk6cwe3t" path="res://Scripts/Intro_Guide.gd" id="1_q17ek"]
+[ext_resource type="Texture2D" uid="uid://ci6t8f3q2noee" path="res://img/bg_pause-sheet0.png" id="2_7a2ya"]
+[ext_resource type="Texture2D" uid="uid://bitugsl5je2pn" path="res://img/spriteletter2-sheet0.png" id="3_y4hhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+size = Vector2(19, 42)
+
+[node name="Intro_Guide" type="Area2D" unique_id=1738852016]
+script = ExtResource("1_q17ek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=531491422]
+position = Vector2(26.5, 158)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="IntroBackground" type="Sprite2D" parent="." unique_id=493555507]
+visible = false
+position = Vector2(180.5, 60.5)
+scale = Vector2(0.47005212, 0.36132813)
+texture = ExtResource("2_7a2ya")
+
+[node name="IntroGuide" type="Sprite2D" parent="." unique_id=896932848]
+visible = false
+texture_filter = 1
+position = Vector2(168, 53.999996)
+scale = Vector2(0.22516558, 0.22516556)
+texture = ExtResource("3_y4hhe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

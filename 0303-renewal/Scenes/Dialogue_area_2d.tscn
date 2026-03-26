@@ -9,8 +9,10 @@ size = Vector2(43, 100)
 disable_mode = 2
 
 [node name="IntroDialog" type="Sprite2D" parent="." unique_id=351768186]
-position = Vector2(21.000002, -46.000004)
-scale = Vector2(0.365, 0.365)
+visible = false
+texture_filter = 1
+position = Vector2(21.000002, -51.52986)
+scale = Vector2(0.3097014, 0.30970144)
 texture = ExtResource("2_akv4j")
 offset = Vector2(0, -100)
 
