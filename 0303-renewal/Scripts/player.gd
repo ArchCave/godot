@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 @export var move_speed : float = 25
-@export var gravity : float = 500
-@export var jump_force : float = 200
+@export var gravity : float = 420
+@export var jump_force : float = 100
+@export var health : int = 3
 
 var move_input : float
 
@@ -47,3 +48,13 @@ func update_animation():
 func play_anim(anim_name: String):
 	if anim.current_animation != anim_name:
 		anim.play(anim_name)
+
+func take_damage(amount : int):
+	health -= amount
+	print(take_damage)
+	if health <=0:
+		call_deferred("game_over")
+
+func game_over():
+	get_tree().change_scene_to_file("res://Scenes/Enemy.tscn")
+	

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://5sk76gnawqit"]
+
+[ext_resource type="Texture2D" uid="uid://cdb8mmcp4u1df" path="res://Sprite/drones.png" id="1_m1htj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wovta"]
+size = Vector2(18, 19)
+
+[sub_resource type="Animation" id="Animation_xeo28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kpr8r"]
+resource_name = "drone"
+length = 0.36666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16666667, 0.26666668, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1exfc"]
+_data = {
+&"RESET": SubResource("Animation_xeo28"),
+&"drone": SubResource("Animation_kpr8r")
+}
+
+[node name="Enemy" type="Area2D" unique_id=17306696]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=921413316]
+texture_filter = 1
+texture = ExtResource("1_m1htj")
+hframes = 2
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=323492594]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wovta")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1705689208]
+libraries/ = SubResource("AnimationLibrary_1exfc")
