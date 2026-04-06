@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://clwq1stxa6m3u"]
+
+[ext_resource type="Script" uid="uid://exfllk2ugq8u" path="res://Scripts/poop_coin.gd" id="1_k5032"]
+[ext_resource type="Texture2D" uid="uid://b778o4tqk2tem" path="res://Sprite/coins7-sheet0.png" id="2_tit7x"]
+[ext_resource type="Texture2D" uid="uid://bhydrdi4uxnjn" path="res://Sprite/coins-sheet0.png" id="3_wd0l7"]
+[ext_resource type="Texture2D" uid="uid://djpm162e2jbc2" path="res://Sprite/coins-sheet1.png" id="4_s001v"]
+[ext_resource type="Texture2D" uid="uid://pit7x8ta6ieb" path="res://Sprite/coins-sheet2.png" id="5_rdpbn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlmop"]
+animations = [{
+"frames": [{
+"duration": 1.2,
+"texture": ExtResource("3_wd0l7")
+}, {
+"duration": 1.2,
+"texture": ExtResource("4_s001v")
+}, {
+"duration": 1.2,
+"texture": ExtResource("5_rdpbn")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sda17"]
+size = Vector2(6, 6)
+
+[node name="PoopCoin" type="Area2D" unique_id=1664107663]
+script = ExtResource("1_k5032")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=534507278]
+texture = ExtResource("2_tit7x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1562464869]
+visible = false
+position = Vector2(0, -0.935)
+scale = Vector2(0.455, 0.455)
+sprite_frames = SubResource("SpriteFrames_dlmop")
+animation = &"spin"
+frame_progress = 0.34602222
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786224590]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sda17")
+
+[node name="Timer" type="Timer" parent="." unique_id=554852048]
+wait_time = 20.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
