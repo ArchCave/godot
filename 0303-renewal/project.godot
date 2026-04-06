@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="0303_renewal"
-run/main_scene="uid://0rwi203w4p55"
+run/main_scene="uid://blld4lalwfnpe"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

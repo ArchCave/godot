@@ -15,6 +15,7 @@ position = Vector2(26.5, 158)
 shape = SubResource("RectangleShape2D_wrinw")
 
 [node name="IntroBackground" type="Sprite2D" parent="." unique_id=493555507]
+visible = false
 position = Vector2(180.5, 60.5)
 scale = Vector2(0.63005334, 0.48132813)
 texture = ExtResource("2_7a2ya")
