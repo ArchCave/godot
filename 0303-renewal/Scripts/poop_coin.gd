@@ -30,14 +30,8 @@ func _on_timer_timeout() -> void:
 			return
 
 func _on_body_entered(body: Node2D) -> void:
-	print("touched: ", body.name)
-	print("is_coin: ", is_coin)           # 이게 있어야 함
-	print("player 그룹: ", body.is_in_group("Player"))  # 이것도
-	if not is_coin:
+	if not body.is_in_group("Player"):
 		return
-	if body.is_in_group("Player"):
-		PlayerStats.score += 10
-		queue_free()	
-
-
-#func _on_body_entered(body: Node2D) -> void:
+	
+	body.increase_score(1)
+	queue_free()

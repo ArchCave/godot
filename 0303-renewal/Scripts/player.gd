@@ -5,6 +5,7 @@ const PoopCoin = preload("res://scenes/poop_coin.tscn")
 @export var jump_force : float = 100
 @export var health : int = 1
 @onready var ray: RayCast2D = $RayCast2D
+@export var game_over_scene: String = "res://Scenes/level_1.tscn"
 var move_input : float
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
@@ -66,7 +67,11 @@ func take_damage(amount : int):
 	print(take_damage)
 	if health <=0:
 		call_deferred("game_over")
-
+		
 func game_over():
-	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	get_tree().change_scene_to_file(game_over_scene)
+	
+func increase_score (amount : int):
+	PlayerStats.score += amount
+	print("Player.gd : ",PlayerStats.score)
 	
