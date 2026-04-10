@@ -23,11 +23,11 @@ func _on_timer_timeout() -> void:
 	anim_sprite.play("spin")
 	collision.disabled  = false
 	
-	for body in get_overlapping_bodies():
-		if body.is_in_group("player"):
-			PlayerStats.score += 1
-			queue_free()
-			return
+	#for body in get_overlapping_bodies():
+		#if body.is_in_group("player"):
+			#PlayerStats.score += 1
+			#queue_free()
+			#return
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):

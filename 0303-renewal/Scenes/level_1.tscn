@@ -14,9 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://d34gai2kcr5eb" path="res://img/sprite21-sheet0.png" id="11_uy8f0"]
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="12_6ioyp"]
 [ext_resource type="PackedScene" uid="uid://clwq1stxa6m3u" path="res://Scenes/poop_coin.tscn" id="13_6r07y"]
+[ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="15_oovug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
 size = Vector2(84.5, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gcla0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr6f4"]
+size = Vector2(544.5, 20)
 
 [node name="Main" type="Node2D" unique_id=2010999596]
 metadata/_edit_vertical_guides_ = [0.0]
@@ -92,11 +98,37 @@ scale = Vector2(0.166, 0.166)
 texture = ExtResource("11_uy8f0")
 
 [node name="Enemy" parent="." unique_id=17306696 instance=ExtResource("11_6r07y")]
-position = Vector2(68, 159)
+position = Vector2(71, 94)
 script = ExtResource("12_6ioyp")
 
 [node name="PoopCoin" parent="." unique_id=1664107663 instance=ExtResource("13_6r07y")]
 position = Vector2(-82, 0)
+
+[node name="EndFlag" parent="." unique_id=386677647 instance=ExtResource("15_oovug")]
+position = Vector2(449, 168)
+
+[node name="Floor3" type="StaticBody2D" parent="." unique_id=737695796]
+position = Vector2(9, -7)
+rotation = 1.5707964
+scale = Vector2(0.275, 0.275)
+physics_material_override = SubResource("PhysicsMaterial_gcla0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor3" unique_id=1815671456]
+position = Vector2(701.81805, -839.0908)
+rotation = -1.5707964
+scale = Vector2(3.6363635, 3.6363635)
+shape = SubResource("RectangleShape2D_vr6f4")
+debug_color = Color(0.67058825, 1, 0, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor3" unique_id=111863493]
+position = Vector2(407.27264, -1814.5454)
+shape = SubResource("RectangleShape2D_vr6f4")
+debug_color = Color(0.67058825, 1, 0, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3" unique_id=933866176]
+position = Vector2(403.63635, 138.1818)
+shape = SubResource("RectangleShape2D_vr6f4")
+debug_color = Color(0.67058825, 1, 0, 0.41960785)
 
 [connection signal="body_entered" from="Dialogue_area_2d" to="Dialogue_area_2d" method="_on_body_entered"]
 [connection signal="body_exited" from="Dialogue_area_2d" to="Dialogue_area_2d" method="_on_body_exited"]
