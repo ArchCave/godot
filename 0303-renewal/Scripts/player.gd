@@ -1,9 +1,13 @@
 extends CharacterBody2D
 const PoopCoin = preload("res://scenes/poop_coin.tscn")
+signal OnUpdateHealth (health:int)
+signal OnUpdateScore (score:int)
+
+
 @export var move_speed : float = 25
 @export var gravity : float = 420
 @export var jump_force : float = 100
-@export var health : int = 1
+@export var health : int = 5
 @onready var ray: RayCast2D = $RayCast2D
 @export var game_over_scene: String = "res://Scenes/level_1.tscn"
 var move_input : float
@@ -64,7 +68,7 @@ func play_anim(anim_name: String):
 
 func take_damage(amount : int):
 	health -= amount
-	print(take_damage)
+	OnUpdateHealth.emit(health)
 	if health <=0:
 		call_deferred("game_over")
 		
@@ -73,5 +77,6 @@ func game_over():
 	
 func increase_score (amount : int):
 	PlayerStats.score += amount
+	OnUpdateScore.emit(PlayerStats.score)
 	print("Player.gd : ",PlayerStats.score)
 	

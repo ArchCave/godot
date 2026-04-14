@@ -104,8 +104,6 @@ _data = {
 font = ExtResource("3_5ixxa")
 font_size = 20
 font_color = Color(0.9882353, 0.7764706, 0.23137255, 1)
-outline_size = 7
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1457953911]
 
@@ -130,6 +128,14 @@ target_position = Vector2(0, 1000)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1616350279]
 script = ExtResource("3_52ee3")
 
+[node name="EnergyScoreText" type="Label" parent="CanvasLayer" unique_id=626926244]
+offset_left = 34.509026
+offset_top = 4.046275
+offset_right = 44.509026
+offset_bottom = 35.046276
+text = "1"
+label_settings = SubResource("LabelSettings_nn08x")
+
 [node name="EnergyContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=208932065]
 offset_left = 23.0
 offset_top = 3.0
@@ -142,8 +148,11 @@ layout_mode = 2
 texture = ExtResource("2_dewec")
 expand_mode = 2
 
-[node name="EnergyScoreText" type="Label" parent="CanvasLayer/EnergyContainer" unique_id=626926244]
-layout_mode = 2
+[node name="HeartScoreText" type="Label" parent="CanvasLayer" unique_id=215586651]
+offset_left = 16.488102
+offset_top = 4.0443726
+offset_right = 26.488102
+offset_bottom = 35.044373
 text = "1"
 label_settings = SubResource("LabelSettings_nn08x")
 
@@ -158,8 +167,3 @@ scale = Vector2(0.2610932, 0.2610932)
 layout_mode = 2
 texture = ExtResource("2_kyqiw")
 expand_mode = 2
-
-[node name="HeartScoreText" type="Label" parent="CanvasLayer/HealthContainer" unique_id=215586651]
-layout_mode = 2
-text = "1"
-label_settings = SubResource("LabelSettings_nn08x")
