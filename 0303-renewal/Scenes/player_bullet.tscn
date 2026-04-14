@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dsuxibukibbis"]
+
+[ext_resource type="Script" uid="uid://dd0l102w7ei27" path="res://Scripts/player_bullet.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c5v72gcletrbe" path="res://Sprite/attack/Layer 1_attack1.png" id="2_atk1"]
+[ext_resource type="Texture2D" uid="uid://b3uhp31jqndnq" path="res://Sprite/attack/Layer 1_attack2.png" id="3_atk2"]
+[ext_resource type="Texture2D" uid="uid://b6twuet7piodv" path="res://Sprite/attack/Layer 1_attack3.png" id="4_atk3"]
+[ext_resource type="Texture2D" uid="uid://cx8orj5jtyet0" path="res://Sprite/attack/Layer 1_attack4.png" id="5_atk4"]
+[ext_resource type="Texture2D" uid="uid://b77maumc0okfa" path="res://Sprite/attack/Layer 1_attack5.png" id="6_atk5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_atk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_atk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_atk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_atk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_atk5")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bullet"]
+size = Vector2(10, 8)
+
+[node name="PlayerBullet" type="Area2D" unique_id=1981856044]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1140600435]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_bullet")
+animation = &"fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1944469627]
+shape = SubResource("RectangleShape2D_bullet")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

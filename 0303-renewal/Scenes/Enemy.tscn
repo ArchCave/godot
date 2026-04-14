@@ -43,7 +43,7 @@ _data = {
 &"drone": SubResource("Animation_kpr8r")
 }
 
-[node name="Enemy" type="Area2D" unique_id=17306696]
+[node name="Enemy" type="Area2D" unique_id=17306696 groups=["Enemy"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=921413316]
 texture_filter = 1

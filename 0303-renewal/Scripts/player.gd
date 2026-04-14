@@ -1,5 +1,6 @@
 extends CharacterBody2D
 const PoopCoin = preload("res://scenes/poop_coin.tscn")
+const PlayerBullet = preload("res://Scenes/player_bullet.tscn")
 signal OnUpdateHealth (health:int)
 signal OnUpdateScore (score:int)
 
@@ -8,6 +9,7 @@ signal OnUpdateScore (score:int)
 @export var gravity : float = 420
 @export var jump_force : float = 100
 @export var health : int = 5
+var base_jump_force : float
 @onready var ray: RayCast2D = $RayCast2D
 @export var game_over_scene: String = "res://Scenes/level_1.tscn"
 var move_input : float
@@ -16,8 +18,15 @@ var move_input : float
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready():
+	base_jump_force = jump_force
 	anim.play("Idle")
 	
+func _shoot() -> void:
+	var bullet = PlayerBullet.instantiate()
+	bullet.position = self.position
+	bullet.direction = -1.0 if sprite.flip_h else 1.0
+	get_parent().add_child(bullet)
+
 func _spawn_poop() -> void:
 	var poop = PoopCoin.instantiate()
 	
@@ -39,7 +48,7 @@ func _physics_process(delta):
 		velocity.y = -jump_force
 
 	if Input.is_action_just_pressed("ui_attack"):
-		print("Attack")
+		_shoot()
 
 	if Input.is_action_just_pressed("ui_skill"):
 		_spawn_poop()
@@ -78,5 +87,18 @@ func game_over():
 func increase_score (amount : int):
 	PlayerStats.score += amount
 	OnUpdateScore.emit(PlayerStats.score)
+	_update_jump_force()
 	print("Player.gd : ",PlayerStats.score)
+
+func _update_jump_force():
+	var multiplier : float = 1.0
+	if PlayerStats.score >= 240:
+		multiplier = 4.0
+	elif PlayerStats.score >= 180:
+		multiplier = 3.0
+	elif PlayerStats.score >= 120:
+		multiplier = 2.0
+	elif PlayerStats.score >= 60:
+		multiplier = 1.5
+	jump_force = base_jump_force * multiplier
 	
