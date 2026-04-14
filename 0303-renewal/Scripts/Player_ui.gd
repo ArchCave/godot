@@ -12,6 +12,8 @@ var energy: Array = []
 func _ready():
 	hearts = health_container.get_children()
 	energy = energy_container.get_children()
+	Player.OnUpdateHealth.connect(_update_hearts)
+	Player.OnUpdateHealth.connect(_update_heart_score)
 	Player.OnUpdateScore.connect(_update_energy)
 	Player.OnUpdateScore.connect(_update_energy_score)
 	_update_heart_score(Player.health)
