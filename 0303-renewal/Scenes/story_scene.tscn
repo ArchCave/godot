@@ -1,0 +1,140 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/story_scene.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://cn61cb2m4bab6" path="res://Resorces/LoRes12OTAltOakland-Bold.ttf" id="2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_story"]
+font = ExtResource("2")
+font_size = 10
+font_color = Color(1, 1, 1, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_btn"]
+default_font = ExtResource("2")
+default_font_size = 8
+
+[node name="StoryScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="SlideContainer" type="Node2D" parent="."]
+
+[node name="Slide_01" type="Node2D" parent="SlideContainer"]
+
+[node name="Background" type="ColorRect" parent="SlideContainer/Slide_01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.18, 1)
+
+[node name="StoryText" type="Label" parent="SlideContainer/Slide_01"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -20.0
+offset_right = 140.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Slide 1"
+label_settings = SubResource("LabelSettings_story")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slide_02" type="Node2D" parent="SlideContainer"]
+
+[node name="Background" type="ColorRect" parent="SlideContainer/Slide_02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.08, 0.2, 1)
+
+[node name="StoryText" type="Label" parent="SlideContainer/Slide_02"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -20.0
+offset_right = 140.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Slide 2"
+label_settings = SubResource("LabelSettings_story")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slide_03" type="Node2D" parent="SlideContainer"]
+
+[node name="Background" type="ColorRect" parent="SlideContainer/Slide_03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.12, 0.18, 1)
+
+[node name="StoryText" type="Label" parent="SlideContainer/Slide_03"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -20.0
+offset_right = 140.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Slide 3"
+label_settings = SubResource("LabelSettings_story")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="NextButton" type="Button" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_btn")
+text = "Next >"
+
+[node name="SkipButton" type="Button" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_top = 5.0
+offset_bottom = 20.0
+grow_horizontal = 0
+theme = SubResource("Theme_btn")
+text = "Skip >>"
+
+[connection signal="pressed" from="UI/NextButton" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="UI/SkipButton" to="." method="_on_skip_pressed"]

@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d34gai2kcr5eb" path="res://img/sprite21-sheet0.png" id="10_c5xoi"]
 [ext_resource type="PackedScene" uid="uid://5sk76gnawqit" path="res://Scenes/Enemy.tscn" id="11_sfey3"]
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="12_4k5rq"]
-[ext_resource type="Script" uid="uid://bo5tm24mbvpia" path="res://Scenes/camera_level2.gd" id="12_hj5x7"]
+[ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="12_hj5x7"]
 [ext_resource type="PackedScene" uid="uid://clwq1stxa6m3u" path="res://Scenes/poop_coin.tscn" id="13_5jii6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
@@ -98,21 +98,14 @@ script = ExtResource("9_ijtdf")
 game_over_scene = "res://Scenes/level_2.tscn"
 
 [node name="Camera2D_Level2" type="Camera2D" parent="Player" unique_id=1972069792]
-position = Vector2(123, -168)
-scale = Vector2(1.16, 1)
-offset = Vector2(0, 27.98)
 limit_left = 3
 limit_top = -59
 limit_right = 9999
-limit_bottom = 192
+limit_bottom = 176
 limit_smoothed = true
-drag_horizontal_enabled = true
-drag_left_margin = 0.13
-drag_top_margin = 0.0
-drag_right_margin = 0.51
-drag_bottom_margin = 0.0
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
 editor_draw_limits = true
-editor_draw_drag_margin = true
 script = ExtResource("12_hj5x7")
 
 [node name="notice" type="Sprite2D" parent="." unique_id=1829039802]
@@ -122,20 +115,33 @@ scale = Vector2(0.166, 0.166)
 texture = ExtResource("10_c5xoi")
 
 [node name="Enemy" parent="." unique_id=17306696 instance=ExtResource("11_sfey3")]
-position = Vector2(132, 111)
+position = Vector2(92, 83)
 script = ExtResource("12_4k5rq")
+hover_intensity = 2.5
+hover_tilt = 7.0
 
 [node name="Enemy2" parent="." unique_id=1398555639 instance=ExtResource("11_sfey3")]
-position = Vector2(222, 65)
+position = Vector2(225, 80)
 script = ExtResource("12_4k5rq")
+patrol_mode = 1
+patrol_distance = 35.0
+patrol_speed = 22.0
+hover_intensity = 0.0
+hover_tilt = 0.0
 
 [node name="Enemy3" parent="." unique_id=1409101729 instance=ExtResource("11_sfey3")]
-position = Vector2(308, 81)
+position = Vector2(380, 60)
 script = ExtResource("12_4k5rq")
+patrol_mode = 1
+patrol_distance = 45.0
+patrol_speed = 28.0
 
 [node name="Enemy4" parent="." unique_id=471452158 instance=ExtResource("11_sfey3")]
-position = Vector2(130, 83)
+position = Vector2(500, 90)
 script = ExtResource("12_4k5rq")
+patrol_mode = 2
+patrol_distance = 40.0
+patrol_speed = 25.0
 
 [node name="PoopCoin" parent="." unique_id=1664107663 instance=ExtResource("13_5jii6")]
 position = Vector2(-82, 0)

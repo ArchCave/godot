@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="0303_renewal"
-run/main_scene="uid://blld4lalwfnpe"
+run/main_scene="res://Scenes/level_2.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 PlayerStats="*uid://mufgccyx2ikn"
+PauseMenu="*res://Scenes/pause_menu.tscn"
 
 [display]
 

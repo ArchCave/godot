@@ -11,11 +11,13 @@ signal OnUpdateScore(score: int)
 @export var game_over_scene: String = "res://Scenes/level_1.tscn"
 @export var invincibility_duration : float = 1.0
 @export var coyote_time : float = 0.08
+@export var jump_buffer_time : float = 0.1
 
 var base_jump_force : float
 var move_input : float
 var is_invincible : bool = false
 var coyote_timer : float = 0.0
+var jump_buffer_timer : float = 0.0
 
 @onready var ray: RayCast2D = $RayCast2D
 @onready var anim: AnimationPlayer = $AnimationPlayer
@@ -51,10 +53,17 @@ func _physics_process(delta):
 
 	move_input = Input.get_axis("ui_left", "ui_right")
 
-	# 점프 (코요테 타임 지원)
-	if Input.is_action_just_pressed("ui_jump") and coyote_timer > 0.0:
+	# 점프 버퍼: 공중에서 미리 누른 점프를 기억
+	if Input.is_action_just_pressed("ui_jump"):
+		jump_buffer_timer = jump_buffer_time
+	else:
+		jump_buffer_timer -= delta
+
+	# 점프 (코요테 타임 + 입력 버퍼링)
+	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
 		velocity.y = -jump_force
 		coyote_timer = 0.0
+		jump_buffer_timer = 0.0
 
 	if Input.is_action_just_pressed("ui_attack"):
 		_shoot()
