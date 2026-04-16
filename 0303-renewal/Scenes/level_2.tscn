@@ -123,26 +123,18 @@ texture = ExtResource("10_c5xoi")
 
 [node name="Enemy" parent="." unique_id=17306696 instance=ExtResource("11_sfey3")]
 position = Vector2(132, 111)
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("12_4k5rq")
 
 [node name="Enemy2" parent="." unique_id=1398555639 instance=ExtResource("11_sfey3")]
 position = Vector2(222, 65)
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("12_4k5rq")
 
 [node name="Enemy3" parent="." unique_id=1409101729 instance=ExtResource("11_sfey3")]
 position = Vector2(308, 81)
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("12_4k5rq")
 
 [node name="Enemy4" parent="." unique_id=471452158 instance=ExtResource("11_sfey3")]
 position = Vector2(130, 83)
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("12_4k5rq")
 
 [node name="PoopCoin" parent="." unique_id=1664107663 instance=ExtResource("13_5jii6")]

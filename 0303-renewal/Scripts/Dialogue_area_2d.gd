@@ -9,7 +9,6 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-	print("Player entered the area")
 	dialog_sprite.visible = true
 
 func _on_body_exited(body: Node2D) -> void:

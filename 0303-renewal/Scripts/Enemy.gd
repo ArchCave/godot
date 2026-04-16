@@ -11,13 +11,16 @@ func _ready() -> void:
 
 func take_bullet_damage(amount: int) -> void:
 	health -= amount
-	_flash_hit()
 	if health <= 0:
 		queue_free()
+	else:
+		_flash_hit()
 
 func _flash_hit() -> void:
 	sprite.modulate = Color(1, 0.3, 0.3)
-	get_tree().create_timer(0.1).timeout.connect(func(): sprite.modulate = Color.WHITE)
+	var tween = create_tween()
+	tween.tween_interval(0.1)
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.0)
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):

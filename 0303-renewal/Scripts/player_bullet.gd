@@ -9,8 +9,11 @@ var traveled : float = 0.0
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
+	# direction은 인스턴스 생성 후 외부에서 설정되므로
+	# _ready 시점에서 올바른 방향을 반영
 	anim_sprite.flip_h = direction < 0
 	anim_sprite.play("fire")
+
 func _physics_process(delta):
 	var move = speed * direction * delta
 	position.x += move
