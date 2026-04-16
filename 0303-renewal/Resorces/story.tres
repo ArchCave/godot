@@ -1,0 +1,10 @@
+[gd_resource type="TileSet" format=3 uid="uid://byrq0suqunxap"]
+
+[ext_resource type="Texture2D" uid="uid://cso4ehtqbpro5" path="res://Sprite/story/bg_sky3.png" id="1_q6dpp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a88sw"]
+texture = ExtResource("1_q6dpp")
+0:0/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_a88sw")

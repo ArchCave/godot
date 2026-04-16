@@ -12,7 +12,7 @@ disable_mode = 2
 visible = false
 texture_filter = 1
 position = Vector2(21.000002, -51.52986)
-scale = Vector2(0.3097014, 0.30970144)
+scale = Vector2(0.23780636, 0.2378064)
 texture = ExtResource("2_akv4j")
 offset = Vector2(0, -100)
 

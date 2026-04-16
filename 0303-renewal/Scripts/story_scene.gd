@@ -1,45 +1,83 @@
 extends Control
 
-@onready var slide_container: Node2D = $SlideContainer
-@onready var next_btn: Button = $UI/NextButton
-@onready var skip_btn: Button = $UI/SkipButton
+@onready var intro_tile: TileMapLayer = $SlideContainer/MainIntro_01/TileMapLayer
+@onready var intro_img1: Sprite2D = $SlideContainer/MainIntro_01/Main_Intro_Image1
+@onready var intro_img2: Sprite2D = $SlideContainer/MainIntro_01/Main_Intro_Image2
+@onready var story1: Sprite2D = $SlideContainer/MainIntro_01/story1
 
-var slides : Array = []
-var current_slide : int = 0
-var is_transitioning : bool = false
+@export var scroll_speed : float = 96.0
+@export var scroll_height : float = 64.0
+@export var next_scene : String = "res://Scenes/level_1.tscn"
 
-@export var transition_duration : float = 0.4
-@export var next_scene : String = "res://Scenes/level_2.tscn"
+var scrolling : bool = true
+var tile_origin_y : float = 0.0
+var current_step : int = 0
+var seq : Tween
 
 func _ready():
-	slides = slide_container.get_children()
-	# 첫 슬라이드만 보이게
-	for i in slides.size():
-		slides[i].modulate.a = 1.0 if i == 0 else 0.0
-		slides[i].visible = true
+	intro_img1.modulate.a = 0.0
+	intro_img2.modulate.a = 0.0
+	story1.modulate.a = 0.0
+	tile_origin_y = intro_tile.position.y
+	_play_step_0()
+
+func _process(delta: float) -> void:
+	if scrolling:
+		intro_tile.position.y -= scroll_speed * delta
+		if intro_tile.position.y <= tile_origin_y - scroll_height:
+			intro_tile.position.y += scroll_height
+
+func _play_step_0() -> void:
+	current_step = 0
+	seq = create_tween()
+	seq.tween_interval(0.6)
+	seq.tween_property(intro_img1, "modulate:a", 1.0, 0.8)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	seq.tween_interval(5.0)
+	seq.tween_callback(_play_step_1)
+
+func _play_step_1() -> void:
+	current_step = 1
+	seq = create_tween()
+	seq.tween_property(intro_img1, "modulate:a", 0.0, 0.6)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	seq.tween_property(intro_img2, "modulate:a", 1.0, 0.8)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	seq.tween_interval(5.0)
+	seq.tween_callback(_play_step_2)
+
+func _play_step_2() -> void:
+	current_step = 2
+	seq = create_tween()
+	seq.tween_property(intro_img2, "modulate:a", 0.0, 0.6)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	seq.tween_callback(func(): scrolling = false)
+	seq.tween_property(intro_tile, "modulate:a", 0.0, 0.6)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	seq.tween_property(story1, "modulate:a", 1.0, 0.8)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	seq.tween_interval(5.0)
+	seq.tween_property(story1, "modulate:a", 0.0, 0.6)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	seq.tween_callback(_go_to_game)
 
 func _on_next_pressed() -> void:
-	if is_transitioning:
-		return
-	if current_slide >= slides.size() - 1:
+	if seq and seq.is_running():
+		seq.kill()
+	# 현재 이미지 즉시 숨기고 다음으로
+	intro_img1.modulate.a = 0.0
+	intro_img2.modulate.a = 0.0
+	if current_step == 0:
+		_play_step_1()
+	elif current_step == 1:
+		_play_step_2()
+	else:
 		_go_to_game()
-		return
-	_transition_to(current_slide + 1)
 
 func _on_skip_pressed() -> void:
+	if seq and seq.is_running():
+		seq.kill()
 	_go_to_game()
-
-func _transition_to(index: int) -> void:
-	is_transitioning = true
-	var tween = create_tween()
-	# 현재 슬라이드 페이드아웃
-	tween.tween_property(slides[current_slide], "modulate:a", 0.0, transition_duration)
-	# 다음 슬라이드 페이드인
-	tween.tween_property(slides[index], "modulate:a", 1.0, transition_duration)
-	tween.tween_callback(func():
-		current_slide = index
-		is_transitioning = false
-	)
 
 func _go_to_game() -> void:
 	get_tree().change_scene_to_file(next_scene)

@@ -61,6 +61,9 @@ func _do_horizontal_patrol(delta: float) -> void:
 func take_bullet_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
+		var players = get_tree().get_nodes_in_group("Player")
+		if players.size() > 0:
+			players[0].increase_score(1)
 		queue_free()
 	else:
 		_flash_hit()

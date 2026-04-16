@@ -8,6 +8,9 @@ var target_look_ahead : float = 0.0
 var current_look_ahead : float = 0.0
 
 func _ready():
+	# 첫 프레임에서 카메라를 플레이어 위치에 즉시 스냅
+	position_smoothing_enabled = false
+	await get_tree().process_frame
 	position_smoothing_enabled = true
 	position_smoothing_speed = follow_speed
 

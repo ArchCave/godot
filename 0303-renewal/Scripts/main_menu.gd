@@ -12,6 +12,7 @@ var bg_origin : Vector2
 var logo_origin : Vector2
 var bird_origin : Vector2
 var text_origin : Vector2
+var intro_done : bool = false
 
 func _ready():
 	bg_origin = bg.position
@@ -51,9 +52,16 @@ func _play_intro() -> void:
 	intro.tween_callback(_start_loop_motions)
 
 func _start_loop_motions() -> void:
+	intro_done = true
 	_start_logo_bob()
 	_start_bird_bob()
 	_start_text_slide()
+
+func _input(event: InputEvent) -> void:
+	if not intro_done:
+		return
+	if event is InputEventKey and event.pressed:
+		get_tree().change_scene_to_file("res://Scenes/story_scene.tscn")
 
 func _start_bg_slide() -> void:
 	var tween = create_tween().set_loops()
