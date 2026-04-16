@@ -18,6 +18,8 @@ var move_input : float
 var is_invincible : bool = false
 var coyote_timer : float = 0.0
 var jump_buffer_timer : float = 0.0
+var coin_msg_label : Label = null
+var coin_msg_tween : Tween = null
 
 @onready var ray: RayCast2D = $RayCast2D
 @onready var anim: AnimationPlayer = $AnimationPlayer
@@ -122,6 +124,43 @@ func increase_score(amount: int):
 	PlayerStats.score += amount
 	OnUpdateScore.emit(PlayerStats.score)
 	_update_jump_force()
+
+func show_coin_message() -> void:
+	if coin_msg_label and is_instance_valid(coin_msg_label):
+		# 이미 표시 중이면 타이머만 리셋
+		coin_msg_label.modulate.a = 1.0
+		if coin_msg_tween and coin_msg_tween.is_running():
+			coin_msg_tween.kill()
+	else:
+		# 새로 생성: 플레이어 머리 위
+		var coin_scene = load("res://Scenes/poop_coin.tscn")
+		var tmp = coin_scene.instantiate()
+		var src_label = tmp.get_node("CoinMessage")
+		coin_msg_label = src_label.duplicate()
+		tmp.queue_free()
+		coin_msg_label.visible = true
+		coin_msg_label.modulate.a = 0.0
+		add_child(coin_msg_label)
+
+	coin_msg_label.position = Vector2(-coin_msg_label.size.x * 0.5, -16)
+	coin_msg_label.scale = Vector2.ONE
+	coin_msg_label.pivot_offset = coin_msg_label.size * 0.5
+
+	coin_msg_tween = create_tween()
+	# 페이드인 + 살짝 커졌다 원래대로
+	coin_msg_tween.tween_property(coin_msg_label, "modulate:a", 1.0, 0.15)
+	coin_msg_tween.parallel().tween_property(coin_msg_label, "scale", Vector2(1.3, 1.3), 0.15)
+	coin_msg_tween.tween_property(coin_msg_label, "scale", Vector2.ONE, 0.2)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# 유지
+	coin_msg_tween.tween_interval(1.0)
+	# 페이드아웃
+	coin_msg_tween.tween_property(coin_msg_label, "modulate:a", 0.0, 0.3)
+	coin_msg_tween.tween_callback(func():
+		if coin_msg_label and is_instance_valid(coin_msg_label):
+			coin_msg_label.queue_free()
+			coin_msg_label = null
+	)
 
 func _update_jump_force():
 	var multiplier : float = 1.0

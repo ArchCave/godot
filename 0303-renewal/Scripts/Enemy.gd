@@ -58,15 +58,21 @@ func _do_horizontal_patrol(delta: float) -> void:
 	sprite.flip_h = patrol_direction < 0
 	position.y = origin.y
 
+const PoopCoin = preload("res://Scenes/poop_coin.tscn")
+
 func take_bullet_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
-		var players = get_tree().get_nodes_in_group("Player")
-		if players.size() > 0:
-			players[0].increase_score(1)
+		_drop_coin()
 		queue_free()
 	else:
 		_flash_hit()
+
+func _drop_coin() -> void:
+	var coin = PoopCoin.instantiate()
+	coin.position = global_position
+	coin.drop_ready = true
+	get_parent().add_child(coin)
 
 func _flash_hit() -> void:
 	sprite.modulate = Color(1, 0.3, 0.3)

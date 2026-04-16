@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bhydrdi4uxnjn" path="res://Sprite/coins-sheet0.png" id="3_wd0l7"]
 [ext_resource type="Texture2D" uid="uid://djpm162e2jbc2" path="res://Sprite/coins-sheet1.png" id="4_s001v"]
 [ext_resource type="Texture2D" uid="uid://pit7x8ta6ieb" path="res://Sprite/coins-sheet2.png" id="5_rdpbn"]
+[ext_resource type="FontFile" uid="uid://cn61cb2m4bab6" path="res://Resorces/LoRes12OTAltOakland-Bold.ttf" id="6_font"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dlmop"]
 animations = [{
@@ -26,6 +27,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sda17"]
 size = Vector2(6, 6)
 
+[sub_resource type="LabelSettings" id="LabelSettings_coin"]
+paragraph_spacing = 50.0
+font = ExtResource("6_font")
+font_size = 3
+font_color = Color(0.7324006, 0.98455817, 0.8949116, 1)
+outline_size = 1
+outline_color = Color(0.18703908, 0.7370023, 0.6235602, 1)
+
 [node name="PoopCoin" type="Area2D" unique_id=1664107663]
 script = ExtResource("1_k5032")
 
@@ -46,5 +55,14 @@ shape = SubResource("RectangleShape2D_sda17")
 
 [node name="Timer" type="Timer" parent="." unique_id=554852048]
 wait_time = 20.0
+
+[node name="CoinMessage" type="Label" parent="." unique_id=1234567890]
+offset_left = -11.0
+offset_top = 2.0
+offset_right = 13.0
+offset_bottom = 8.0
+text = "energy gained!"
+label_settings = SubResource("LabelSettings_coin")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
