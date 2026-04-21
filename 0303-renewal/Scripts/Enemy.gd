@@ -63,6 +63,7 @@ const PoopCoin = preload("res://Scenes/poop_coin.tscn")
 func take_bullet_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
+		PlayerStats.enemy_kills += 1
 		_drop_coin()
 		queue_free()
 	else:

@@ -23,7 +23,13 @@
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="12_hj5x7"]
 [ext_resource type="PackedScene" uid="uid://clwq1stxa6m3u" path="res://Scenes/poop_coin.tscn" id="13_5jii6"]
 [ext_resource type="Script" uid="uid://blrl6xg7gsnad" path="res://Scripts/warning_area.gd" id="14_warn"]
+[ext_resource type="Script" uid="uid://drb4xve1bsygj" path="res://Scripts/story1_area.gd" id="15_story1"]
+[ext_resource type="Script" uid="uid://dpd61asfhh84k" path="res://Scripts/story2_area.gd" id="15_story2"]
+[ext_resource type="Script" uid="uid://dpcqxhw4lu052" path="res://Scripts/hidden_floor.gd" id="16_hidden_floor"]
 [ext_resource type="Texture2D" uid="uid://bvminqi5lecq1" path="res://Sprite/level2/checkpoint_not_enough_coins-sheet0.png" id="17_yvrk7"]
+[ext_resource type="FontFile" uid="uid://cn61cb2m4bab6" path="res://Resorces/LoRes12OTAltOakland-Bold.ttf" id="26_kjoi8"]
+[ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="29_kwf64"]
+[ext_resource type="PackedScene" uid="uid://djj30xi5bbcyc" path="res://Scenes/intro_guide.tscn" id="30_5s1wx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6dbo"]
 size = Vector2(42, 35)
@@ -40,9 +46,12 @@ size = Vector2(179.32895, 217.5)
 size = Vector2(734.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhuy1"]
-size = Vector2(644, 20)
+size = Vector2(644, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl0du"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_story2"]
+size = Vector2(24, 209.8125)
 
 [node name="Main" type="Node2D" unique_id=2010999596]
 metadata/_edit_vertical_guides_ = [0.0]
@@ -53,6 +62,18 @@ metadata/_edit_vertical_guides_ = [0.0]
 z_index = -3
 position = Vector2(908, 56)
 texture = ExtResource("1_i6dbo")
+
+[node name="sky2" type="Sprite2D" parent="Hidden" unique_id=324870784]
+z_index = -3
+position = Vector2(1328, 56)
+texture = ExtResource("1_i6dbo")
+flip_h = true
+
+[node name="background5" type="Sprite2D" parent="Hidden" unique_id=314208384]
+z_index = -2
+position = Vector2(1177, 90.99999)
+scale = Vector2(0.40456834, 0.345)
+texture = ExtResource("2_e2piv")
 
 [node name="background4" type="Sprite2D" parent="Hidden" unique_id=614996247]
 z_index = -2
@@ -89,33 +110,39 @@ texture = ExtResource("3_ijtdf")
 [node name="IntroBackground" type="Sprite2D" parent="Hidden" unique_id=2016832526]
 z_index = -1
 position = Vector2(939, 59)
-scale = Vector2(0.63005334, 0.48132813)
+scale = Vector2(1.4700533, 0.48132813)
 texture = ExtResource("4_yvrk7")
 
 [node name="story_image1" type="Sprite2D" parent="Hidden" unique_id=515816022]
-position = Vector2(949, 62.432503)
-scale = Vector2(0.305, 0.305)
+position = Vector2(715.3661, 49.77275)
+scale = Vector2(0.25671247, 0.25671247)
 texture = ExtResource("5_4k5rq")
 
 [node name="story_text1" type="Sprite2D" parent="Hidden" unique_id=132489519]
-position = Vector2(949.8, 117.745)
-scale = Vector2(0.24, 0.24)
+position = Vector2(716.1661, 94.91453)
+scale = Vector2(0.20200324, 0.20200324)
 texture = ExtResource("6_5jii6")
 
 [node name="story_image2" type="Sprite2D" parent="Hidden" unique_id=316341387]
-position = Vector2(947, 70)
-scale = Vector2(0.5, 0.5)
+position = Vector2(947, 57.34025)
+scale = Vector2(0.42084008, 0.42084008)
 texture = ExtResource("7_d42f2")
 
 [node name="story_text2" type="Sprite2D" parent="Hidden" unique_id=1303644458]
-position = Vector2(950, 117)
-scale = Vector2(0.24, 0.24)
+position = Vector2(950, 94.169525)
+scale = Vector2(0.20200324, 0.20200324)
 texture = ExtResource("8_nx14l")
 
 [node name="story_text3" type="Sprite2D" parent="Hidden" unique_id=1708599111]
-position = Vector2(948, 118)
-scale = Vector2(0.24, 0.24)
+position = Vector2(948, 95.169525)
+scale = Vector2(0.20200324, 0.20200324)
 texture = ExtResource("9_kjoi8")
+
+[node name="bush2" type="Sprite2D" parent="Hidden" unique_id=356554610]
+z_index = -3
+position = Vector2(1309, 164)
+scale = Vector2(0.403, 0.345)
+texture = ExtResource("3_ijtdf")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=624364969]
 z_index = -4
@@ -183,7 +210,7 @@ game_over_scene = "res://Scenes/level_2.tscn"
 [node name="Camera2D_Level2" type="Camera2D" parent="Player" unique_id=1972069792]
 limit_left = 3
 limit_top = -59
-limit_right = 9999
+limit_right = 1197
 limit_bottom = 176
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -236,6 +263,7 @@ position = Vector2(-82, 0)
 [node name="Floor3" type="StaticBody2D" parent="Floors" unique_id=729859974]
 position = Vector2(699, 26)
 physics_material_override = SubResource("PhysicsMaterial_hj5x7")
+script = ExtResource("16_hidden_floor")
 
 [node name="CollisionShape2D_2" type="CollisionShape2D" parent="Floors/Floor3" unique_id=1253781091]
 position = Vector2(-77.58594, 17.75)
@@ -266,13 +294,28 @@ debug_color = Color(0.67058825, 1, 0, 0.41960785)
 position = Vector2(-27, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor4" unique_id=798352327]
-position = Vector2(1057, 187)
+position = Vector2(1057, 189)
 shape = SubResource("RectangleShape2D_fhuy1")
 debug_color = Color(0.6431373, 0.81960785, 0.03137255, 0.41960785)
+
+[node name="Floor5" type="StaticBody2D" parent="Floors" unique_id=1180696430]
+position = Vector2(1148, 44)
+physics_material_override = SubResource("PhysicsMaterial_hj5x7")
+
+[node name="CollisionShape2D_2" type="CollisionShape2D" parent="Floors/Floor5" unique_id=2110766007]
+position = Vector2(1.1718341, 33.5)
+rotation = -3.1415925
+scale = Vector2(0.039992657, -1)
+shape = SubResource("RectangleShape2D_hj5x7")
+debug_color = Color(0.67058825, 1, 0, 0.41960785)
 
 [node name="Warning" type="Area2D" parent="." unique_id=1736990923]
 script = ExtResource("14_warn")
 warning_texture = ExtResource("17_yvrk7")
+countdown_font = ExtResource("26_kjoi8")
+countdown_font_size = 9
+countdown_font_color = Color(0.9999997, 0.16242096, 0.23640457, 1)
+countdown_outline_size = 2
 
 [node name="warning sign" type="Sprite2D" parent="Warning" unique_id=20021337]
 visible = false
@@ -280,9 +323,27 @@ position = Vector2(334, 17.000002)
 scale = Vector2(0.09731184, 0.09731184)
 texture = ExtResource("17_yvrk7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Warning" unique_id=1053221208]
+[node name="warning_collision_shape" type="CollisionShape2D" parent="Warning" unique_id=1053221208]
 position = Vector2(328, 118)
 shape = SubResource("RectangleShape2D_bl0du")
+
+[node name="Story1_Area" type="Area2D" parent="." unique_id=1288523613]
+script = ExtResource("15_story1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Story1_Area" unique_id=1113362898]
+position = Vector2(724, 102.6875)
+shape = SubResource("RectangleShape2D_story2")
+
+[node name="Story2_Area" type="Area2D" parent="." unique_id=1977213355]
+script = ExtResource("15_story2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Story2_Area" unique_id=1977213356]
+position = Vector2(961, 104.90625)
+shape = SubResource("RectangleShape2D_story2")
+
+[node name="EndFlag" parent="." unique_id=386677647 instance=ExtResource("29_kwf64")]
+position = Vector2(534, -25)
+scene_to_load = ExtResource("30_5s1wx")
 
 [connection signal="body_entered" from="Bird_IntroTalk" to="Bird_IntroTalk" method="_on_body_entered"]
 [connection signal="body_exited" from="Bird_IntroTalk" to="Bird_IntroTalk" method="_on_body_exited"]

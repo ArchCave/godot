@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://csnqd1xvbctb0" path="res://Scripts/Dialogue_area_2d.gd" id="4_evi0p"]
 [ext_resource type="Script" uid="uid://c8t7rr30ww0pd" path="res://Scripts/bird_intro_talk.gd" id="6_wrinw"]
 [ext_resource type="Texture2D" uid="uid://ddldtftvymwyf" path="res://img/spriteletter4-sheet0.png" id="6_xrdnt"]
-[ext_resource type="Script" path="res://Scripts/smooth_camera.gd" id="10_6ioyp"]
+[ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="10_6ioyp"]
 [ext_resource type="PackedScene" uid="uid://5sk76gnawqit" path="res://Scenes/Enemy.tscn" id="11_6r07y"]
 [ext_resource type="Texture2D" uid="uid://d34gai2kcr5eb" path="res://img/sprite21-sheet0.png" id="11_uy8f0"]
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="12_6ioyp"]
