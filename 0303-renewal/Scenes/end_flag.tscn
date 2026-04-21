@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dd6bl0djm5y0n"]
 
 [ext_resource type="Script" uid="uid://dvlnxqy4on84e" path="res://Scripts/endflag.gd" id="1_gg8oc"]
-[ext_resource type="PackedScene" uid="uid://blld4lalwfnpe" path="res://Scenes/level_2.tscn" id="2_sst7i"]
 [ext_resource type="Texture2D" uid="uid://8cwuilelh18x" path="res://Sprite/endflag/Layer 1_endflag_01.png" id="3_1k2s7"]
 [ext_resource type="Texture2D" uid="uid://d4ltkjr77iooc" path="res://Sprite/endflag/Layer 1_endflag_02.png" id="4_osabu"]
 [ext_resource type="Texture2D" uid="uid://bwdycp1cb6676" path="res://Sprite/endflag/Layer 1_endflag_03.png" id="5_c6bcu"]
@@ -89,7 +88,6 @@ radius = 14.285645
 
 [node name="EndFlag" type="Area2D" unique_id=386677647]
 script = ExtResource("1_gg8oc")
-scene_to_load = ExtResource("2_sst7i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1390748768]
 position = Vector2(0, 3)
