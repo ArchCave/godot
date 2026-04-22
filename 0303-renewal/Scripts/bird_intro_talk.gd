@@ -1,8 +1,14 @@
 extends Area2D
 
-@onready var intro_talk_sprite = $IntroTalk_bubble
+@onready var intro_talk_sprite: Sprite2D = _find_bubble_sprite()
 
 var player_in_area: Node2D = null
+
+func _find_bubble_sprite() -> Sprite2D:
+	for child in get_children():
+		if child is Sprite2D:
+			return child
+	return null
 
 func _ready() -> void:
 	intro_talk_sprite.visible = false

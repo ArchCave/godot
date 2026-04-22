@@ -176,3 +176,7 @@ func _update_jump_force():
 		multiplier = 1.25
 	jump_force = base_jump_force * multiplier
 	
+
+
+func _on_enemy_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
