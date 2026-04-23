@@ -12,6 +12,7 @@ signal OnUpdateScore(score: int)
 @export var invincibility_duration : float = 1.0
 @export var coyote_time : float = 0.08
 @export var jump_buffer_time : float = 0.1
+@export var fall_death_y : float = 260.0
 
 var base_jump_force : float
 var move_input : float
@@ -81,6 +82,9 @@ func _physics_process(delta):
 	move_and_slide()
 	update_animation()
 
+	if global_position.y > fall_death_y:
+		_fall_die()
+
 func update_animation():
 	if not is_on_floor():
 		play_anim("Jump")
@@ -119,6 +123,12 @@ func _die() -> void:
 
 func _on_death_animation_finished(_anim_name: String) -> void:
 	get_tree().change_scene_to_file(game_over_scene)
+
+func _fall_die() -> void:
+	# 플로어 밖으로 떨어졌을 때: 현재 맵을 즉시 리셋
+	set_physics_process(false)
+	is_invincible = true
+	get_tree().reload_current_scene()
 
 func increase_score(amount: int):
 	PlayerStats.score += amount

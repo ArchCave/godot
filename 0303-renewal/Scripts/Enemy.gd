@@ -11,6 +11,7 @@ enum PatrolMode { HOVER, VERTICAL, HORIZONTAL }
 @export var patrol_speed : float = 20.0
 @export var hover_intensity : float = 2.0
 @export var hover_tilt : float = 5.0
+@export var fall_death_y : float = 260.0
 
 var health : int
 var origin : Vector2
@@ -23,6 +24,10 @@ func _ready() -> void:
 	anim.play("drone")
 
 func _process(delta: float) -> void:
+	if global_position.y > fall_death_y:
+		queue_free()
+		return
+
 	time_elapsed += delta
 
 	match patrol_mode:
