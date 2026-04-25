@@ -13,6 +13,9 @@ signal OnUpdateScore(score: int)
 @export var coyote_time : float = 0.08
 @export var jump_buffer_time : float = 0.1
 @export var fall_death_y : float = 260.0
+@export var climb_speed : float = 40.0
+# 사다리가 그려진 TileMapLayer. is_ladder=true 인 타일을 검사함. 비워두면 사다리 비활성.
+@export var ladder_tilemap : TileMapLayer
 
 var base_jump_force : float
 var move_input : float
@@ -21,6 +24,7 @@ var coyote_timer : float = 0.0
 var jump_buffer_timer : float = 0.0
 var coin_msg_label : Label = null
 var coin_msg_tween : Tween = null
+var is_climbing : bool = false
 
 @onready var ray: RayCast2D = $RayCast2D
 @onready var anim: AnimationPlayer = $AnimationPlayer
@@ -47,6 +51,35 @@ func _spawn_poop() -> void:
 	get_parent().add_child(poop)
 
 func _physics_process(delta):
+	# ── 사다리 처리 (일반 물리보다 먼저) ──
+	var v_input := Input.get_axis("ui_up", "ui_down")  # -1 위, +1 아래
+	var on_ladder := _is_on_ladder()
+
+	# 사다리 영역에서 climb 진입 조건:
+	#   1) 위/아래 키 누름  또는
+	#   2) 발 밑이 비어 떨어지는 중인데 사다리 영역에 들어옴(자동 grab → 추락 방지)
+	if on_ladder and not is_climbing:
+		if v_input != 0.0 or (not is_on_floor() and velocity.y > 0.0):
+			is_climbing = true
+			velocity.y = 0.0  # 잡는 순간 낙하 정지
+
+	# 사다리에서 벗어나면 자동 해제
+	if is_climbing and not on_ladder:
+		is_climbing = false
+
+	if is_climbing:
+		velocity.y = v_input * climb_speed
+		velocity.x = Input.get_axis("ui_left", "ui_right") * move_speed
+		# 점프키로 사다리 탈출
+		if Input.is_action_just_pressed("ui_jump"):
+			is_climbing = false
+			velocity.y = -jump_force * 0.7
+		move_and_slide()
+		update_animation()
+		if global_position.y > fall_death_y:
+			_fall_die()
+		return
+
 	# 중력 적용
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -84,6 +117,14 @@ func _physics_process(delta):
 
 	if global_position.y > fall_death_y:
 		_fall_die()
+
+func _is_on_ladder() -> bool:
+	if ladder_tilemap == null:
+		return false
+	var local := ladder_tilemap.to_local(global_position)
+	var coords := ladder_tilemap.local_to_map(local)
+	var data := ladder_tilemap.get_cell_tile_data(coords)
+	return data != null and data.get_custom_data("is_ladder")
 
 func update_animation():
 	if not is_on_floor():

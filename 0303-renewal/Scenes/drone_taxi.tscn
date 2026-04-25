@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://5x6uvrmrie5i"]
+
+[ext_resource type="Texture2D" uid="uid://b4kte8vq3vq25" path="res://Sprite/enemy_1-sheet0.png" id="1_6j50q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8ew"]
+size = Vector2(112.5, 30)
+
+[node name="DroneTaxi" type="Area2D" unique_id=2107766674 groups=["Enemy"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=239042993]
+texture_filter = 1
+position = Vector2(224.00002, 16)
+scale = Vector2(0.15052733, 0.15052733)
+texture = ExtResource("1_6j50q")
+hframes = 2
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=308813708]
+position = Vector2(216.75, -7)
+shape = SubResource("RectangleShape2D_uf8ew")
