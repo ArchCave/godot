@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dhqlk4vcdt56r"]
+
+[ext_resource type="Script" uid="uid://db4pa5m4mu3fv" path="res://Scripts/jump_platform.gd" id="1_afe7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_875uj"]
+size = Vector2(31, 2)
+
+[node name="JumpPlatform" type="StaticBody2D" unique_id=1599835524]
+script = ExtResource("1_afe7f")
+player = NodePath("../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=265049733]
+shape = SubResource("RectangleShape2D_875uj")
+debug_color = Color(0.871738, 0.00048515797, 0.8469554, 0.41960785)

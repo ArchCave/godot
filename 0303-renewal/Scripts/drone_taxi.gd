@@ -64,7 +64,7 @@ func _do_horizontal_patrol(delta: float) -> void:
 		patrol_direction *= -1.0
 		position.x = origin.x + patrol_distance * patrol_direction * -1.0
 
-	sprite.flip_h = patrol_direction < 0
+	sprite.flip_h = patrol_direction > 0
 	position.y = origin.y
 
 const PoopCoin = preload("res://Scenes/poop_coin.tscn")
