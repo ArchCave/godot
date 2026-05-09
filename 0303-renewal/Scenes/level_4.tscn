@@ -10,11 +10,11 @@
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="6_cxe20"]
 [ext_resource type="PackedScene" uid="uid://5sk76gnawqit" path="res://Scenes/Enemy.tscn" id="7_fmsuk"]
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="8_3oae0"]
+[ext_resource type="PackedScene" uid="uid://gp5ahj8223oa" path="res://Scenes/level_5.tscn" id="8_6xecf"]
 [ext_resource type="Script" uid="uid://c8t7rr30ww0pd" path="res://Scripts/bird_intro_talk.gd" id="10_6xecf"]
 [ext_resource type="PackedScene" uid="uid://5x6uvrmrie5i" path="res://Scenes/drone_taxi.tscn" id="12_mbnb1"]
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="12_nqprj"]
 [ext_resource type="Script" uid="uid://cwjsayn31x575" path="res://Scripts/drone_taxi.gd" id="13_cxe20"]
-[ext_resource type="PackedScene" uid="uid://dbhjmdlehklum" path="res://Scenes/main_menu.tscn" id="13_dt3rr"]
 [ext_resource type="Texture2D" uid="uid://chatacibclwyl" path="res://Sprite/level4/spriteletter12-sheet0.png" id="14_b8ytw"]
 [ext_resource type="Script" uid="uid://t7kykhvn2su2" path="res://Scripts/skycastle_float.gd" id="14_skyflt"]
 [ext_resource type="Texture2D" uid="uid://ci6t8f3q2noee" path="res://img/bg_pause-sheet0.png" id="15_6xecf"]
@@ -968,7 +968,7 @@ tile_set = ExtResource("3_gxyip")
 
 [node name="EndFlag" parent="." unique_id=386677647 instance=ExtResource("12_nqprj")]
 position = Vector2(-389, 38)
-scene_to_load = ExtResource("13_dt3rr")
+scene_to_load = ExtResource("8_6xecf")
 
 [node name="Enemy" type="Node" parent="." unique_id=563492252]
 
