@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8do6sa1avqo4"
-path="res://.godot/imported/bluesky7-sheet0.png-71784dfda1d9bdd361fe07250f8c072e.ctex"
+uid="uid://cc0lpoh2wq8hc"
+path="res://.godot/imported/sprite31-sheet0.png-53fb324a94edb21ae58f16c85c42336a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/level5/bluesky7-sheet0.png"
-dest_files=["res://.godot/imported/bluesky7-sheet0.png-71784dfda1d9bdd361fe07250f8c072e.ctex"]
+source_file="res://Sprite/level5/sprite31-sheet0.png"
+dest_files=["res://.godot/imported/sprite31-sheet0.png-53fb324a94edb21ae58f16c85c42336a.ctex"]
 
 [params]
 

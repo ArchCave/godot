@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b46mrujh4voah"]
+
+[ext_resource type="Script" uid="uid://db4pa5m4mu3fv" path="res://Scripts/jump_platform.gd" id="1_qwdkx"]
+[ext_resource type="Texture2D" uid="uid://c7rusv54d6tsh" path="res://Sprite/level5/sprite30-sheet0.png" id="2_5m5rx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp236"]
+size = Vector2(232, 2)
+
+[node name="long_drone1" type="AnimatableBody2D" unique_id=2108181768]
+script = ExtResource("1_qwdkx")
+player = NodePath("../Player")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2023997460]
+texture = ExtResource("2_5m5rx")
+
+[node name="CollisionShape2D_sp30" type="CollisionShape2D" parent="." unique_id=1778908372]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_sp236")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)

@@ -5,6 +5,7 @@ signal OnUpdateHealth(health: int)
 signal OnUpdateScore(score: int)
 
 @export var move_speed : float = 25
+@export var air_speed_multiplier : float = 1.6  # 점프 중 수평 가속 배수
 @export var gravity : float = 420
 @export var jump_force : float = 100
 @export var health : int = 5
@@ -107,7 +108,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_skill"):
 		_spawn_poop()
 
-	velocity.x = move_input * move_speed
+	var current_speed : float = move_speed
+	if not is_on_floor():
+		current_speed *= air_speed_multiplier
+	velocity.x = move_input * current_speed
 
 	if move_input != 0:
 		sprite.flip_h = move_input < 0

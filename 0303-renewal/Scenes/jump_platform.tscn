@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_875uj"]
 size = Vector2(31, 2)
 
-[node name="JumpPlatform" type="StaticBody2D" unique_id=1599835524]
+[node name="JumpPlatform" type="AnimatableBody2D" unique_id=1599835524]
 script = ExtResource("1_afe7f")
 player = NodePath("../Player")
 

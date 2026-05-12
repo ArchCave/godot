@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c6jt6htej0hn3"]
+
+[ext_resource type="Script" uid="uid://db4pa5m4mu3fv" path="res://Scripts/jump_platform.gd" id="1_4tqny"]
+[ext_resource type="Texture2D" uid="uid://cc0lpoh2wq8hc" path="res://Sprite/level5/sprite31-sheet0.png" id="2_icbw0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp126"]
+size = Vector2(122, 2)
+
+[node name="middle_done1" type="AnimatableBody2D" unique_id=99681538]
+script = ExtResource("1_4tqny")
+player = NodePath("../Player")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1029175772]
+texture = ExtResource("2_icbw0")
+
+[node name="CollisionShape2D_sp31" type="CollisionShape2D" parent="." unique_id=966827196]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_sp126")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
