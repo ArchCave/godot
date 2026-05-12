@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cwmp0g45cyuvq" path="res://Scenes/drone_1.tscn" id="4_omaiq"]
 [ext_resource type="PackedScene" uid="uid://c4g8ucapbosn8" path="res://Scenes/drone_2.tscn" id="5_nd3ft"]
 [ext_resource type="TileSet" uid="uid://baskfekfh3e30" path="res://Resorces/TileSet_Lab_high.tres" id="5_np6ff"]
-[ext_resource type="TileSet" uid="uid://bqdy8cx3k8fcj" path="res://Resorces/tileset.tres" id="6_rwdpc"]
+[ext_resource type="TileSet" uid="uid://bqdy8cx3k8fcj" path="res://Resorces/TileSet.tres" id="6_rwdpc"]
 [ext_resource type="PackedScene" uid="uid://b46mrujh4voah" path="res://Scenes/long_drone_1.tscn" id="6_sn477"]
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="7_k8amm"]
 [ext_resource type="PackedScene" uid="uid://c6jt6htej0hn3" path="res://Scenes/middle_done_1.tscn" id="7_yu7yj"]
