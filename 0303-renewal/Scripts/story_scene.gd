@@ -64,9 +64,6 @@ func _play_step_2() -> void:
 func _on_next_pressed() -> void:
 	if seq and seq.is_running():
 		seq.kill()
-	# 현재 이미지 즉시 숨기고 다음으로
-	intro_img1.modulate.a = 0.0
-	intro_img2.modulate.a = 0.0
 	if current_step == 0:
 		_play_step_1()
 	elif current_step == 1:

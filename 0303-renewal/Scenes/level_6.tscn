@@ -4,11 +4,17 @@
 [ext_resource type="TileSet" uid="uid://byrq0suqunxap" path="res://Resorces/story.tres" id="2_ncld5"]
 [ext_resource type="Script" uid="uid://c42ufebbxlsxm" path="res://Scripts/tile_map_layer.gd" id="3_ncld5"]
 [ext_resource type="TileSet" uid="uid://baskfekfh3e30" path="res://Resorces/TileSet_Lab_high.tres" id="5_fvdwk"]
+[ext_resource type="Script" uid="uid://xeyvtk6cwe3t" path="res://Scripts/Intro_Guide.gd" id="6_fvdwk"]
 [ext_resource type="TileSet" uid="uid://bqdy8cx3k8fcj" path="res://Resorces/TileSet.tres" id="6_l5rae"]
 [ext_resource type="PackedScene" uid="uid://d4bvd3be3npgw" path="res://Scenes/Player.tscn" id="7_fd8gt"]
+[ext_resource type="Texture2D" uid="uid://ci6t8f3q2noee" path="res://img/bg_pause-sheet0.png" id="7_l5rae"]
+[ext_resource type="Texture2D" uid="uid://umqydlnt4rp0" path="res://Sprite/level6/spriteletter14-sheet0.png" id="8_fvdwk"]
 [ext_resource type="Script" uid="uid://bcbf682pm8hli" path="res://Scripts/player.gd" id="8_mxi2s"]
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="9_b1wka"]
+[ext_resource type="Texture2D" uid="uid://dlvov2ngiblhm" path="res://Sprite/level6/sprite23-sheet1.png" id="9_l5rae"]
+[ext_resource type="Texture2D" uid="uid://dak3l86hyr8lm" path="res://Sprite/level6/spriteletter16-sheet0.png" id="10_mxi2s"]
 [ext_resource type="PackedScene" uid="uid://5sk76gnawqit" path="res://Scenes/Enemy.tscn" id="10_wxt1c"]
+[ext_resource type="Texture2D" uid="uid://c06pmjy7f80o4" path="res://Sprite/level6/spriteletter15-sheet0.png" id="11_b1wka"]
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="11_dnhlx"]
 [ext_resource type="PackedScene" uid="uid://5x6uvrmrie5i" path="res://Scenes/drone_taxi.tscn" id="12_7kcr0"]
 [ext_resource type="Script" uid="uid://cwjsayn31x575" path="res://Scripts/drone_taxi.gd" id="13_yd4tw"]
@@ -18,6 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://dbhjmdlehklum" path="res://Scenes/main_menu.tscn" id="17_1481u"]
 [ext_resource type="PackedScene" uid="uid://dhqlk4vcdt56r" path="res://Scenes/jump_platform.tscn" id="18_4jl0u"]
 [ext_resource type="Script" uid="uid://db4pa5m4mu3fv" path="res://Scripts/jump_platform.gd" id="18_jpf1"]
+[ext_resource type="Script" uid="uid://ft1iv20wypk7" path="res://Scripts/end_leader.gd" id="19_endlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxi2s"]
+size = Vector2(125.5, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5rae"]
+size = Vector2(334, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c81s1"]
 size = Vector2(16.5, 769)
@@ -26,7 +39,7 @@ size = Vector2(16.5, 769)
 size = Vector2(336, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_875uj"]
-size = Vector2(332.5, 2)
+size = Vector2(332.5, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncld5"]
 size = Vector2(62, 2)
@@ -63,9 +76,53 @@ tile_set = ExtResource("6_l5rae")
 tile_map_data = PackedByteArray("AAAEAAMAAQAGAAMAAAADAAMAAQAGAAMAAAACAAMAAQAGAAMAAAABAAMAAQAGAAMAAAAAAAMAAQAGAAMAAAD//wMAAQAGAAMAAAD+/wMAAQAGAAMAAAD9/wMAAQAGAAMAAAD8/wMAAQAGAAMAAAD7/wMAAQAGAAMAAAD6/wMAAQAGAAMAAAD5/wMAAQAGAAMAAAD4/wMAAQAGAAMAAAD3/wMAAQAGAAMAAAD2/wMAAQAGAAMAAAD1/wMAAQAGAAMAAAD0/wMAAQAGAAMAAADz/wMAAQAGAAMAAADy/wMAAQAGAAMAAADx/wMAAQAGAAMAAADw/wMAAQAGAAMAAADv/wMAAQAGAAMAAADu/wMAAQAGAAMAAADt/wMAAQAGAAMAAADs/wMAAQAGAAMAAADr/wMAAQAGAAMAAADq/wMAAQAGAAMAAADp/wMAAQAGAAMAAADo/wMAAQAGAAMAAADn/wMAAQAGAAMAAADm/wMAAQAGAAMAAADl/wMAAQAGAAMAAADk/wMAAQAGAAMAAAA=")
 tile_set = ExtResource("5_fvdwk")
 
+[node name="end_leader" type="Area2D" parent="." unique_id=415282492]
+script = ExtResource("19_endlr")
+
+[node name="Intro_Guide" type="Area2D" parent="end_leader" unique_id=1581478989]
+position = Vector2(-366, -547)
+script = ExtResource("6_fvdwk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end_leader/Intro_Guide" unique_id=1056750368]
+position = Vector2(302, 102.5)
+shape = SubResource("RectangleShape2D_mxi2s")
+
+[node name="IntroBackground" type="Sprite2D" parent="end_leader/Intro_Guide" unique_id=1150933890]
+position = Vector2(175, 60.5)
+scale = Vector2(0.7135417, 0.80132806)
+texture = ExtResource("7_l5rae")
+
+[node name="IntroGuide" type="Sprite2D" parent="end_leader/Intro_Guide" unique_id=261197484]
+visible = false
+texture_filter = 1
+position = Vector2(172, 92)
+scale = Vector2(0.22516558, 0.22516556)
+texture = ExtResource("8_fvdwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="end_leader" unique_id=1973321270]
+position = Vector2(-185, -517)
+texture = ExtResource("9_l5rae")
+
+[node name="ending collision" type="CollisionShape2D" parent="end_leader" unique_id=1003374263]
+visible = false
+position = Vector2(-168, -509)
+shape = SubResource("RectangleShape2D_l5rae")
+
+[node name="ending_message" type="Sprite2D" parent="end_leader" unique_id=1068690059]
+visible = false
+position = Vector2(-186, -560)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("10_mxi2s")
+
+[node name="negotiating_bird_message" type="Sprite2D" parent="end_leader" unique_id=599896337]
+visible = false
+position = Vector2(-74, -545)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("11_b1wka")
+
 [node name="Player" parent="." unique_id=1457953911 node_paths=PackedStringArray("ladder_tilemap") groups=["Player"] instance=ExtResource("7_fd8gt")]
 z_index = 1
-position = Vector2(-390, 41)
+position = Vector2(-49, -517)
 script = ExtResource("8_mxi2s")
 climb_speed = 30.0
 ladder_tilemap = NodePath("../TileMap_Front(Ladder)")
@@ -156,7 +213,7 @@ script = ExtResource("18_jpf1")
 player = NodePath("../Player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="endPlatform" unique_id=1346671223]
-position = Vector2(-168.25, -498)
+position = Vector2(-168.25, -500)
 shape = SubResource("RectangleShape2D_875uj")
 debug_color = Color(0.8862745, 0, 0.5882353, 0.7921569)
 
@@ -470,6 +527,10 @@ player = NodePath("../../Player")
 position = Vector2(-335, -114)
 player = NodePath("../../Player")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1590504299]
+
+[connection signal="body_entered" from="end_leader/Intro_Guide" to="end_leader/Intro_Guide" method="_on_body_entered"]
+[connection signal="body_exited" from="end_leader/Intro_Guide" to="end_leader/Intro_Guide" method="_on_body_exited"]
 [connection signal="body_entered" from="Enemy/Enemy3" to="Enemy/Enemy3" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemy/Enemy" to="Enemy/Enemy" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemy/Enemy2" to="Enemy/Enemy2" method="_on_body_entered"]

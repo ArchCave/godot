@@ -3,6 +3,8 @@ const PoopCoin = preload("res://Scenes/poop_coin.tscn")
 const PlayerBullet = preload("res://Scenes/player_bullet.tscn")
 signal OnUpdateHealth(health: int)
 signal OnUpdateScore(score: int)
+signal OnPoopSpawned
+signal OnAttackFired
 
 @export var move_speed : float = 25
 @export var air_speed_multiplier : float = 1.6  # 점프 중 수평 가속 배수
@@ -41,6 +43,7 @@ func _shoot() -> void:
 	bullet.direction = -1.0 if sprite.flip_h else 1.0
 	bullet.position = self.position
 	get_parent().add_child(bullet)
+	OnAttackFired.emit()
 
 func _spawn_poop() -> void:
 	var poop = PoopCoin.instantiate()
@@ -50,6 +53,7 @@ func _spawn_poop() -> void:
 	else:
 		poop.position = self.position
 	get_parent().add_child(poop)
+	OnPoopSpawned.emit()
 
 func _physics_process(delta):
 	# ── 사다리 처리 (일반 물리보다 먼저) ──
