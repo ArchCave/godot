@@ -185,6 +185,7 @@ use_texture_padding = false
 25:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 25:5/0/physics_layer_0/polygon_0/one_way = true
 26:5/0 = 0
+26:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 27:5/0 = 0
 27:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4.85569, 8, 4.6574974, 8, 1.5855312, -8, 1.6846275)
 27:5/0/physics_layer_0/polygon_0/one_way = true

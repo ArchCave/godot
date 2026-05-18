@@ -30,6 +30,10 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	triggered = true
 
+	# 이미 기준 점수 이상이면 경고/카운트다운 스킵
+	if PlayerStats.score >= required_points:
+		return
+
 	# 플레이어 프리즈
 	body.set_physics_process(false)
 	body.velocity = Vector2.ZERO

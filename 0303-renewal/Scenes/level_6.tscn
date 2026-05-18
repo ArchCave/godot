@@ -123,7 +123,7 @@ texture = ExtResource("11_b1wka")
 
 [node name="Player" parent="." unique_id=1457953911 node_paths=PackedStringArray("ladder_tilemap") groups=["Player"] instance=ExtResource("7_fd8gt")]
 z_index = 1
-position = Vector2(-49, -517)
+position = Vector2(-376, 27)
 script = ExtResource("8_mxi2s")
 climb_speed = 30.0
 ladder_tilemap = NodePath("../TileMap_Front(Ladder)")
@@ -190,17 +190,14 @@ patrol_mode = 1
 patrol_distance = 200.0
 hover_intensity = 0.0
 
-[node name="Researcher" parent="Enemy" unique_id=1911787659 instance=ExtResource("20_wxt1c")]
-position = Vector2(-63, -59)
-scale = Vector2(0.7135417, 0.80132806)
+[node name="Researcher2" parent="." unique_id=394450680 instance=ExtResource("20_wxt1c")]
+position = Vector2(-75.000015, 38)
 
-[node name="Researcher2" parent="Enemy" unique_id=823425922 instance=ExtResource("20_wxt1c")]
+[node name="Researcher3" parent="." unique_id=823425922 instance=ExtResource("20_wxt1c")]
 position = Vector2(-258, -266)
-scale = Vector2(0.7135417, 0.80132806)
 
-[node name="Researcher2" parent="Enemy/Researcher2" unique_id=394450680 instance=ExtResource("20_wxt1c")]
-position = Vector2(260.6715, 379.37024)
-scale = Vector2(0.7135417, 0.80132806)
+[node name="Researcher" parent="." unique_id=1911787659 instance=ExtResource("20_wxt1c")]
+position = Vector2(-63, -59)
 
 [node name="Bird_Level5Talk" type="Area2D" parent="." unique_id=455529473]
 visible = false
