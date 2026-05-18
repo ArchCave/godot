@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dhqlk4vcdt56r" path="res://Scenes/jump_platform.tscn" id="18_4jl0u"]
 [ext_resource type="Script" uid="uid://db4pa5m4mu3fv" path="res://Scripts/jump_platform.gd" id="18_jpf1"]
 [ext_resource type="Script" uid="uid://ft1iv20wypk7" path="res://Scripts/end_leader.gd" id="19_endlr"]
+[ext_resource type="PackedScene" uid="uid://dlvrschr3lvl3" path="res://Scenes/Researcher.tscn" id="20_wxt1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxi2s"]
 size = Vector2(125.5, 45)
@@ -188,6 +189,18 @@ max_health = 47
 patrol_mode = 1
 patrol_distance = 200.0
 hover_intensity = 0.0
+
+[node name="Researcher" parent="Enemy" unique_id=1911787659 instance=ExtResource("20_wxt1c")]
+position = Vector2(-63, -59)
+scale = Vector2(0.7135417, 0.80132806)
+
+[node name="Researcher2" parent="Enemy" unique_id=823425922 instance=ExtResource("20_wxt1c")]
+position = Vector2(-258, -266)
+scale = Vector2(0.7135417, 0.80132806)
+
+[node name="Researcher2" parent="Enemy/Researcher2" unique_id=394450680 instance=ExtResource("20_wxt1c")]
+position = Vector2(260.6715, 379.37024)
+scale = Vector2(0.7135417, 0.80132806)
 
 [node name="Bird_Level5Talk" type="Area2D" parent="." unique_id=455529473]
 visible = false

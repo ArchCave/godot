@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="8_5rvg2"]
 [ext_resource type="Texture2D" uid="uid://bjrq6k0rmv18" path="res://Sprite/level3/spriteletter7-sheet0.png" id="8_l4wr6"]
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="11_c81s1"]
-[ext_resource type="PackedScene" uid="uid://dbhjmdlehklum" path="res://Scenes/main_menu.tscn" id="12_n4vm5"]
+[ext_resource type="PackedScene" uid="uid://sctva0qlo3rs" path="res://Scenes/level_4.tscn" id="13_n4vm5"]
 [ext_resource type="PackedScene" uid="uid://dlvrschr3lvl3" path="res://Scenes/Researcher.tscn" id="13_rsrch"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwg62"]
@@ -990,7 +990,7 @@ texture = ExtResource("8_l4wr6")
 
 [node name="EndFlag" parent="." unique_id=386677647 instance=ExtResource("11_c81s1")]
 position = Vector2(8, -151)
-scene_to_load = ExtResource("12_n4vm5")
+scene_to_load = ExtResource("13_n4vm5")
 
 [connection signal="body_entered" from="Enemy/Enemy3" to="Enemy/Enemy3" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemy/Enemy" to="Enemy/Enemy" method="_on_body_entered"]
