@@ -3,11 +3,10 @@ extends Control
 @onready var intro_tile: TileMapLayer = $SlideContainer/MainIntro_01/TileMapLayer
 @onready var intro_img1: Sprite2D = $SlideContainer/MainIntro_01/Main_Intro_Image1
 @onready var intro_img2: Sprite2D = $SlideContainer/MainIntro_01/Main_Intro_Image2
-@onready var story1: Sprite2D = $SlideContainer/MainIntro_01/story1
 
 @export var scroll_speed : float = 96.0
 @export var scroll_height : float = 64.0
-@export var next_scene : String = "res://Scenes/level_1.tscn"
+@export var next_scene : String = "res://Scenes/character_select.tscn"
 
 var scrolling : bool = true
 var tile_origin_y : float = 0.0
@@ -17,7 +16,6 @@ var seq : Tween
 func _ready():
 	intro_img1.modulate.a = 0.0
 	intro_img2.modulate.a = 0.0
-	story1.modulate.a = 0.0
 	tile_origin_y = intro_tile.position.y
 	_play_step_0()
 
@@ -53,11 +51,6 @@ func _play_step_2() -> void:
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	seq.tween_callback(func(): scrolling = false)
 	seq.tween_property(intro_tile, "modulate:a", 0.0, 0.6)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.tween_property(story1, "modulate:a", 1.0, 0.8)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.tween_interval(5.0)
-	seq.tween_property(story1, "modulate:a", 0.0, 0.6)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	seq.tween_callback(_go_to_game)
 
