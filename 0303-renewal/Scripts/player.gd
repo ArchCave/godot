@@ -11,7 +11,6 @@ signal OnAttackFired
 @export var gravity : float = 420
 @export var jump_force : float = 100
 @export var health : int = 5
-@export var game_over_scene: String = "res://Scenes/level_1.tscn"
 @export var invincibility_duration : float = 1.0
 @export var coyote_time : float = 0.08
 @export var jump_buffer_time : float = 0.1
@@ -171,7 +170,7 @@ func _die() -> void:
 	anim.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
 
 func _on_death_animation_finished(_anim_name: String) -> void:
-	get_tree().change_scene_to_file(game_over_scene)
+	get_tree().reload_current_scene()
 
 func _fall_die() -> void:
 	# 플로어 밖으로 떨어졌을 때: 현재 맵을 즉시 리셋

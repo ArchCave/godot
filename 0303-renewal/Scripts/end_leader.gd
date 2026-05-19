@@ -8,6 +8,7 @@ const ENDING_SCENE : String = "res://Scenes/ending_scene.tscn"
 
 @onready var ending_message : Sprite2D = $ending_message
 @onready var negotiating_bird_message : Sprite2D = $negotiating_bird_message
+@onready var leader_sprite : Sprite2D = $Sprite2D
 
 var player : Node2D = null
 var player_inside : bool = false
@@ -19,8 +20,16 @@ func _ready() -> void:
 	ending_message.visible = false
 	negotiating_bird_message.visible = false
 	negotiating_y = negotiating_bird_message.global_position.y
+	player = get_tree().get_first_node_in_group("Player")
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+
+func _process(_delta: float) -> void:
+	if player == null or not is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("Player")
+		if player == null:
+			return
+	leader_sprite.flip_h = player.global_position.x < leader_sprite.global_position.x
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):

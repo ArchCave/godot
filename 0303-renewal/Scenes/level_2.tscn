@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="29_kwf64"]
 [ext_resource type="PackedScene" uid="uid://tukcr1o4pu6l" path="res://Scenes/level_3.tscn" id="29_nuasi"]
 [ext_resource type="Texture2D" uid="uid://bfejtdyydsat2" path="res://Sprite/level2/hidden_ending/hidden_ending.png" id="30_kwf64"]
+[ext_resource type="Script" uid="uid://dql76umg6q5vh" path="res://Scripts/hidden_ending.gd" id="31_hidend"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6dbo"]
 size = Vector2(42, 35)
@@ -208,7 +209,6 @@ texture = ExtResource("7_bl0du")
 [node name="Player" parent="." unique_id=1457953911 groups=["Player"] instance=ExtResource("8_e2piv")]
 position = Vector2(36, 86)
 script = ExtResource("9_ijtdf")
-game_over_scene = "res://Scenes/level_2.tscn"
 
 [node name="Camera2D_Level2" type="Camera2D" parent="Player" unique_id=1972069792]
 limit_left = 3
@@ -344,8 +344,10 @@ position = Vector2(534, -25)
 scene_to_load = ExtResource("29_nuasi")
 
 [node name="HiddenEnding" type="Area2D" parent="." unique_id=553608597]
+script = ExtResource("31_hidend")
 
 [node name="Sprite2D" type="Sprite2D" parent="HiddenEnding" unique_id=2079479712]
+visible = false
 position = Vector2(1063, 134.00002)
 scale = Vector2(0.1846154, 0.18461543)
 texture = ExtResource("30_kwf64")

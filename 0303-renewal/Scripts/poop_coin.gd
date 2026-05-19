@@ -1,5 +1,10 @@
 extends Area2D
 
+# 미리 배치된 보너스 코인 모드. 즉시 활성화된 녹색 코인으로 시작 (똥 단계/대기/낙하 없음).
+@export var pre_placed : bool = false
+# 먹었을 때 점수 증가량. 일반 코인은 1, 보너스 코인은 큰 값으로 설정.
+@export var score_value : int = 1
+
 @onready var sprite      = $Sprite2D
 @onready var anim_sprite = $AnimatedSprite2D
 @onready var collision   = $CollisionShape2D
@@ -14,7 +19,13 @@ var ground_ray : RayCast2D
 
 func _ready():
 	$CoinMessage.visible = false
-	if drop_ready:
+	if pre_placed:
+		is_coin = true
+		sprite.visible = false
+		anim_sprite.visible = true
+		anim_sprite.play("spin")
+		collision.disabled = false
+	elif drop_ready:
 		# 적에서 드롭된 코인: 위로 살짝 튀어오른 뒤 낙하
 		sprite.visible = false
 		anim_sprite.visible = true
@@ -57,6 +68,6 @@ func _on_timer_timeout() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-	body.increase_score(1)
+	body.increase_score(score_value)
 	body.show_coin_message()
 	queue_free()

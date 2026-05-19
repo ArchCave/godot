@@ -2,7 +2,7 @@ extends Area2D
 
 @export var fade_in_time : float = 0.8
 @export var fade_out_time : float = 0.6
-@export var hold_time : float = 5.0
+@export var hold_time : float = 6.0
 @export var initial_delay : float = 0.6
 @export var overlay_alpha : float = 0.9
 @export var image_y_offset : float = -25.0
