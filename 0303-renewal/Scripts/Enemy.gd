@@ -13,6 +13,10 @@ enum PatrolMode { HOVER, VERTICAL, HORIZONTAL }
 @export var hover_tilt : float = 5.0
 @export var fall_death_y : float = 260.0
 
+## 이 적이 노릴 캐릭터. 빈 값(&"")이면 모든 캐릭터에게 적.
+## 특정 id (예: &"bird") 설정 시 그 캐릭터에게만 데미지/총알 적용.
+@export var enemy_to : StringName = &""
+
 var health : int
 var origin : Vector2
 var patrol_direction : float = 1.0
@@ -66,6 +70,8 @@ func _do_horizontal_patrol(delta: float) -> void:
 const PoopCoin = preload("res://Scenes/poop_coin.tscn")
 
 func take_bullet_damage(amount: int) -> void:
+	if not _is_enemy_to_selected():
+		return
 	health -= amount
 	if health <= 0:
 		PlayerStats.enemy_kills += 1
@@ -89,4 +95,11 @@ func _flash_hit() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
+	if not _is_enemy_to_selected():
+		return
 	body.take_damage(1)
+
+func _is_enemy_to_selected() -> bool:
+	if enemy_to == &"":
+		return true
+	return PlayerStats.selected_character_id == enemy_to

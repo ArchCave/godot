@@ -1,8 +1,6 @@
 [gd_scene format=4 uid="uid://tukcr1o4pu6l"]
 
-[ext_resource type="PackedScene" uid="uid://d4bvd3be3npgw" path="res://Scenes/Player.tscn" id="1_ng0s0"]
 [ext_resource type="Texture2D" uid="uid://mwn4sllvlf8u" path="res://Sprite/level3/pxart5-sheet0.png" id="1_s8nj6"]
-[ext_resource type="Script" uid="uid://bcbf682pm8hli" path="res://Scripts/player.gd" id="2_76ybr"]
 [ext_resource type="TileSet" uid="uid://bqdy8cx3k8fcj" path="res://Resorces/TileSet.tres" id="2_vwg62"]
 [ext_resource type="TileSet" uid="uid://baskfekfh3e30" path="res://Resorces/TileSet_Lab_high.tres" id="3_l4wr6"]
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="3_s8nj6"]
@@ -11,8 +9,11 @@
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="8_5rvg2"]
 [ext_resource type="Texture2D" uid="uid://bjrq6k0rmv18" path="res://Sprite/level3/spriteletter7-sheet0.png" id="8_l4wr6"]
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="11_c81s1"]
-[ext_resource type="PackedScene" uid="uid://sctva0qlo3rs" path="res://Scenes/level_4.tscn" id="13_n4vm5"]
+[ext_resource type="PackedScene" uid="uid://5x6uvrmrie5i" path="res://Scenes/drone_taxi.tscn" id="13_fxnjf"]
+[ext_resource type="PackedScene" uid="uid://sctva0qlo3rs" path="res://Scenes/level_7.tscn" id="13_n4vm5"]
 [ext_resource type="PackedScene" uid="uid://dlvrschr3lvl3" path="res://Scenes/Researcher.tscn" id="13_rsrch"]
+[ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="14_spawner"]
+[ext_resource type="Script" uid="uid://cwjsayn31x575" path="res://Scripts/drone_taxi.gd" id="14_xjeco"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwg62"]
 texture = ExtResource("1_s8nj6")
@@ -924,12 +925,20 @@ tile_set = ExtResource("3_l4wr6")
 tile_map_data = PackedByteArray("AAAJAAAAAAACABcAAAAKAP7/AAAbAAMAACAKAP3/AAAbAAMAAAAKAPz/AAAbAAMAAAAKAPv/AAAbAAMAAAALAPr/AAANABsAAAAMAPr/AAANABsAAAAJAPr/AAANABsAAAAIAPr/AAANABsAAAAHAPr/AAANABsAAAAGAPr/AAANABsAAAAFAPr/AAANABsAAAAEAPr/AAANABsAAAADAPr/AAANABsAAAACAPr/AAANABsAAAABAPr/AAANABsAAAAAAPr/AAANABsAAAD///r/AAANABsAAAD///j/AAANABsAACAAAPj/AAANABsAACABAPj/AAANABsAACACAPj/AAANABsAACADAPj/AAAZAAcAAAAEAPj/AAAaAAcAAAAFAPj/AAANABsAACAGAPj/AAANABsAACAHAPj/AAANABsAACAIAPj/AAANABsAACD///f/AAAZAAUAAAAAAPf/AAAZAAUAAAABAPf/AAAZAAUAAAADAPf/AAAZAAYAAAAEAPf/AAAaAAYAAAAJAPj/AAANABsAACAJAPf/AAAZAAUAAAAIAPf/AAAZAAUAAAA=")
 tile_set = ExtResource("2_vwg62")
 
-[node name="Player" parent="." unique_id=1457953911 groups=["Player"] instance=ExtResource("1_ng0s0")]
+[node name="BirdSpawner" parent="." unique_id=479388586 instance=ExtResource("14_spawner")]
 position = Vector2(26, 148)
-script = ExtResource("2_76ybr")
+character_id = &"bird"
 
-[node name="Camera2D_Level3" type="Camera2D" parent="Player" unique_id=2105160526]
-position = Vector2(1, 0)
+[node name="ResearcherSpawner" parent="." unique_id=568623699 instance=ExtResource("14_spawner")]
+position = Vector2(56, 48)
+character_id = &"researcher"
+
+[node name="PlannerSpawner" parent="." unique_id=542983309 instance=ExtResource("14_spawner")]
+position = Vector2(86, 48)
+character_id = &"planner"
+
+[node name="Camera2D_Level3" type="Camera2D" parent="." unique_id=2105160526]
+position = Vector2(26, 148)
 limit_left = 0
 limit_top = -249
 limit_right = 324
@@ -988,12 +997,36 @@ position = Vector2(153, 40.000023)
 scale = Vector2(0.16560511, 0.1656051)
 texture = ExtResource("8_l4wr6")
 
-[node name="EndFlag" parent="." unique_id=386677647 instance=ExtResource("11_c81s1")]
+[node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("11_c81s1")]
 position = Vector2(8, -151)
 scene_to_load = ExtResource("13_n4vm5")
+character_id = &"bird"
+
+[node name="ResearcherEndFlag" parent="." instance=ExtResource("11_c81s1")]
+position = Vector2(8, -151)
+scene_to_load = ExtResource("13_n4vm5")
+character_id = &"researcher"
+
+[node name="PlannerEndFlag" parent="." instance=ExtResource("11_c81s1")]
+position = Vector2(8, -151)
+scene_to_load = ExtResource("13_n4vm5")
+character_id = &"planner"
+
+[node name="DroneTaxi" parent="." unique_id=2107766674 instance=ExtResource("13_fxnjf")]
+position = Vector2(5, 132)
+scale = Vector2(1.415, 1.415)
+script = ExtResource("14_xjeco")
+amplitude = 0.0
+period = 0.0
+max_health = 47
+patrol_speed = 0.0
+hover_intensity = 0.0
+hover_tilt = 0.0
+fall_death_y = 0.0
 
 [connection signal="body_entered" from="Enemy/Enemy3" to="Enemy/Enemy3" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemy/Enemy" to="Enemy/Enemy" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemy/Enemy2" to="Enemy/Enemy2" method="_on_body_entered"]
 [connection signal="body_entered" from="Bird_Level3Talk" to="Bird_Level3Talk" method="_on_body_entered"]
 [connection signal="body_exited" from="Bird_Level3Talk" to="Bird_Level3Talk" method="_on_body_exited"]
+[connection signal="body_entered" from="DroneTaxi" to="DroneTaxi" method="_on_body_entered"]

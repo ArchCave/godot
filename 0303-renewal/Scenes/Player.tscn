@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://5e57ccy7sd3h" path="res://Sprite/tile_0044.png" id="2_kyqiw"]
 [ext_resource type="FontFile" uid="uid://cn61cb2m4bab6" path="res://Resorces/LoRes12OTAltOakland-Bold.ttf" id="3_5ixxa"]
 [ext_resource type="Script" uid="uid://cfsxbtmce7gek" path="res://Scripts/Player_ui.gd" id="3_52ee3"]
+[ext_resource type="Script" uid="uid://bcbf682pm8hli" path="res://Scripts/player.gd" id="4_playergd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rpqav"]
 radius = 3.0
@@ -107,7 +108,9 @@ font_color = Color(0.9882353, 0.7764706, 0.23137255, 1)
 outline_size = 7
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" unique_id=1457953911]
+[node name="Player" type="CharacterBody2D" groups=["Player"] unique_id=1457953911]
+z_index = 1
+script = ExtResource("4_playergd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1042012975]
 texture = ExtResource("2_gntrk")

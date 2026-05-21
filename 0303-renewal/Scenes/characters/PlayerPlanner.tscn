@@ -1,0 +1,168 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3h6w8m4xz5fy"]
+
+[ext_resource type="Texture2D" uid="uid://riobsfv6hj05" path="res://Sprite/coin_text.png" id="2_coin"]
+[ext_resource type="Texture2D" uid="uid://dlvov2ngiblhm" path="res://Sprite/level6/sprite23-sheet1.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://5e57ccy7sd3h" path="res://Sprite/tile_0044.png" id="2_heart"]
+[ext_resource type="FontFile" uid="uid://cn61cb2m4bab6" path="res://Resorces/LoRes12OTAltOakland-Bold.ttf" id="3_font"]
+[ext_resource type="Script" path="res://Scripts/Player_ui.gd" id="3_ui"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="4_player"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 3.0
+height = 16.0
+
+[sub_resource type="Animation" id="Animation_RESET"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_Idle"]
+resource_name = "Idle"
+length = 0.13
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_Walk"]
+resource_name = "Walk"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_Jump"]
+resource_name = "Jump"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_Death"]
+resource_name = "Death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_main"]
+_data = {
+&"Death": SubResource("Animation_Death"),
+&"Idle": SubResource("Animation_Idle"),
+&"Jump": SubResource("Animation_Jump"),
+&"RESET": SubResource("Animation_RESET"),
+&"Walk": SubResource("Animation_Walk")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_label"]
+font = ExtResource("3_font")
+font_size = 20
+font_color = Color(0.9882353, 0.7764706, 0.23137255, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("4_player")
+character_id = &"planner"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+hframes = 1
+vframes = 1
+frame = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries/ = SubResource("AnimationLibrary_main")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 1000)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_ui")
+
+[node name="EnergyContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 23.0
+offset_top = 3.0
+offset_right = 132.00002
+offset_bottom = 43.0
+scale = Vector2(0.26156875, 0.26156875)
+
+[node name="Energy" type="TextureRect" parent="CanvasLayer/EnergyContainer"]
+layout_mode = 2
+texture = ExtResource("2_coin")
+expand_mode = 2
+
+[node name="EnergyScoreText" type="Label" parent="CanvasLayer/EnergyContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_label")
+
+[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 5.0000005
+offset_top = 2.9999998
+offset_right = 59.0
+offset_bottom = 43.0
+scale = Vector2(0.2610932, 0.2610932)
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("2_heart")
+expand_mode = 2
+
+[node name="HeartScoreText" type="Label" parent="CanvasLayer/HealthContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_label")

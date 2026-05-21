@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c8m4r2p7ran1k"]
+
+[ext_resource type="Script" uid="uid://bxkr9m4q2a5n3" path="res://Scripts/bird_enemy.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bhsasnh4y0ecn" path="res://Sprite/New Piskel.png" id="2_sprite"]
+[ext_resource type="Script" uid="uid://chl8mqr4t7v2k" path="res://Scripts/enemy_hurt_area.gd" id="3_hurtfwd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 3.0
+height = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(11, 11)
+
+[node name="BirdEnemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -4)
+texture = ExtResource("2_sprite")
+hframes = 3
+vframes = 3
+frame = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="HurtArea" type="Area2D" parent="." groups=["Enemy"]]
+script = ExtResource("3_hurtfwd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_hurt")

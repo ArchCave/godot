@@ -1,0 +1,102 @@
+[gd_resource type="AnimationLibrary" format=3 uid="uid://pf1jhsrtuj14"]
+
+[ext_resource type="Texture2D" uid="uid://b37w22ifcddo4" path="res://Sprite/planner/idle/Layer 1_sprite_planner1.png" id="1_idle1"]
+[ext_resource type="Texture2D" uid="uid://d04r4fsfegy4e" path="res://Sprite/planner/walk/Layer 1_sprite_planner0.png" id="2_walk1"]
+[ext_resource type="Texture2D" uid="uid://blv6ou2vh13hl" path="res://Sprite/planner/walk/Layer 1_sprite_planner1.png" id="3_walk2"]
+[ext_resource type="Texture2D" uid="uid://db7d7wqin6agg" path="res://Sprite/planner/walk/Layer 1_sprite_planner2.png" id="4_walk3"]
+[ext_resource type="Texture2D" uid="uid://carnlorb3lq61" path="res://Sprite/planner/jump/Layer 1_sprite_planner4.png" id="5_jump1"]
+[ext_resource type="Texture2D" uid="uid://bin1rkgu0hiec" path="res://Sprite/planner/death/Layer 1_sprite_planner5.png" id="6_death1"]
+[ext_resource type="Texture2D" uid="uid://bifli0wkxl3e6" path="res://Sprite/planner/death/Layer 1_sprite_planner6.png" id="7_death2"]
+[ext_resource type="Texture2D" uid="uid://bupko76wymtc6" path="res://Sprite/planner/death/Layer 1_sprite_planner7.png" id="8_death3"]
+[ext_resource type="Texture2D" uid="uid://c8jcaimmw2i2k" path="res://Sprite/planner/death/Layer 1_sprite_planner8.png" id="9_death4"]
+
+[sub_resource type="Animation" id="Animation_death"]
+resource_name = "Death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_death1"), ExtResource("7_death2"), ExtResource("8_death3"), ExtResource("9_death4")]
+}
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "Idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_idle1")]
+}
+
+[sub_resource type="Animation" id="Animation_jump"]
+resource_name = "Jump"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_jump1")]
+}
+
+[sub_resource type="Animation" id="Animation_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_idle1")]
+}
+
+[sub_resource type="Animation" id="Animation_walk"]
+resource_name = "Walk"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_walk1"), ExtResource("3_walk2"), ExtResource("4_walk3")]
+}
+
+[resource]
+_data = {
+&"Death": SubResource("Animation_death"),
+&"Idle": SubResource("Animation_idle"),
+&"Jump": SubResource("Animation_jump"),
+&"RESET": SubResource("Animation_reset"),
+&"Walk": SubResource("Animation_walk")
+}

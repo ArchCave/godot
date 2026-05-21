@@ -6,10 +6,8 @@
 [ext_resource type="TileSet" uid="uid://baskfekfh3e30" path="res://Resorces/TileSet_Lab_high.tres" id="5_fvdwk"]
 [ext_resource type="Script" uid="uid://xeyvtk6cwe3t" path="res://Scripts/Intro_Guide.gd" id="6_fvdwk"]
 [ext_resource type="TileSet" uid="uid://bqdy8cx3k8fcj" path="res://Resorces/TileSet.tres" id="6_l5rae"]
-[ext_resource type="PackedScene" uid="uid://d4bvd3be3npgw" path="res://Scenes/Player.tscn" id="7_fd8gt"]
 [ext_resource type="Texture2D" uid="uid://ci6t8f3q2noee" path="res://img/bg_pause-sheet0.png" id="7_l5rae"]
 [ext_resource type="Texture2D" uid="uid://umqydlnt4rp0" path="res://Sprite/level6/spriteletter14-sheet0.png" id="8_fvdwk"]
-[ext_resource type="Script" uid="uid://bcbf682pm8hli" path="res://Scripts/player.gd" id="8_mxi2s"]
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="9_b1wka"]
 [ext_resource type="Texture2D" uid="uid://dlvov2ngiblhm" path="res://Sprite/level6/sprite23-sheet1.png" id="9_l5rae"]
 [ext_resource type="Texture2D" uid="uid://dak3l86hyr8lm" path="res://Sprite/level6/spriteletter16-sheet0.png" id="10_mxi2s"]
@@ -24,6 +22,7 @@
 [ext_resource type="Script" uid="uid://db4pa5m4mu3fv" path="res://Scripts/jump_platform.gd" id="18_jpf1"]
 [ext_resource type="Script" uid="uid://ft1iv20wypk7" path="res://Scripts/end_leader.gd" id="19_endlr"]
 [ext_resource type="PackedScene" uid="uid://dlvrschr3lvl3" path="res://Scenes/Researcher.tscn" id="20_wxt1c"]
+[ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="21_spawner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxi2s"]
 size = Vector2(434, 45)
@@ -71,7 +70,7 @@ tile_set = ExtResource("5_fvdwk")
 tile_map_data = PackedByteArray("AADt/wQAAAAdABAAABDs/wQAAAAcAA8AABDt/wUAAAAdABEAABDs/wUAAAAcABAAABDr/wUAAAAdABAAABDt/wYAAAAbABEAABDs/wYAAAAcABEAABDr/wYAAAAdABEAABDv/wMAAAAdABAAABDu/wMAAAAcAA8AABDv/wQAAAAdABEAABDu/wQAAAAcABAAABDv/wUAAAAbABEAABDu/wUAAAAcABEAABDx/wIAAAAdABAAABDw/wIAAAAcAA8AABDx/wMAAAAdABEAABDw/wMAAAAcABAAABDx/wQAAAAbABEAABDw/wQAAAAcABEAABDz/wEAAAAdABAAABDy/wEAAAAcAA8AABDz/wIAAAAdABEAABDy/wIAAAAcABAAABDz/wMAAAAbABEAABDy/wMAAAAcABEAABD1/wAAAAAdABAAABD0/wAAAAAcAA8AABD1/wEAAAAdABEAABD0/wEAAAAcABAAABD1/wIAAAAbABEAABD0/wIAAAAcABEAABD3////AAAdABAAABD2////AAAcAA8AABD3/wAAAAAdABEAABD2/wAAAAAcABAAABD3/wEAAAAbABEAABD2/wEAAAAcABEAABD5//7/AAAdABAAABD4//7/AAAcAA8AABD5////AAAdABEAABD4////AAAcABAAABD5/wAAAAAbABEAABD4/wAAAAAcABEAABD7//3/AAAdABAAABD6//3/AAAcAA8AABD7//7/AAAdABEAABD6//7/AAAcABAAABD7////AAAbABEAABD6////AAAcABEAABD9//z/AAAdABAAABD8//z/AAAcAA8AABD9//3/AAAdABEAABD8//3/AAAcABAAABD9//7/AAAbABEAABD8//7/AAAcABEAABD///v/AAAbAA8AABD+//v/AAAcAA8AABD///z/AAAbABAAABD+//z/AAAcABAAABD///3/AAAbABEAABD+//3/AAAcABEAABD+//f/AAAbAA8AAAD+//j/AAAbABAAAAD+//n/AAAbABEAAAD///f/AAAcAA8AAAD///j/AAAcABAAAAD///n/AAAcABEAAAD8//b/AAAbAA8AAAD8//f/AAAbABAAAAD8//j/AAAbABEAAAD9//b/AAAcAA8AAAD9//f/AAAcABAAAAD9//j/AAAcABEAAAD6//X/AAAbAA8AAAD6//b/AAAbABAAAAD6//f/AAAbABEAAAD7//X/AAAcAA8AAAD7//b/AAAcABAAAAD7//f/AAAcABEAAAD4//T/AAAbAA8AAAD4//X/AAAbABAAAAD4//b/AAAbABEAAAD5//T/AAAcAA8AAAD5//X/AAAcABAAAAD5//b/AAAcABEAAAD2//P/AAAbAA8AAAD2//T/AAAbABAAAAD2//X/AAAbABEAAAD3//P/AAAcAA8AAAD3//T/AAAcABAAAAD3//X/AAAcABEAAAD0//L/AAAbAA8AAAD0//P/AAAbABAAAAD0//T/AAAbABEAAAD1//L/AAAcAA8AAAD1//P/AAAcABAAAAD1//T/AAAcABEAAADy//H/AAAbAA8AAADy//L/AAAbABAAAADy//P/AAAbABEAAADz//H/AAAcAA8AAADz//L/AAAcABAAAADz//P/AAAcABEAAADw//D/AAAbAA8AAADw//H/AAAbABAAAADw//L/AAAbABEAAADx//D/AAAcAA8AAADx//H/AAAcABAAAADx//L/AAAcABEAAADu/+//AAAbAA8AAADu//D/AAAbABAAAADu//H/AAAbABEAAADv/+//AAAcAA8AAADv//D/AAAcABAAAADv//H/AAAcABEAAADs/+7/AAAbAA8AAADs/+//AAAbABAAAADs//D/AAAbABEAAADt/+7/AAAcAA8AAADt/+//AAAcABAAAADt//D/AAAcABEAAADq/+3/AAAbAA8AAADq/+7/AAAbABAAAADq/+//AAAbABEAAADr/+3/AAAcAA8AAADr/+7/AAAcABAAAADr/+//AAAcABEAAADp/+z/AAAcABEAABDp/+3/AAAcABAAAADp/+7/AAAcABEAAADq/+r/AAAbAA8AABDp/+r/AAAcAA8AABDq/+v/AAAbABAAABDp/+v/AAAcABAAABDq/+z/AAAbABEAABDs/+n/AAAbAA8AABDr/+n/AAAcAA8AABDs/+r/AAAbABAAABDr/+r/AAAcABAAABDs/+v/AAAbABEAABDr/+v/AAAcABEAABDu/+j/AAAbAA8AABDt/+j/AAAcAA8AABDu/+n/AAAbABAAABDt/+n/AAAcABAAABDu/+r/AAAbABEAABDt/+r/AAAcABEAABDw/+f/AAAbAA8AABDv/+f/AAAcAA8AABDw/+j/AAAbABAAABDv/+j/AAAcABAAABDw/+n/AAAbABEAABDv/+n/AAAcABEAABDx/+f/AAAbAA8AAADx/+j/AAAbABAAAADx/+n/AAAbABEAAADy/+f/AAAcAA8AAADy/+j/AAAcABAAAADy/+n/AAAcABEAAADz/+j/AAAbAA8AAADz/+n/AAAbABAAAADz/+r/AAAbABEAAAD0/+j/AAAcAA8AAAD0/+n/AAAcABAAAAD0/+r/AAAcABEAAAD1/+r/AAAGAA8AABD2/+r/AAAEAA8AAAD3/+r/AAAEAA8AAAD4/+r/AAAEAA8AAAD5/+r/AAAEAA8AAAD6/+r/AAAEAA8AAAD7/+r/AAAEAA8AAAD8/+r/AAAEAA8AAAD9/+r/AAAEAA8AAAD+/+r/AAAEAA8AAAD//+r/AAAFAA8AAAAAAOr/AAAGAA8AAAD2/+n/AAAGAA8AABD3/+n/AAAEAA8AAAD4/+n/AAAFAA8AAAD5/+n/AAAEAA8AAAD6/+n/AAAFAA8AAAD7/+n/AAAEAA8AAAD8/+n/AAAFAA8AAAD9/+n/AAAEAA8AAAD+/+n/AAAFAA8AAAD//+n/AAAFAA8AAAAAAOn/AAAGAA8AAAD1/+n/AAAdABAAAAA=")
 tile_set = ExtResource("6_l5rae")
 
-[node name="TileMap_Front(Ladder)" type="TileMapLayer" parent="." unique_id=566749601]
+[node name="TileMap_Front(Ladder)" type="TileMapLayer" parent="." unique_id=566749601 groups=["Ladders"]]
 tile_map_data = PackedByteArray("AAAEAAMAAQAGAAMAAAADAAMAAQAGAAMAAAACAAMAAQAGAAMAAAABAAMAAQAGAAMAAAAAAAMAAQAGAAMAAAD//wMAAQAGAAMAAAD+/wMAAQAGAAMAAAD9/wMAAQAGAAMAAAD8/wMAAQAGAAMAAAD7/wMAAQAGAAMAAAD6/wMAAQAGAAMAAAD5/wMAAQAGAAMAAAD4/wMAAQAGAAMAAAD3/wMAAQAGAAMAAAD2/wMAAQAGAAMAAAD1/wMAAQAGAAMAAAD0/wMAAQAGAAMAAADz/wMAAQAGAAMAAADy/wMAAQAGAAMAAADx/wMAAQAGAAMAAADw/wMAAQAGAAMAAADv/wMAAQAGAAMAAADu/wMAAQAGAAMAAADt/wMAAQAGAAMAAADs/wMAAQAGAAMAAADr/wMAAQAGAAMAAADq/wMAAQAGAAMAAADp/wMAAQAGAAMAAADo/wMAAQAGAAMAAADn/wMAAQAGAAMAAADm/wMAAQAGAAMAAADl/wMAAQAGAAMAAADk/wMAAQAGAAMAAAA=")
 tile_set = ExtResource("5_fvdwk")
 
@@ -120,15 +119,20 @@ position = Vector2(-74, -545)
 scale = Vector2(0.225, 0.225)
 texture = ExtResource("11_b1wka")
 
-[node name="Player" parent="." unique_id=1457953911 node_paths=PackedStringArray("ladder_tilemap") groups=["Player"] instance=ExtResource("7_fd8gt")]
-z_index = 1
-position = Vector2(-87, -519)
-script = ExtResource("8_mxi2s")
-climb_speed = 30.0
-ladder_tilemap = NodePath("../TileMap_Front(Ladder)")
+[node name="BirdSpawner" parent="." unique_id=1101778421 instance=ExtResource("21_spawner")]
+position = Vector2(-365, 42)
+character_id = &"bird"
 
-[node name="Camera2D_Level3" type="Camera2D" parent="Player" unique_id=2105160526]
-position = Vector2(1, 0)
+[node name="ResearcherSpawner" parent="." unique_id=1206969461 instance=ExtResource("21_spawner")]
+position = Vector2(-57, -619)
+character_id = &"researcher"
+
+[node name="PlannerSpawner" parent="." unique_id=595483874 instance=ExtResource("21_spawner")]
+position = Vector2(-27, -619)
+character_id = &"planner"
+
+[node name="Camera2D_Level3" type="Camera2D" parent="." unique_id=2105160526]
+position = Vector2(-87, -519)
 zoom = Vector2(0.9, 0.9)
 limit_left = -434
 limit_top = -647

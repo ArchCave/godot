@@ -13,9 +13,7 @@
 [ext_resource type="Script" uid="uid://c8t7rr30ww0pd" path="res://Scripts/bird_intro_talk.gd" id="6_fhuy1"]
 [ext_resource type="Texture2D" uid="uid://ea8qfepf8lie" path="res://Sprite/level2/spriteletter3-sheet0.png" id="7_bl0du"]
 [ext_resource type="Texture2D" uid="uid://bnmb3277a8pty" path="res://Sprite/level2/hidden_ending/sprite13-sheet0.png" id="7_d42f2"]
-[ext_resource type="PackedScene" uid="uid://d4bvd3be3npgw" path="res://Scenes/Player.tscn" id="8_e2piv"]
 [ext_resource type="Texture2D" uid="uid://bi5vtyjb5q1y4" path="res://Sprite/level2/hidden_ending/spriteletter9-sheet0.png" id="8_nx14l"]
-[ext_resource type="Script" uid="uid://bcbf682pm8hli" path="res://Scripts/player.gd" id="9_ijtdf"]
 [ext_resource type="Texture2D" uid="uid://cwojj0nlk1ve3" path="res://Sprite/level2/hidden_ending/spriteletter10-sheet0.png" id="9_kjoi8"]
 [ext_resource type="PackedScene" uid="uid://5sk76gnawqit" path="res://Scenes/Enemy.tscn" id="11_sfey3"]
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="12_4k5rq"]
@@ -31,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://tukcr1o4pu6l" path="res://Scenes/level_3.tscn" id="29_nuasi"]
 [ext_resource type="Texture2D" uid="uid://bfejtdyydsat2" path="res://Sprite/level2/hidden_ending/hidden_ending.png" id="30_kwf64"]
 [ext_resource type="Script" uid="uid://dql76umg6q5vh" path="res://Scripts/hidden_ending.gd" id="31_hidend"]
+[ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="32_spawner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6dbo"]
 size = Vector2(42, 35)
@@ -106,6 +105,7 @@ scale = Vector2(0.3451983, 0.3451983)
 texture = ExtResource("2_e2piv")
 
 [node name="IntroBackground" type="Sprite2D" parent="Hidden" unique_id=2016832526]
+visible = false
 z_index = -1
 position = Vector2(939, 59)
 scale = Vector2(1.4700533, 0.48132813)
@@ -206,11 +206,20 @@ position = Vector2(81, 38.999992)
 scale = Vector2(0.22516558, 0.22516556)
 texture = ExtResource("7_bl0du")
 
-[node name="Player" parent="." unique_id=1457953911 groups=["Player"] instance=ExtResource("8_e2piv")]
+[node name="BirdSpawner" parent="." unique_id=2114899489 instance=ExtResource("32_spawner")]
 position = Vector2(36, 86)
-script = ExtResource("9_ijtdf")
+character_id = &"bird"
 
-[node name="Camera2D_Level2" type="Camera2D" parent="Player" unique_id=1972069792]
+[node name="ResearcherSpawner" parent="." unique_id=1788282836 instance=ExtResource("32_spawner")]
+position = Vector2(66, -14)
+character_id = &"researcher"
+
+[node name="PlannerSpawner" parent="." unique_id=1449303308 instance=ExtResource("32_spawner")]
+position = Vector2(96, -14)
+character_id = &"planner"
+
+[node name="Camera2D_Level2" type="Camera2D" parent="." unique_id=1972069792]
+position = Vector2(36, 86)
 limit_left = 3
 limit_top = -59
 limit_right = 1197
@@ -339,9 +348,20 @@ script = ExtResource("15_story2")
 position = Vector2(961, 104.90625)
 shape = SubResource("RectangleShape2D_story2")
 
-[node name="EndFlag" parent="." unique_id=386677647 instance=ExtResource("29_kwf64")]
+[node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("29_kwf64")]
 position = Vector2(534, -25)
 scene_to_load = ExtResource("29_nuasi")
+character_id = &"bird"
+
+[node name="ResearcherEndFlag" parent="." instance=ExtResource("29_kwf64")]
+position = Vector2(534, -25)
+scene_to_load = ExtResource("29_nuasi")
+character_id = &"researcher"
+
+[node name="PlannerEndFlag" parent="." instance=ExtResource("29_kwf64")]
+position = Vector2(534, -25)
+scene_to_load = ExtResource("29_nuasi")
+character_id = &"planner"
 
 [node name="HiddenEnding" type="Area2D" parent="." unique_id=553608597]
 script = ExtResource("31_hidend")

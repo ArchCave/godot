@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=4]
+[gd_scene load_steps=7 format=4]
 
 [ext_resource type="Script" path="res://Scripts/story1_scene.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cn61cb2m4bab6" path="res://Resorces/LoRes12OTAltOakland-Bold.ttf" id="2"]
 [ext_resource type="Texture2D" uid="uid://cf8jwtiknpfeo" path="res://Sprite/story/sprite7-sheet0.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bxt015oln3oqb" path="res://Sprite/researcher/sprite7-sheet0.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bb0xbjcwxfofd" path="res://Sprite/planner/sprite7-sheet0.png" id="5"]
 
 [sub_resource type="Theme" id="Theme_btn"]
 default_font = ExtResource("2")
@@ -29,6 +31,18 @@ color = Color(0.04, 0.05, 0.09, 1)
 position = Vector2(162.866, 89)
 scale = Vector2(0.2401502, 0.24015018)
 texture = ExtResource("3")
+
+[node name="story2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(162.866, 89)
+scale = Vector2(0.2401502, 0.24015018)
+texture = ExtResource("4")
+
+[node name="story3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(162.866, 89)
+scale = Vector2(0.2401502, 0.24015018)
+texture = ExtResource("5")
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10

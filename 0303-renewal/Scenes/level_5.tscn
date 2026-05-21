@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="22_8q1yh"]
 [ext_resource type="Script" uid="uid://cbgpllxlvl5a" path="res://Scripts/background_parallax.gd" id="28_bgpllx"]
 [ext_resource type="PackedScene" uid="uid://clwq1stxa6m3u" path="res://Scenes/poop_coin.tscn" id="29_bonuscoin"]
+[ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="30_spawner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c81s1"]
 size = Vector2(16.5, 769)
@@ -117,12 +118,18 @@ player = NodePath("../../Player")
 movement_mode = 1
 movement_distance = 128.0
 
+[node name="drone6" parent="Drone3(Horizontal)" unique_id=1072515889 instance=ExtResource("8_np6ff")]
+position = Vector2(9, -156)
+player = NodePath("../../Player")
+movement_mode = 1
+movement_distance = 128.0
+
 [node name="drone4" parent="Drone3(Horizontal)" unique_id=1669808350 instance=ExtResource("8_np6ff")]
 position = Vector2(-99, -248)
 movement_mode = 1
 movement_distance = 128.0
 
-[node name="drone5" parent="Drone3(Horizontal)" unique_id=1072515889 instance=ExtResource("8_np6ff")]
+[node name="drone5" parent="Drone3(Horizontal)" unique_id=1262532208 instance=ExtResource("8_np6ff")]
 position = Vector2(268, -393)
 player = NodePath("../../Player")
 movement_mode = 1
@@ -166,18 +173,23 @@ tile_set = ExtResource("5_np6ff")
 [node name="TileMap_Middle" type="TileMapLayer" parent="." unique_id=770689897]
 tile_set = ExtResource("6_rwdpc")
 
-[node name="TileMap_Front(Ladder)" type="TileMapLayer" parent="." unique_id=566749601]
+[node name="TileMap_Front(Ladder)" type="TileMapLayer" parent="." groups=["Ladders"] unique_id=566749601]
 tile_set = ExtResource("5_np6ff")
 
-[node name="Player" parent="." unique_id=1457953911 node_paths=PackedStringArray("ladder_tilemap") groups=["Player"] instance=ExtResource("20_5ee3x")]
-z_index = 1
+[node name="BirdSpawner" parent="." instance=ExtResource("30_spawner")]
 position = Vector2(210, -180)
-script = ExtResource("21_meqjb")
-climb_speed = 30.0
-ladder_tilemap = NodePath("../TileMap_Front(Ladder)")
+character_id = &"bird"
 
-[node name="Camera2D_Level3" type="Camera2D" parent="Player" unique_id=2105160526]
-position = Vector2(1, 0)
+[node name="ResearcherSpawner" parent="." instance=ExtResource("30_spawner")]
+position = Vector2(240, -280)
+character_id = &"researcher"
+
+[node name="PlannerSpawner" parent="." instance=ExtResource("30_spawner")]
+position = Vector2(270, -280)
+character_id = &"planner"
+
+[node name="Camera2D_Level3" type="Camera2D" parent="." unique_id=2105160526]
+position = Vector2(210, -180)
 zoom = Vector2(0.9, 0.9)
 limit_left = -434
 limit_top = -676
@@ -238,9 +250,20 @@ patrol_mode = 1
 patrol_distance = 200.0
 hover_intensity = 0.0
 
-[node name="EndFlag" parent="." unique_id=386677647 instance=ExtResource("7_k8amm")]
+[node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("7_k8amm")]
 position = Vector2(62, -494)
 scene_to_load = ExtResource("21_omaiq")
+character_id = &"bird"
+
+[node name="ResearcherEndFlag" parent="." instance=ExtResource("7_k8amm")]
+position = Vector2(62, -494)
+scene_to_load = ExtResource("21_omaiq")
+character_id = &"researcher"
+
+[node name="PlannerEndFlag" parent="." instance=ExtResource("7_k8amm")]
+position = Vector2(62, -494)
+scene_to_load = ExtResource("21_omaiq")
+character_id = &"planner"
 
 [node name="endPlatform" type="AnimatableBody2D" parent="." unique_id=866861250]
 visible = false

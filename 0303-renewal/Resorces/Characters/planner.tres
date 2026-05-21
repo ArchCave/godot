@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://b8w3q5n7r2k4x"]
+
+[ext_resource type="Script" uid="uid://cramnu7nfyy1d" path="res://Scripts/character_data.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b37w22ifcddo4" path="res://Sprite/planner/idle/Layer 1_sprite_planner1.png" id="2_sprite"]
+[ext_resource type="AnimationLibrary" uid="uid://pf1jhsrtuj14" path="res://Resorces/Characters/planner_anims.tres" id="3_anims"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"planner"
+display_name = "PLANNER"
+sprite_texture = ExtResource("2_sprite")
+animation_library = ExtResource("3_anims")
+sprite_offset = Vector2(0, -8)
+idle_offset_delta = Vector2(0, 1)
+walk_offset_delta = Vector2(0, 1)
+preview_texture = ExtResource("2_sprite")
+move_speed = 57.5
+air_speed_multiplier = 1.7
+jump_force = 161.0
+max_health = 6
+climb_speed = 38.0

@@ -1,0 +1,1222 @@
+[gd_scene format=4 uid="uid://sctva0qlo3rs"]
+
+[ext_resource type="Texture2D" uid="uid://mwn4sllvlf8u" path="res://Sprite/level3/pxart5-sheet0.png" id="1_j020x"]
+[ext_resource type="Texture2D" uid="uid://ctuqx5025vao6" path="res://Sprite/level4/bluesky5-sheet0.png" id="2_e4jnh"]
+[ext_resource type="Script" uid="uid://cbgpllxlvl5a" path="res://Scripts/background_parallax.gd" id="3_lb31r"]
+[ext_resource type="Texture2D" uid="uid://yby5g0wduaek" path="res://Sprite/planner/sprite25-sheet0.png" id="4_irpto"]
+[ext_resource type="Script" uid="uid://xeyvtk6cwe3t" path="res://Scripts/Intro_Guide.gd" id="4_lb31r"]
+[ext_resource type="TileSet" uid="uid://baskfekfh3e30" path="res://Resorces/TileSet_Lab_high.tres" id="5_2rdev"]
+[ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="7_4thwd"]
+[ext_resource type="Texture2D" uid="uid://dqhrrvtduojyl" path="res://Sprite/researcher/spriteletter2-sheet0.png" id="8_vfvy1"]
+[ext_resource type="PackedScene" uid="uid://5sk76gnawqit" path="res://Scenes/Enemy.tscn" id="9_hfdvb"]
+[ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="10_1r13y"]
+[ext_resource type="Texture2D" uid="uid://c8auwoxan4d6n" path="res://Sprite/researcher/sprite21-sheet0.png" id="10_j82sc"]
+[ext_resource type="Texture2D" uid="uid://casrprfcwy0tk" path="res://Sprite/researcher/sprite22-sheet0.png" id="11_irpto"]
+[ext_resource type="Texture2D" uid="uid://ci6t8f3q2noee" path="res://img/bg_pause-sheet0.png" id="14_y233x"]
+[ext_resource type="Texture2D" uid="uid://dncnki7m7b7qr" path="res://Sprite/researcher/spriteletter0-sheet0.png" id="17_7qh3q"]
+[ext_resource type="PackedScene" uid="uid://b46mrujh4voah" path="res://Scenes/long_drone_1.tscn" id="17_a5v6y"]
+[ext_resource type="PackedScene" uid="uid://cwmp0g45cyuvq" path="res://Scenes/drone_1.tscn" id="17_j82sc"]
+[ext_resource type="Script" uid="uid://db4pa5m4mu3fv" path="res://Scripts/jump_platform.gd" id="18_j82sc"]
+[ext_resource type="Texture2D" uid="uid://bb0pd0phn3nq" path="res://Sprite/researcher/spriteletter4-sheet0.png" id="20_f8wta"]
+[ext_resource type="Texture2D" uid="uid://dbgain7yyoqrm" path="res://Sprite/researcher/spriteletter5-sheet0.png" id="21_j020x"]
+[ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="22_4srgj"]
+[ext_resource type="PackedScene" uid="uid://b7llh2sn4a5l4" path="res://Scenes/level_4.tscn" id="23_lb31r"]
+[ext_resource type="Script" uid="uid://d16psskt52774" path="res://Scripts/researcher_notice4.gd" id="23_notice4"]
+[ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="24_spawner"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c81s1"]
+size = Vector2(16.5, 372)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwg62"]
+texture = ExtResource("1_j020x")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+17:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+18:15/0 = 0
+19:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+9:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+13:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+6:19/0 = 0
+7:19/0 = 0
+8:19/0 = 0
+9:19/0 = 0
+10:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+14:19/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+19:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+14:20/0 = 0
+15:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+18:20/0 = 0
+19:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+8:21/0 = 0
+9:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+13:21/0 = 0
+14:21/0 = 0
+15:21/0 = 0
+16:21/0 = 0
+17:21/0 = 0
+18:21/0 = 0
+19:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+6:22/0 = 0
+7:22/0 = 0
+8:22/0 = 0
+9:22/0 = 0
+10:22/0 = 0
+11:22/0 = 0
+12:22/0 = 0
+13:22/0 = 0
+14:22/0 = 0
+15:22/0 = 0
+16:22/0 = 0
+17:22/0 = 0
+18:22/0 = 0
+19:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+8:23/0 = 0
+9:23/0 = 0
+10:23/0 = 0
+11:23/0 = 0
+12:23/0 = 0
+13:23/0 = 0
+14:23/0 = 0
+15:23/0 = 0
+16:23/0 = 0
+17:23/0 = 0
+18:23/0 = 0
+19:23/0 = 0
+0:24/0 = 0
+1:24/0 = 0
+2:24/0 = 0
+3:24/0 = 0
+4:24/0 = 0
+5:24/0 = 0
+6:24/0 = 0
+7:24/0 = 0
+8:24/0 = 0
+9:24/0 = 0
+10:24/0 = 0
+11:24/0 = 0
+12:24/0 = 0
+13:24/0 = 0
+14:24/0 = 0
+15:24/0 = 0
+16:24/0 = 0
+17:24/0 = 0
+18:24/0 = 0
+19:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+5:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+8:25/0 = 0
+9:25/0 = 0
+10:25/0 = 0
+11:25/0 = 0
+12:25/0 = 0
+13:25/0 = 0
+14:25/0 = 0
+15:25/0 = 0
+16:25/0 = 0
+17:25/0 = 0
+18:25/0 = 0
+19:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+5:26/0 = 0
+6:26/0 = 0
+7:26/0 = 0
+8:26/0 = 0
+9:26/0 = 0
+10:26/0 = 0
+11:26/0 = 0
+12:26/0 = 0
+13:26/0 = 0
+14:26/0 = 0
+15:26/0 = 0
+16:26/0 = 0
+17:26/0 = 0
+18:26/0 = 0
+19:26/0 = 0
+0:27/0 = 0
+1:27/0 = 0
+2:27/0 = 0
+3:27/0 = 0
+4:27/0 = 0
+5:27/0 = 0
+6:27/0 = 0
+7:27/0 = 0
+8:27/0 = 0
+9:27/0 = 0
+10:27/0 = 0
+11:27/0 = 0
+12:27/0 = 0
+13:27/0 = 0
+14:27/0 = 0
+15:27/0 = 0
+16:27/0 = 0
+17:27/0 = 0
+18:27/0 = 0
+19:27/0 = 0
+0:28/0 = 0
+1:28/0 = 0
+2:28/0 = 0
+3:28/0 = 0
+4:28/0 = 0
+5:28/0 = 0
+6:28/0 = 0
+7:28/0 = 0
+8:28/0 = 0
+9:28/0 = 0
+10:28/0 = 0
+11:28/0 = 0
+12:28/0 = 0
+13:28/0 = 0
+14:28/0 = 0
+15:28/0 = 0
+16:28/0 = 0
+17:28/0 = 0
+18:28/0 = 0
+19:28/0 = 0
+0:29/0 = 0
+1:29/0 = 0
+2:29/0 = 0
+3:29/0 = 0
+4:29/0 = 0
+5:29/0 = 0
+6:29/0 = 0
+7:29/0 = 0
+8:29/0 = 0
+9:29/0 = 0
+10:29/0 = 0
+11:29/0 = 0
+12:29/0 = 0
+13:29/0 = 0
+14:29/0 = 0
+15:29/0 = 0
+16:29/0 = 0
+17:29/0 = 0
+18:29/0 = 0
+19:29/0 = 0
+0:30/0 = 0
+1:30/0 = 0
+2:30/0 = 0
+3:30/0 = 0
+4:30/0 = 0
+5:30/0 = 0
+6:30/0 = 0
+7:30/0 = 0
+8:30/0 = 0
+9:30/0 = 0
+10:30/0 = 0
+11:30/0 = 0
+12:30/0 = 0
+13:30/0 = 0
+14:30/0 = 0
+15:30/0 = 0
+16:30/0 = 0
+17:30/0 = 0
+18:30/0 = 0
+19:30/0 = 0
+0:31/0 = 0
+1:31/0 = 0
+2:31/0 = 0
+3:31/0 = 0
+4:31/0 = 0
+5:31/0 = 0
+6:31/0 = 0
+7:31/0 = 0
+8:31/0 = 0
+9:31/0 = 0
+10:31/0 = 0
+11:31/0 = 0
+12:31/0 = 0
+13:31/0 = 0
+14:31/0 = 0
+15:31/0 = 0
+16:31/0 = 0
+17:31/0 = 0
+18:31/0 = 0
+19:31/0 = 0
+0:32/0 = 0
+1:32/0 = 0
+2:32/0 = 0
+3:32/0 = 0
+4:32/0 = 0
+5:32/0 = 0
+6:32/0 = 0
+7:32/0 = 0
+8:32/0 = 0
+9:32/0 = 0
+10:32/0 = 0
+11:32/0 = 0
+12:32/0 = 0
+13:32/0 = 0
+14:32/0 = 0
+15:32/0 = 0
+16:32/0 = 0
+17:32/0 = 0
+18:32/0 = 0
+19:32/0 = 0
+0:33/0 = 0
+1:33/0 = 0
+2:33/0 = 0
+3:33/0 = 0
+4:33/0 = 0
+5:33/0 = 0
+6:33/0 = 0
+7:33/0 = 0
+8:33/0 = 0
+9:33/0 = 0
+10:33/0 = 0
+11:33/0 = 0
+12:33/0 = 0
+13:33/0 = 0
+14:33/0 = 0
+15:33/0 = 0
+16:33/0 = 0
+17:33/0 = 0
+18:33/0 = 0
+19:33/0 = 0
+0:34/0 = 0
+1:34/0 = 0
+2:34/0 = 0
+3:34/0 = 0
+4:34/0 = 0
+5:34/0 = 0
+6:34/0 = 0
+7:34/0 = 0
+8:34/0 = 0
+9:34/0 = 0
+10:34/0 = 0
+11:34/0 = 0
+12:34/0 = 0
+13:34/0 = 0
+14:34/0 = 0
+15:34/0 = 0
+16:34/0 = 0
+17:34/0 = 0
+18:34/0 = 0
+19:34/0 = 0
+0:35/0 = 0
+1:35/0 = 0
+2:35/0 = 0
+3:35/0 = 0
+4:35/0 = 0
+5:35/0 = 0
+6:35/0 = 0
+7:35/0 = 0
+8:35/0 = 0
+9:35/0 = 0
+10:35/0 = 0
+11:35/0 = 0
+12:35/0 = 0
+13:35/0 = 0
+14:35/0 = 0
+15:35/0 = 0
+16:35/0 = 0
+17:35/0 = 0
+18:35/0 = 0
+19:35/0 = 0
+0:36/0 = 0
+1:36/0 = 0
+2:36/0 = 0
+3:36/0 = 0
+4:36/0 = 0
+5:36/0 = 0
+6:36/0 = 0
+7:36/0 = 0
+8:36/0 = 0
+9:36/0 = 0
+10:36/0 = 0
+11:36/0 = 0
+12:36/0 = 0
+13:36/0 = 0
+14:36/0 = 0
+15:36/0 = 0
+16:36/0 = 0
+17:36/0 = 0
+18:36/0 = 0
+19:36/0 = 0
+0:37/0 = 0
+1:37/0 = 0
+2:37/0 = 0
+3:37/0 = 0
+4:37/0 = 0
+5:37/0 = 0
+6:37/0 = 0
+7:37/0 = 0
+8:37/0 = 0
+9:37/0 = 0
+10:37/0 = 0
+11:37/0 = 0
+12:37/0 = 0
+13:37/0 = 0
+14:37/0 = 0
+15:37/0 = 0
+16:37/0 = 0
+17:37/0 = 0
+18:37/0 = 0
+19:37/0 = 0
+0:38/0 = 0
+1:38/0 = 0
+2:38/0 = 0
+3:38/0 = 0
+4:38/0 = 0
+5:38/0 = 0
+6:38/0 = 0
+7:38/0 = 0
+8:38/0 = 0
+9:38/0 = 0
+10:38/0 = 0
+11:38/0 = 0
+12:38/0 = 0
+13:38/0 = 0
+14:38/0 = 0
+15:38/0 = 0
+16:38/0 = 0
+17:38/0 = 0
+18:38/0 = 0
+19:38/0 = 0
+0:39/0 = 0
+1:39/0 = 0
+2:39/0 = 0
+3:39/0 = 0
+4:39/0 = 0
+5:39/0 = 0
+6:39/0 = 0
+7:39/0 = 0
+8:39/0 = 0
+9:39/0 = 0
+10:39/0 = 0
+11:39/0 = 0
+12:39/0 = 0
+13:39/0 = 0
+14:39/0 = 0
+15:39/0 = 0
+16:39/0 = 0
+17:39/0 = 0
+18:39/0 = 0
+19:39/0 = 0
+0:40/0 = 0
+1:40/0 = 0
+2:40/0 = 0
+3:40/0 = 0
+4:40/0 = 0
+5:40/0 = 0
+6:40/0 = 0
+7:40/0 = 0
+8:40/0 = 0
+9:40/0 = 0
+10:40/0 = 0
+11:40/0 = 0
+12:40/0 = 0
+13:40/0 = 0
+14:40/0 = 0
+15:40/0 = 0
+16:40/0 = 0
+17:40/0 = 0
+18:40/0 = 0
+19:40/0 = 0
+0:41/0 = 0
+1:41/0 = 0
+2:41/0 = 0
+3:41/0 = 0
+4:41/0 = 0
+5:41/0 = 0
+6:41/0 = 0
+7:41/0 = 0
+8:41/0 = 0
+9:41/0 = 0
+10:41/0 = 0
+11:41/0 = 0
+12:41/0 = 0
+13:41/0 = 0
+14:41/0 = 0
+15:41/0 = 0
+16:41/0 = 0
+17:41/0 = 0
+18:41/0 = 0
+19:41/0 = 0
+0:42/0 = 0
+1:42/0 = 0
+2:42/0 = 0
+3:42/0 = 0
+4:42/0 = 0
+5:42/0 = 0
+6:42/0 = 0
+7:42/0 = 0
+8:42/0 = 0
+9:42/0 = 0
+10:42/0 = 0
+11:42/0 = 0
+12:42/0 = 0
+13:42/0 = 0
+14:42/0 = 0
+15:42/0 = 0
+16:42/0 = 0
+17:42/0 = 0
+18:42/0 = 0
+19:42/0 = 0
+0:43/0 = 0
+1:43/0 = 0
+2:43/0 = 0
+3:43/0 = 0
+4:43/0 = 0
+5:43/0 = 0
+6:43/0 = 0
+7:43/0 = 0
+8:43/0 = 0
+9:43/0 = 0
+10:43/0 = 0
+11:43/0 = 0
+12:43/0 = 0
+13:43/0 = 0
+14:43/0 = 0
+15:43/0 = 0
+16:43/0 = 0
+17:43/0 = 0
+18:43/0 = 0
+19:43/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qf6rc"]
+sources/0 = SubResource("TileSetAtlasSource_vwg62")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+size = Vector2(19, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j82sc"]
+size = Vector2(46, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5v6y"]
+size = Vector2(47, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsd1q"]
+size = Vector2(15, 2)
+
+[node name="Node2D2" type="Node2D" unique_id=2074801645]
+
+[node name="Sides" type="StaticBody2D" parent="." unique_id=690626671]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sides" unique_id=1903099933]
+position = Vector2(328.75, -95)
+shape = SubResource("RectangleShape2D_c81s1")
+debug_color = Color(0.8082851, 0.8540074, 0.13422185, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sides" unique_id=991903495]
+position = Vector2(-54, -100)
+shape = SubResource("RectangleShape2D_c81s1")
+debug_color = Color(0.8082851, 0.8540074, 0.13422185, 0.41960785)
+
+[node name="background" type="TileMapLayer" parent="." unique_id=1725449094]
+tile_map_data = PackedByteArray("AAD//wEAAAAOAAEAAAD//wIAAAAOAAEAAAD//wMAAAAOAAEAAAD//wQAAAAOAAEAAAAAAAEAAAAOAAEAAAAAAAIAAAAOAAEAAAAAAAMAAAAOAAEAAAAAAAQAAAAOAAEAAAABAAEAAAAOAAEAAAABAAIAAAAOAAEAAAABAAMAAAAOAAEAAAABAAQAAAAOAAEAAAACAAEAAAAOAAEAAAACAAIAAAAOAAEAAAACAAMAAAAOAAEAAAACAAQAAAAOAAEAAAADAAEAAAAOAAEAAAADAAIAAAAOAAEAAAADAAMAAAAOAAEAAAADAAQAAAAOAAEAAAAEAAEAAAAOAAEAAAAEAAIAAAAOAAEAAAAEAAMAAAAOAAEAAAAEAAQAAAAOAAEAAAAFAAEAAAAOAAEAAAAFAAIAAAAOAAEAAAAFAAMAAAAOAAEAAAAFAAQAAAAOAAEAAAAGAAEAAAAOAAEAAAAGAAIAAAAOAAEAAAAGAAMAAAAOAAEAAAAGAAQAAAAOAAEAAAAHAAEAAAAOAAEAAAAHAAIAAAAOAAEAAAAHAAMAAAAOAAEAAAAHAAQAAAAOAAEAAAAIAAEAAAAOAAEAAAAIAAIAAAAOAAEAAAAIAAMAAAAOAAEAAAAIAAQAAAAOAAEAAAAJAAEAAAAOAAEAAAAJAAIAAAAOAAEAAAAJAAMAAAAOAAEAAAAJAAQAAAAOAAEAAAAKAAEAAAAOAAEAAAAKAAIAAAAOAAEAAAAKAAMAAAAOAAEAAAAKAAQAAAAOAAEAAAALAAEAAAAOAAEAAAALAAIAAAAOAAEAAAALAAMAAAAOAAEAAAALAAQAAAAOAAEAAAAMAAEAAAAOAAEAAAAMAAIAAAAOAAEAAAAMAAMAAAAOAAEAAAAMAAQAAAAOAAEAAAANAAEAAAAOAAEAAAANAAIAAAAOAAEAAAANAAMAAAAOAAEAAAANAAQAAAAOAAEAAAAOAAEAAAAOAAEAAAAOAAIAAAAOAAEAAAAOAAMAAAAOAAEAAAAOAAQAAAAOAAEAAAAPAAEAAAAOAAEAAAAPAAIAAAAOAAEAAAAPAAMAAAAOAAEAAAAPAAQAAAAOAAEAAAAQAAEAAAAOAAEAAAAQAAIAAAAOAAEAAAAQAAMAAAAOAAEAAAAQAAQAAAAOAAEAAAARAAEAAAAOAAEAAAARAAIAAAAOAAEAAAARAAMAAAAOAAEAAAARAAQAAAAOAAEAAAASAAEAAAAOAAEAAAASAAIAAAAOAAEAAAASAAMAAAAOAAEAAAASAAQAAAAOAAEAAAATAAEAAAAOAAEAAAATAAIAAAAOAAEAAAATAAMAAAAOAAEAAAATAAQAAAAOAAEAAAAUAAEAAAAOAAEAAAAUAAIAAAAOAAEAAAAUAAMAAAAOAAEAAAAUAAQAAAAOAAEAAAD//wAAAAAOAAEAAAAAAAAAAAAOAAEAAAABAAAAAAAOAAEAAAACAAAAAAAOAAEAAAADAAAAAAAOAAEAAAAEAAAAAAAOAAEAAAAFAAAAAAAOAAEAAAAGAAAAAAAOAAEAAAAHAAAAAAAOAAEAAAAIAAAAAAAOAAEAAAAJAAAAAAAOAAEAAAAKAAAAAAAOAAEAAAALAAAAAAAOAAEAAAAMAAAAAAAOAAEAAAANAAAAAAAOAAEAAAAOAAAAAAAOAAEAAAAPAAAAAAAOAAEAAAAQAAAAAAAOAAEAAAARAAAAAAAOAAEAAAASAAAAAAAOAAEAAAATAAAAAAAOAAEAAAAUAAAAAAAOAAEAAAD/////AAAOAAEAAAAAAP//AAAOAAEAAAABAP//AAAOAAEAAAACAP//AAAOAAEAAAADAP//AAAOAAEAAAAEAP//AAAOAAEAAAAFAP//AAAOAAEAAAAGAP//AAAOAAEAAAAHAP//AAAOAAEAAAAIAP//AAAOAAEAAAAJAP//AAAOAAEAAAAKAP//AAAOAAEAAAALAP//AAAOAAEAAAAMAP//AAAOAAEAAAANAP//AAAOAAEAAAAOAP//AAAOAAEAAAAPAP//AAAOAAEAAAAQAP//AAAOAAEAAAARAP//AAAOAAEAAAASAP//AAAOAAEAAAATAP//AAAOAAEAAAAUAP//AAAOAAEAAAD///3/AAAOAAEAAAD///7/AAAOAAEAAAAAAP3/AAAOAAEAAAAAAP7/AAAOAAEAAAABAP3/AAAOAAEAAAABAP7/AAAOAAEAAAACAP3/AAAOAAEAAAACAP7/AAAOAAEAAAADAP3/AAAOAAEAAAADAP7/AAAOAAEAAAAEAP3/AAAOAAEAAAAEAP7/AAAOAAEAAAAFAP3/AAAOAAEAAAAFAP7/AAAOAAEAAAAGAP3/AAAOAAEAAAAGAP7/AAAOAAEAAAAHAP3/AAAOAAEAAAAHAP7/AAAOAAEAAAAIAP3/AAAOAAEAAAAIAP7/AAAOAAEAAAAJAP3/AAAOAAEAAAAJAP7/AAAOAAEAAAAKAP3/AAAOAAEAAAAKAP7/AAAOAAEAAAALAP3/AAAOAAEAAAALAP7/AAAOAAEAAAAMAP3/AAAOAAEAAAAMAP7/AAAOAAEAAAANAP3/AAAOAAEAAAANAP7/AAAOAAEAAAAOAP3/AAAOAAEAAAAOAP7/AAAOAAEAAAAPAP3/AAAOAAEAAAAPAP7/AAAOAAEAAAAQAP3/AAAOAAEAAAAQAP7/AAAOAAEAAAARAP3/AAAOAAEAAAARAP7/AAAOAAEAAAASAP3/AAAOAAEAAAASAP7/AAAOAAEAAAATAP3/AAAOAAEAAAATAP7/AAAOAAEAAAAUAP3/AAAOAAEAAAAUAP7/AAAOAAEAAAD///v/AAAOAAEAAAD///z/AAAOAAEAAAAAAPv/AAAOAAEAAAAAAPz/AAAOAAEAAAABAPv/AAAOAAEAAAABAPz/AAAOAAEAAAACAPv/AAAOAAEAAAACAPz/AAAOAAEAAAADAPv/AAAOAAEAAAADAPz/AAAOAAEAAAAEAPv/AAAOAAEAAAAEAPz/AAAOAAEAAAAFAPv/AAAOAAEAAAAFAPz/AAAOAAEAAAAGAPv/AAAOAAEAAAAGAPz/AAAOAAEAAAAHAPv/AAAOAAEAAAAHAPz/AAAOAAEAAAAIAPv/AAAOAAEAAAAIAPz/AAAOAAEAAAAJAPv/AAAOAAEAAAAJAPz/AAAOAAEAAAAKAPv/AAAOAAEAAAAKAPz/AAAOAAEAAAALAPv/AAAOAAEAAAALAPz/AAAOAAEAAAAMAPv/AAAOAAEAAAAMAPz/AAAOAAEAAAANAPv/AAAOAAEAAAANAPz/AAAOAAEAAAAOAPv/AAAOAAEAAAAOAPz/AAAOAAEAAAAPAPv/AAAOAAEAAAAPAPz/AAAOAAEAAAAQAPv/AAAOAAEAAAAQAPz/AAAOAAEAAAARAPv/AAAOAAEAAAARAPz/AAAOAAEAAAASAPv/AAAOAAEAAAASAPz/AAAOAAEAAAATAPv/AAAOAAEAAAATAPz/AAAOAAEAAAAUAPv/AAAOAAEAAAAUAPz/AAAOAAEAAAD///n/AAAOAAEAAAD///r/AAAOAAEAAAAAAPn/AAAOAAEAAAAAAPr/AAAOAAEAAAABAPn/AAAOAAEAAAABAPr/AAAOAAEAAAACAPn/AAAOAAEAAAACAPr/AAAOAAEAAAADAPn/AAAOAAEAAAADAPr/AAAOAAEAAAAEAPn/AAAOAAEAAAAEAPr/AAAOAAEAAAAFAPn/AAAOAAEAAAAFAPr/AAAOAAEAAAAGAPn/AAAOAAEAAAAGAPr/AAAOAAEAAAAHAPn/AAAOAAEAAAAHAPr/AAAOAAEAAAAIAPn/AAAOAAEAAAAIAPr/AAAOAAEAAAAJAPn/AAAOAAEAAAAJAPr/AAAOAAEAAAAKAPn/AAAOAAEAAAAKAPr/AAAOAAEAAAALAPn/AAAOAAEAAAALAPr/AAAOAAEAAAAMAPn/AAAOAAEAAAAMAPr/AAAOAAEAAAANAPn/AAAOAAEAAAANAPr/AAAOAAEAAAAOAPn/AAAOAAEAAAAOAPr/AAAOAAEAAAAPAPn/AAAOAAEAAAAPAPr/AAAOAAEAAAAQAPn/AAAOAAEAAAAQAPr/AAAOAAEAAAARAPn/AAAOAAEAAAARAPr/AAAOAAEAAAASAPn/AAAOAAEAAAASAPr/AAAOAAEAAAATAPn/AAAOAAEAAAATAPr/AAAOAAEAAAAUAPn/AAAOAAEAAAAUAPr/AAAOAAEAAAD///f/AAAOAAEAAAD///j/AAAOAAEAAAAAAPf/AAAOAAEAAAAAAPj/AAAOAAEAAAABAPf/AAAOAAEAAAABAPj/AAAOAAEAAAACAPf/AAAOAAEAAAACAPj/AAAOAAEAAAADAPf/AAAOAAEAAAADAPj/AAAOAAEAAAAEAPf/AAAOAAEAAAAEAPj/AAAOAAEAAAAFAPf/AAAOAAEAAAAFAPj/AAAOAAEAAAAGAPf/AAAOAAEAAAAGAPj/AAAOAAEAAAAHAPf/AAAOAAEAAAAHAPj/AAAOAAEAAAAIAPf/AAAOAAEAAAAIAPj/AAAOAAEAAAAJAPf/AAAOAAEAAAAJAPj/AAAOAAEAAAAKAPf/AAAOAAEAAAAKAPj/AAAOAAEAAAALAPf/AAAOAAEAAAALAPj/AAAOAAEAAAAMAPf/AAAOAAEAAAAMAPj/AAAOAAEAAAANAPf/AAAOAAEAAAANAPj/AAAOAAEAAAAOAPf/AAAOAAEAAAAOAPj/AAAOAAEAAAAPAPf/AAAOAAEAAAAPAPj/AAAOAAEAAAAQAPf/AAAOAAEAAAAQAPj/AAAOAAEAAAARAPf/AAAOAAEAAAARAPj/AAAOAAEAAAASAPf/AAAOAAEAAAASAPj/AAAOAAEAAAATAPf/AAAOAAEAAAATAPj/AAAOAAEAAAAUAPf/AAAOAAEAAAAUAPj/AAAOAAEAAAD///X/AAAOAAEAAAD///b/AAAOAAEAAAAAAPX/AAAOAAEAAAAAAPb/AAAOAAEAAAABAPX/AAAOAAEAAAABAPb/AAAOAAEAAAACAPX/AAAOAAEAAAACAPb/AAAOAAEAAAADAPX/AAAOAAEAAAADAPb/AAAOAAEAAAAEAPX/AAAOAAEAAAAEAPb/AAAOAAEAAAAFAPX/AAAOAAEAAAAFAPb/AAAOAAEAAAAGAPX/AAAOAAEAAAAGAPb/AAAOAAEAAAAHAPX/AAAOAAEAAAAHAPb/AAAOAAEAAAAIAPX/AAAOAAEAAAAIAPb/AAAOAAEAAAAJAPX/AAAOAAEAAAAJAPb/AAAOAAEAAAAKAPX/AAAOAAEAAAAKAPb/AAAOAAEAAAALAPX/AAAOAAEAAAALAPb/AAAOAAEAAAAMAPX/AAAOAAEAAAAMAPb/AAAOAAEAAAANAPX/AAAOAAEAAAANAPb/AAAOAAEAAAAOAPX/AAAOAAEAAAAOAPb/AAAOAAEAAAAPAPX/AAAOAAEAAAAPAPb/AAAOAAEAAAAQAPX/AAAOAAEAAAAQAPb/AAAOAAEAAAARAPX/AAAOAAEAAAARAPb/AAAOAAEAAAASAPX/AAAOAAEAAAASAPb/AAAOAAEAAAATAPX/AAAOAAEAAAATAPb/AAAOAAEAAAAUAPX/AAAOAAEAAAAUAPb/AAAOAAEAAAD///L/AAAOAAEAAAD///P/AAAOAAEAAAD///T/AAAOAAEAAAAAAPL/AAAOAAEAAAAAAPP/AAAOAAEAAAAAAPT/AAAOAAEAAAABAPL/AAAOAAEAAAABAPP/AAAOAAEAAAABAPT/AAAOAAEAAAACAPL/AAAOAAEAAAACAPP/AAAOAAEAAAACAPT/AAAOAAEAAAADAPL/AAAOAAEAAAADAPP/AAAOAAEAAAADAPT/AAAOAAEAAAAEAPL/AAAOAAEAAAAEAPP/AAAOAAEAAAAEAPT/AAAOAAEAAAAFAPL/AAAOAAEAAAAFAPP/AAAOAAEAAAAFAPT/AAAOAAEAAAAGAPL/AAAOAAEAAAAGAPP/AAAOAAEAAAAGAPT/AAAOAAEAAAAHAPL/AAAOAAEAAAAHAPP/AAAOAAEAAAAHAPT/AAAOAAEAAAAIAPL/AAAOAAEAAAAIAPP/AAAOAAEAAAAIAPT/AAAOAAEAAAAJAPL/AAAOAAEAAAAJAPP/AAAOAAEAAAAJAPT/AAAOAAEAAAAKAPL/AAAOAAEAAAAKAPP/AAAOAAEAAAAKAPT/AAAOAAEAAAALAPL/AAAOAAEAAAALAPP/AAAOAAEAAAALAPT/AAAOAAEAAAAMAPL/AAAOAAEAAAAMAPP/AAAOAAEAAAAMAPT/AAAOAAEAAAANAPL/AAAOAAEAAAANAPP/AAAOAAEAAAANAPT/AAAOAAEAAAAOAPL/AAAOAAEAAAAOAPP/AAAOAAEAAAAOAPT/AAAOAAEAAAAPAPL/AAAOAAEAAAAPAPP/AAAOAAEAAAAPAPT/AAAOAAEAAAAQAPL/AAAOAAEAAAAQAPP/AAAOAAEAAAAQAPT/AAAOAAEAAAARAPL/AAAOAAEAAAARAPP/AAAOAAEAAAARAPT/AAAOAAEAAAASAPL/AAAOAAEAAAASAPP/AAAOAAEAAAASAPT/AAAOAAEAAAATAPL/AAAOAAEAAAATAPP/AAAOAAEAAAATAPT/AAAOAAEAAAAUAPL/AAAOAAEAAAAUAPP/AAAOAAEAAAAUAPT/AAAOAAEAAAD9//L/AAAOAAEAAAD9//P/AAAOAAEAAAD9//T/AAAOAAEAAAD9//X/AAAOAAEAAAD9//b/AAAOAAEAAAD9//f/AAAOAAEAAAD9//j/AAAOAAEAAAD9//n/AAAOAAEAAAD9//r/AAAOAAEAAAD9//v/AAAOAAEAAAD9//z/AAAOAAEAAAD9//3/AAAOAAEAAAD9//7/AAAOAAEAAAD9////AAAOAAEAAAD9/wAAAAAOAAEAAAD9/wEAAAAOAAEAAAD9/wIAAAAOAAEAAAD9/wMAAAAOAAEAAAD9/wQAAAAOAAEAAAD+//L/AAAOAAEAAAD+//P/AAAOAAEAAAD+//T/AAAOAAEAAAD+//X/AAAOAAEAAAD+//b/AAAOAAEAAAD+//f/AAAOAAEAAAD+//j/AAAOAAEAAAD+//n/AAAOAAEAAAD+//r/AAAOAAEAAAD+//v/AAAOAAEAAAD+//z/AAAOAAEAAAD+//3/AAAOAAEAAAD+//7/AAAOAAEAAAD+////AAAOAAEAAAD+/wAAAAAOAAEAAAD+/wEAAAAOAAEAAAD+/wIAAAAOAAEAAAD+/wMAAAAOAAEAAAD+/wQAAAAOAAEAAAAVAAQAAAAFAAcAAAAVAAMAAAAFAAcAAAAVAAIAAAAFAAcAAAAVAAEAAAAFAAcAAAAVAAAAAAAFAAcAAAAVAP//AAAFAAcAAAAVAP7/AAAFAAcAAAAVAP3/AAAFAAcAAAAVAPz/AAAFAAcAAAAVAPv/AAAFAAcAAAAVAPr/AAAFAAcAAAAVAPn/AAAFAAcAAAAVAPj/AAAFAAcAAAAVAPf/AAAFAAcAAAAWAPf/AAAFAAcAAAAWAPb/AAAFAAcAAAAWAPX/AAAFAAcAAAAWAPT/AAAFAAcAAAAWAPP/AAAFAAcAAAAWAPL/AAAFAAcAAAAVAPL/AAAFAAcAAAAVAPP/AAAFAAcAAAAVAPT/AAAFAAcAAAAVAPX/AAAFAAcAAAAVAPb/AAAFAAcAAAAWAAQAAAAFAAcAAAAXAAQAAAAFAAcAAAAWAAMAAAAFAAcAAAAWAAIAAAAFAAcAAAAWAAEAAAAFAAcAAAAWAAAAAAAFAAcAAAAWAP//AAAFAAcAAAAWAP7/AAAFAAcAAAAWAP3/AAAFAAcAAAAWAPz/AAAFAAcAAAAWAPv/AAAFAAcAAAAWAPr/AAAFAAcAAAAWAPn/AAAFAAcAAAAWAPj/AAAFAAcAAAAXAAMAAAAFAAcAAAAXAAIAAAAFAAcAAAAXAAEAAAAFAAcAAAAXAAAAAAAFAAcAAAAXAP//AAAFAAcAAAAXAP7/AAAFAAcAAAAXAP3/AAAFAAcAAAAXAPz/AAAFAAcAAAAXAPv/AAAFAAcAAAAXAPr/AAAFAAcAAAAXAPn/AAAFAAcAAAAXAPj/AAAFAAcAAAAXAPf/AAAFAAcAAAAXAPb/AAAFAAcAAAAXAPL/AAAFAAcAAAAXAPP/AAAFAAcAAAAXAPT/AAAFAAcAAAAXAPX/AAAFAAcAAAD8/+7/AAARAAkAAAD8/+//AAARAAkAAAD9/+//AAARAAkAAAD+/+//AAARAAkAAAD//+//AAARAAkAAAAAAO//AAARAAkAAAABAO//AAARAAkAAAACAO//AAARAAkAAAADAPD/AAARAAkAAAAEAPD/AAARAAkAAAAFAPD/AAARAAkAAAAGAPD/AAARAAkAAAAHAPD/AAARAAkAAAAIAPD/AAARAAkAAAAJAPD/AAARAAkAAAAKAPD/AAARAAkAAAALAPD/AAARAAkAAAAMAPD/AAARAAkAAAANAPD/AAARAAkAAAAOAPD/AAARAAkAAAAPAPD/AAARAAkAAAAQAPD/AAARAAkAAAARAPD/AAARAAkAAAASAPD/AAARAAkAAAATAPD/AAARAAkAAAD8//D/AAARAAkAAAD8//H/AAARAAkAAAD9/+7/AAARAAkAAAD9//D/AAARAAkAAAD9//H/AAARAAkAAAD+/+7/AAARAAkAAAD+//D/AAARAAkAAAD+//H/AAARAAkAAAD//+7/AAARAAkAAAD///D/AAARAAkAAAD///H/AAARAAkAAAAAAO7/AAARAAkAAAAAAPD/AAARAAkAAAAAAPH/AAARAAkAAAABAO7/AAARAAkAAAABAPD/AAARAAkAAAABAPH/AAARAAkAAAACAO7/AAARAAkAAAACAPD/AAARAAkAAAACAPH/AAARAAkAAAADAO7/AAARAAkAAAADAO//AAARAAkAAAADAPH/AAARAAkAAAAEAO7/AAARAAkAAAAEAO//AAARAAkAAAAEAPH/AAARAAkAAAAFAO7/AAARAAkAAAAFAO//AAARAAkAAAAFAPH/AAARAAkAAAAGAO7/AAARAAkAAAAGAO//AAARAAkAAAAGAPH/AAARAAkAAAAHAO7/AAARAAkAAAAHAO//AAARAAkAAAAHAPH/AAARAAkAAAAIAO7/AAARAAkAAAAIAO//AAARAAkAAAAIAPH/AAARAAkAAAAJAO7/AAARAAkAAAAJAO//AAARAAkAAAAJAPH/AAARAAkAAAAKAO7/AAARAAkAAAAKAO//AAARAAkAAAAKAPH/AAARAAkAAAALAO7/AAARAAkAAAALAO//AAARAAkAAAALAPH/AAARAAkAAAAMAO7/AAARAAkAAAAMAO//AAARAAkAAAAMAPH/AAARAAkAAAANAO7/AAARAAkAAAANAO//AAARAAkAAAANAPH/AAARAAkAAAAOAO7/AAARAAkAAAAOAO//AAARAAkAAAAOAPH/AAARAAkAAAAPAO7/AAARAAkAAAAPAO//AAARAAkAAAAPAPH/AAARAAkAAAAQAO7/AAARAAkAAAAQAO//AAARAAkAAAAQAPH/AAARAAkAAAARAO7/AAARAAkAAAARAO//AAARAAkAAAARAPH/AAARAAkAAAASAO7/AAARAAkAAAASAO//AAARAAkAAAASAPH/AAARAAkAAAATAO7/AAARAAkAAAATAO//AAARAAkAAAATAPH/AAARAAkAAAAUAO7/AAARAAkAAAAUAO//AAARAAkAAAAUAPD/AAARAAkAAAAUAPH/AAARAAkAAAAVAO7/AAARAAkAAAAVAO//AAARAAkAAAAVAPD/AAARAAkAAAAVAPH/AAARAAkAAAAWAO7/AAARAAkAAAAWAO//AAARAAkAAAAWAPD/AAARAAkAAAAWAPH/AAARAAkAAAAXAO7/AAARAAkAAAAXAO//AAARAAkAAAAXAPD/AAARAAkAAAAXAPH/AAARAAkAAAAYAO7/AAARAAkAAAAYAO//AAARAAkAAAAYAPD/AAARAAkAAAAYAPH/AAARAAkAAAAYAPL/AAARAAkAAAAYAPP/AAARAAkAAAAYAPT/AAARAAkAAAAYAPX/AAARAAkAAAAYAPb/AAARAAkAAAAYAPf/AAARAAkAAAAYAPj/AAARAAkAAAAYAPn/AAARAAkAAAAYAPr/AAARAAkAAAAYAPv/AAARAAkAAAAYAPz/AAARAAkAAAAYAP3/AAARAAkAAAAYAP7/AAARAAkAAAAYAP//AAARAAkAAAAYAAAAAAARAAkAAAAYAAEAAAARAAkAAAAYAAIAAAARAAkAAAAYAAMAAAARAAkAAAAYAAQAAAARAAkAAAAZAO7/AAARAAkAAAAZAO//AAARAAkAAAAZAPD/AAARAAkAAAAZAPH/AAARAAkAAAAZAPL/AAARAAkAAAAZAPP/AAARAAkAAAAZAPT/AAARAAkAAAAZAPX/AAARAAkAAAAZAPb/AAARAAkAAAAZAPf/AAARAAkAAAAZAPj/AAARAAkAAAAZAPn/AAARAAkAAAAZAPr/AAARAAkAAAAZAPv/AAARAAkAAAAZAPz/AAARAAkAAAAZAP3/AAARAAkAAAAZAP7/AAARAAkAAAAZAP//AAARAAkAAAAZAAAAAAARAAkAAAAZAAEAAAARAAkAAAAZAAIAAAARAAkAAAAZAAMAAAARAAkAAAAZAAQAAAARAAkAAAA=")
+tile_set = SubResource("TileSet_qf6rc")
+
+[node name="skycastle2" type="Sprite2D" parent="." unique_id=738635025]
+position = Vector2(24, -184)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_irpto")
+script = ExtResource("3_lb31r")
+parallax = 0.0
+smoothing = 3.0
+float_amplitude = 3.0
+float_period = 9.0
+float_phase = 0.25
+
+[node name="Intro_Guide" type="Area2D" parent="." unique_id=1738852016]
+position = Vector2(-7, -225)
+script = ExtResource("4_lb31r")
+allowed_character_id = &"researcher"
+
+[node name="IntroBackground" type="Sprite2D" parent="Intro_Guide" unique_id=493555507]
+position = Vector2(180.5, 122.140015)
+scale = Vector2(0.63005334, 0.72210944)
+texture = ExtResource("14_y233x")
+
+[node name="skycastle" type="Sprite2D" parent="Intro_Guide" unique_id=174317780]
+position = Vector2(317, 41)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_e4jnh")
+script = ExtResource("3_lb31r")
+parallax = 0.0
+smoothing = 1.0
+float_amplitude = 3.0
+float_period = 9.0
+
+[node name="TileMap_Front(skycastle)2" type="TileMapLayer" parent="Intro_Guide" unique_id=2066632465]
+position = Vector2(7, 225)
+tile_map_data = PackedByteArray("AAARAPr/BAAKAAEAAAASAPr/BAALAAEAAAATAPr/BAALAAEAAAAUAPr/BAALAAEAAAAJAPj/BAAJAAIAACAJAPf/BAAJAAIAACAKAPb/BAAJAAIAACAVAPr/BAAMAAEAAAAOAP3/BQAbAAMAAAAPAPz/BQAYAAIAAAAQAPv/BQAbAAMAAAAPAP3/BQAYAAMAAAAQAPz/BQAZAAIAAAARAPz/BQAaAAIAAAARAP3/BQAaAAMAAAA=")
+tile_set = ExtResource("5_2rdev")
+
+[node name="skycastle3" type="Sprite2D" parent="Intro_Guide" unique_id=1735677225]
+position = Vector2(160, 101)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_e4jnh")
+script = ExtResource("3_lb31r")
+parallax = 0.0
+smoothing = 2.0
+float_amplitude = 3.0
+float_period = 9.0
+float_phase = 0.5
+
+[node name="TileMap_Front(skycastle3)" type="TileMapLayer" parent="Intro_Guide" unique_id=566749601 groups=["Ladders"]]
+position = Vector2(7, 225)
+tile_map_data = PackedByteArray("AAAJAPv/BAAJAAIAACAJAPn/BAAJAAIAACAJAPj/BAAJAAIAACAJAPf/BAAJAAIAACAJAPb/BAAJAAIAACAIAPX/BAAJAAIAACAJAPX/BAAJAAIAACAKAPX/BAAJAAIAACALAPX/BAAJAAIAACAHAPX/BAAJAAIAACAGAPX/BAAJAAIAACAMAPX/BAAJAAIAACAKAPb/BAAJAAIAACAIAPb/BAAJAAIAACAJAPr/BAAJAAIAACAJAPz/BAAJAAIAACA=")
+tile_set = ExtResource("5_2rdev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Intro_Guide" unique_id=531491422]
+position = Vector2(67, 134)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="IntroGuide" type="Sprite2D" parent="Intro_Guide" unique_id=896932848]
+texture_filter = 1
+position = Vector2(77.00001, 80)
+scale = Vector2(0.22516558, 0.22516556)
+texture = ExtResource("8_vfvy1")
+
+[node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("7_4thwd")]
+position = Vector2(299, -92)
+scene_to_load = ExtResource("23_lb31r")
+character_id = &"bird"
+
+[node name="Bobber" type="Node2D" parent="BirdEndFlag" unique_id=1111000001]
+script = ExtResource("3_lb31r")
+parallax = 0.0
+smoothing = 1.0
+float_amplitude = 3.0
+float_period = 9.0
+target_path = NodePath("..")
+
+[node name="ResearcherEndFlag" parent="." unique_id=1338500572 instance=ExtResource("7_4thwd")]
+position = Vector2(299, -92)
+scene_to_load = ExtResource("23_lb31r")
+character_id = &"researcher"
+
+[node name="PlannerEndFlag" parent="." unique_id=1633663566 instance=ExtResource("7_4thwd")]
+position = Vector2(299, -92)
+scene_to_load = ExtResource("23_lb31r")
+character_id = &"planner"
+
+[node name="Enemy" type="Node" parent="." unique_id=563492252]
+
+[node name="Enemy" parent="Enemy" unique_id=17306696 instance=ExtResource("9_hfdvb")]
+position = Vector2(153, -181)
+script = ExtResource("10_1r13y")
+max_health = -9223372036854775808
+hover_intensity = 0.2
+hover_tilt = 0.0
+
+[node name="notice" type="Sprite2D" parent="." unique_id=1134923306]
+position = Vector2(155, -200.00002)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("10_j82sc")
+
+[node name="notice2" type="Sprite2D" parent="." unique_id=16263750]
+position = Vector2(309, -120.00001)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("11_irpto")
+script = ExtResource("3_lb31r")
+parallax = 0.0
+smoothing = 1.0
+float_amplitude = 3.0
+float_period = 9.0
+
+[node name="long_drone1" parent="." unique_id=2108181768 instance=ExtResource("17_a5v6y")]
+position = Vector2(68, -27)
+player = NodePath("../../Player")
+
+[node name="long_drone2" parent="." unique_id=306784286 instance=ExtResource("17_a5v6y")]
+position = Vector2(300, -27)
+player = NodePath("../../Player")
+
+[node name="researcher_notice4" type="Area2D" parent="." unique_id=1759145489]
+script = ExtResource("23_notice4")
+
+[node name="notice" type="Sprite2D" parent="researcher_notice4" unique_id=153521432]
+visible = false
+position = Vector2(155, -142)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("17_7qh3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="researcher_notice4" unique_id=2075398763]
+position = Vector2(154, -40)
+shape = SubResource("RectangleShape2D_j82sc")
+
+[node name="drone1" parent="." unique_id=962928492 instance=ExtResource("17_j82sc")]
+position = Vector2(59, -63)
+player = NodePath("../../Player")
+player_foot_offset = 0.0
+drop_duration = 0.0
+movement_direction = 0
+movement_speed = 0.0
+
+[node name="jump" type="AnimatableBody2D" parent="." unique_id=328963565]
+script = ExtResource("18_j82sc")
+player = NodePath("../../Player")
+
+[node name="middle3" type="CollisionShape2D" parent="jump" unique_id=1042941677]
+position = Vector2(121, -162)
+shape = SubResource("RectangleShape2D_a5v6y")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="middle4" type="CollisionShape2D" parent="jump" unique_id=1794732129]
+position = Vector2(183, -162)
+shape = SubResource("RectangleShape2D_a5v6y")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small3" type="CollisionShape2D" parent="jump" unique_id=1684490173]
+position = Vector2(152, -98)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small4" type="CollisionShape2D" parent="jump" unique_id=1998288079]
+position = Vector2(152, -114)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small2" type="CollisionShape2D" parent="jump" unique_id=1987305820]
+position = Vector2(152, -82)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="middle" type="CollisionShape2D" parent="jump" unique_id=887751699]
+position = Vector2(152, -146)
+shape = SubResource("RectangleShape2D_a5v6y")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small5" type="CollisionShape2D" parent="jump" unique_id=1894290070]
+position = Vector2(152, -130)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="middle2" type="CollisionShape2D" parent="jump" unique_id=1765369835]
+position = Vector2(264, -62)
+shape = SubResource("RectangleShape2D_a5v6y")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small7" type="CollisionShape2D" parent="jump" unique_id=227138466]
+position = Vector2(152, -162)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small" type="CollisionShape2D" parent="jump" unique_id=1981206956]
+position = Vector2(152, -66)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small6" type="CollisionShape2D" parent="jump" unique_id=916201132]
+position = Vector2(152, -50)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="middle5" type="CollisionShape2D" parent="jump" unique_id=1140762049]
+position = Vector2(296, -82)
+shape = SubResource("RectangleShape2D_a5v6y")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small8" type="CollisionShape2D" parent="jump" unique_id=768513940]
+position = Vector2(327, -82)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small9" type="CollisionShape2D" parent="jump" unique_id=1441019369]
+position = Vector2(342, -82)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small10" type="CollisionShape2D" parent="jump" unique_id=1012766083]
+position = Vector2(264, -78)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="small11" type="CollisionShape2D" parent="jump" unique_id=2122741953]
+position = Vector2(232, -46)
+shape = SubResource("RectangleShape2D_rsd1q")
+debug_color = Color(0.88235295, 0, 0.81960785, 0.41960785)
+
+[node name="researcher_notice1" type="Area2D" parent="." unique_id=688898533]
+script = ExtResource("23_notice4")
+allowed_character_id = &"researcher"
+
+[node name="notice" type="Sprite2D" parent="researcher_notice1" unique_id=262340681]
+position = Vector2(155, -236)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("20_f8wta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="researcher_notice1" unique_id=532521867]
+position = Vector2(155, -177.5)
+shape = SubResource("RectangleShape2D_j82sc")
+
+[node name="researcher_notice2" type="Area2D" parent="." unique_id=840266667]
+script = ExtResource("23_notice4")
+allowed_character_id = &"researcher"
+
+[node name="notice" type="Sprite2D" parent="researcher_notice2" unique_id=739650526]
+position = Vector2(248, -113)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("21_j020x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="researcher_notice2" unique_id=1634557095]
+position = Vector2(247, -85)
+shape = SubResource("RectangleShape2D_j82sc")
+
+[node name="BirdSpawner" parent="." unique_id=615598418 instance=ExtResource("24_spawner")]
+position = Vector2(59, -79)
+character_id = &"bird"
+
+[node name="ResearcherSpawner" parent="." unique_id=2045821575 instance=ExtResource("24_spawner")]
+position = Vector2(59, -79)
+character_id = &"researcher"
+
+[node name="PlannerSpawner" parent="." unique_id=244609488 instance=ExtResource("24_spawner")]
+position = Vector2(58, -79)
+character_id = &"planner"
+fallback_scene = ExtResource("23_lb31r")
+
+[node name="Camera2D_Level3" type="Camera2D" parent="." unique_id=2105160526]
+position = Vector2(57, -84)
+zoom = Vector2(0.9, 0.9)
+limit_left = -1
+limit_top = -288
+limit_right = 334
+limit_bottom = -17
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+editor_draw_limits = true
+script = ExtResource("22_4srgj")
+
+[connection signal="body_entered" from="Intro_Guide" to="Intro_Guide" method="_on_body_entered"]
+[connection signal="body_exited" from="Intro_Guide" to="Intro_Guide" method="_on_body_exited"]
+[connection signal="body_entered" from="Enemy/Enemy" to="Enemy/Enemy" method="_on_body_entered"]

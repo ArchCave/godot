@@ -1,10 +1,23 @@
 extends CharacterBody2D
-const PoopCoin = preload("res://Scenes/poop_coin.tscn")
-const PlayerBullet = preload("res://Scenes/player_bullet.tscn")
+
+## Player 본체. 모든 플레이어블 캐릭터(걸음새 새/Researcher/Planner)가 이 스크립트를 공유한다.
+##
+## _ready() 시점에 PlayerStats.get_selected() (CharacterData)를 읽어
+##   - Sprite2D 텍스처/프레임 레이아웃
+##   - AnimationPlayer 라이브러리
+##   - 이동/점프/체력/사다리 등 스탯
+##   - 공격/스킬 씬
+## 을 자기 자신에 적용하기 때문에 레벨 파일을 수정할 필요가 없다.
+## 새 캐릭터는 .tres 추가 → PlayerStats.characters에 등록 한 줄이면 끝.
+
 signal OnUpdateHealth(health: int)
 signal OnUpdateScore(score: int)
 signal OnPoopSpawned
 signal OnAttackFired
+
+## 이 노드가 어떤 캐릭터인지 식별하기 위한 fallback id.
+## 일반적으로 PlayerStats.get_selected().id 가 우선되며, 그게 비었을 때만 사용.
+@export var character_id : StringName = &"bird"
 
 @export var move_speed : float = 25
 @export var air_speed_multiplier : float = 1.6  # 점프 중 수평 가속 배수
@@ -18,6 +31,15 @@ signal OnAttackFired
 @export var climb_speed : float = 40.0
 # 사다리가 그려진 TileMapLayer. is_ladder=true 인 타일을 검사함. 비워두면 사다리 비활성.
 @export var ladder_tilemap : TileMapLayer
+
+# ── 캐릭터별 스킬/공격 씬 (CharacterData가 _ready에서 주입; 인스펙터 값은 폴백) ──
+## 새 캐릭터는 자신의 .tres에 attack_scene/skill_scene을 지정하면
+## 별도 코드 수정 없이 곧바로 공격/스킬을 갖게 됨. null이면 비활성.
+@export var attack_scene : PackedScene = preload("res://Scenes/player_bullet.tscn")
+@export var skill_scene  : PackedScene = preload("res://Scenes/poop_coin.tscn")
+
+## 현재 활성화된 캐릭터 데이터. UI/적/외부 시스템이 캐릭터 식별이 필요할 때 참조.
+var character_data : CharacterData = null
 
 var base_jump_force : float
 var move_input : float
@@ -33,25 +55,79 @@ var is_climbing : bool = false
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready():
+	# CharacterData(.tres) → 자기 자신에 적용 (sprite/anim/스탯/skill)
+	_apply_character_data()
 	base_jump_force = jump_force
+	# Ensure enemies (Researcher.gd, etc.) can always find the player regardless
+	# of how this scene was instantiated.
+	if not is_in_group("Player"):
+		add_to_group("Player")
+	# 레벨 씬이 ladder_tilemap을 직접 설정하지 않은 경우, "Ladders" 그룹에서 자동 탐색.
+	# PlayerSpawner를 통해 인스턴스화될 때 NodePath 참조를 일일이 매기지 않아도 되게 함.
+	if ladder_tilemap == null:
+		var found := get_tree().get_first_node_in_group("Ladders")
+		if found is TileMapLayer:
+			ladder_tilemap = found
 	anim.play("Idle")
 	_update_jump_force()
 
+# ── CharacterData 적용 ─────────────────────────────────────────────────
+## PlayerStats.get_selected()를 읽어 비주얼/스탯/스킬을 자기 자신에 적용.
+## 데이터가 없거나 비어있는 필드는 인스펙터 기본값(= 걸음새 새)을 그대로 유지.
+func _apply_character_data() -> void:
+	if not is_instance_valid(PlayerStats):
+		return
+	character_data = PlayerStats.get_selected()
+	if character_data == null:
+		return
+
+	# fallback character_id
+	character_id = character_data.id
+
+	# ── 비주얼: 스프라이트 시트 ──
+	if character_data.sprite_texture != null:
+		sprite.texture = character_data.sprite_texture
+		sprite.hframes = max(character_data.sprite_hframes, 1)
+		sprite.vframes = max(character_data.sprite_vframes, 1)
+	sprite.offset = character_data.sprite_offset
+
+	# ── 비주얼: 애니메이션 라이브러리 (기본 "" 라이브러리를 통째로 교체) ──
+	if character_data.animation_library != null:
+		if anim.has_animation_library(""):
+			anim.remove_animation_library("")
+		anim.add_animation_library("", character_data.animation_library)
+
+	# ── 스탯 ──
+	move_speed = character_data.move_speed
+	air_speed_multiplier = character_data.air_speed_multiplier
+	jump_force = character_data.jump_force
+	health = character_data.max_health
+	climb_speed = character_data.climb_speed
+
+	# ── 스킬/공격 (CharacterData가 명시한 값으로 덮어쓰기; null은 비활성) ──
+	attack_scene = character_data.attack_scene
+	skill_scene = character_data.skill_scene
+
 func _shoot() -> void:
-	var bullet = PlayerBullet.instantiate()
-	bullet.direction = -1.0 if sprite.flip_h else 1.0
+	if attack_scene == null:
+		return  # 이 캐릭터는 공격 스킬이 없음
+	var bullet = attack_scene.instantiate()
+	if "direction" in bullet:
+		bullet.direction = -1.0 if sprite.flip_h else 1.0
 	bullet.position = self.position
 	get_parent().add_child(bullet)
 	OnAttackFired.emit()
 
 func _spawn_poop() -> void:
-	var poop = PoopCoin.instantiate()
+	if skill_scene == null:
+		return  # 이 캐릭터는 스킬이 없음
+	var skill = skill_scene.instantiate()
 	if ray.is_colliding():
 		var ground_y = ray.get_collision_point().y
-		poop.position = Vector2(self.position.x, ground_y)
+		skill.position = Vector2(self.position.x, ground_y)
 	else:
-		poop.position = self.position
-	get_parent().add_child(poop)
+		skill.position = self.position
+	get_parent().add_child(skill)
 	OnPoopSpawned.emit()
 
 func _physics_process(delta):
@@ -134,6 +210,15 @@ func _is_on_ladder() -> bool:
 	return data != null and data.get_custom_data("is_ladder")
 
 func update_animation():
+	# 사다리 위에서는 Ladder 애니메이션. 위/아래 입력 없으면 같은 프레임에서 정지.
+	# Ladder 애니메이션이 라이브러리에 없는 캐릭터는 폴백으로 기존 분기 사용.
+	if is_climbing and anim.has_animation("Ladder"):
+		play_anim("Ladder")
+		var v_input := Input.get_axis("ui_up", "ui_down")
+		anim.speed_scale = 1.0 if v_input != 0.0 else 0.0
+		return
+
+	anim.speed_scale = 1.0
 	if not is_on_floor():
 		play_anim("Jump")
 	elif move_input != 0:
@@ -144,6 +229,16 @@ func update_animation():
 func play_anim(anim_name: String):
 	if anim.current_animation != anim_name:
 		anim.play(anim_name)
+	_apply_anim_offset(anim_name)
+
+func _apply_anim_offset(anim_name: String) -> void:
+	if character_data == null:
+		return
+	var delta : Vector2 = Vector2.ZERO
+	match anim_name:
+		"Idle": delta = character_data.idle_offset_delta
+		"Walk": delta = character_data.walk_offset_delta
+	sprite.offset = character_data.sprite_offset + delta
 
 func take_damage(amount: int):
 	if is_invincible:

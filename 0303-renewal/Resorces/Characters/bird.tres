@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://c5n8m2x4r6raw"]
+
+[ext_resource type="Script" uid="uid://cramnu7nfyy1d" path="res://Scripts/character_data.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bhsasnh4y0ecn" path="res://Sprite/New Piskel.png" id="2_sprite"]
+[ext_resource type="PackedScene" uid="uid://dsuxibukibbis" path="res://Scenes/player_bullet.tscn" id="3_attack"]
+[ext_resource type="PackedScene" uid="uid://clwq1stxa6m3u" path="res://Scenes/poop_coin.tscn" id="4_skill"]
+
+[resource]
+script = ExtResource("1_script")
+sprite_texture = ExtResource("2_sprite")
+sprite_hframes = 3
+sprite_vframes = 3
+preview_texture = ExtResource("2_sprite")
+preview_hframes = 3
+preview_vframes = 3
+preview_frame = 1
+preview_scale = Vector2(3.3, 3.3)
+attack_scene = ExtResource("3_attack")
+skill_scene = ExtResource("4_skill")

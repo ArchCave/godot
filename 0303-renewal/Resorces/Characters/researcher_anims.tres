@@ -1,0 +1,121 @@
+[gd_resource type="AnimationLibrary" format=3 uid="uid://rr6ir1326rc7"]
+
+[ext_resource type="Texture2D" uid="uid://cvf321d4nr2yn" path="res://Sprite/researcher/idle/Layer 1_sprite_researcher1.png" id="1_idle1"]
+[ext_resource type="Texture2D" uid="uid://lca0u8tagw1f" path="res://Sprite/researcher/walk/Layer 1_walk_researcher1.png" id="2_walk1"]
+[ext_resource type="Texture2D" uid="uid://nl4h4w8i7o00" path="res://Sprite/researcher/walk/Layer 1_walk_researcher2.png" id="3_walk2"]
+[ext_resource type="Texture2D" uid="uid://ccgn2tledcocp" path="res://Sprite/researcher/jump/Layer 1_sprite_researcher2.png" id="4_jump1"]
+[ext_resource type="Texture2D" uid="uid://wa7mmkvcudaw" path="res://Sprite/researcher/walk/Layer 1_walk_researcher3.png" id="4_walk3"]
+[ext_resource type="Texture2D" uid="uid://b7vdmpla5buie" path="res://Sprite/researcher/death/Layer 1_sprite_researcher4.png" id="5_death1"]
+[ext_resource type="Texture2D" uid="uid://dn6qbluvhpfar" path="res://Sprite/researcher/death/Layer 1_sprite_researcher5.png" id="6_death2"]
+[ext_resource type="Texture2D" uid="uid://ds04vvy7j57v4" path="res://Sprite/researcher/death/Layer 1_sprite_researcher6.png" id="7_death3"]
+[ext_resource type="Texture2D" uid="uid://c1bw7dvybptxg" path="res://Sprite/researcher/ladder/Layer 1_sprite_researcher1.png" id="8_ladder1"]
+[ext_resource type="Texture2D" uid="uid://cx8j5csw32j06" path="res://Sprite/researcher/ladder/Layer 1_walk_researcher2.png" id="9_ladder2"]
+
+[sub_resource type="Animation" id="Animation_death"]
+resource_name = "Death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_death1"), ExtResource("6_death2"), ExtResource("7_death3")]
+}
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "Idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_idle1")]
+}
+
+[sub_resource type="Animation" id="Animation_jump"]
+resource_name = "Jump"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_jump1")]
+}
+
+[sub_resource type="Animation" id="Animation_ladder"]
+resource_name = "Ladder"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8_ladder1"), ExtResource("9_ladder2")]
+}
+
+[sub_resource type="Animation" id="Animation_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_idle1")]
+}
+
+[sub_resource type="Animation" id="Animation_walk"]
+resource_name = "Walk"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_walk1"), ExtResource("3_walk2"), ExtResource("4_walk3")]
+}
+
+[resource]
+_data = {
+&"Death": SubResource("Animation_death"),
+&"Idle": SubResource("Animation_idle"),
+&"Jump": SubResource("Animation_jump"),
+&"Ladder": SubResource("Animation_ladder"),
+&"RESET": SubResource("Animation_reset"),
+&"Walk": SubResource("Animation_walk")
+}

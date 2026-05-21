@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bleah1kbe7yrc" path="res://Sprite/story/sprite5-sheet0.png" id="4_joko1"]
 [ext_resource type="Texture2D" uid="uid://jewnxdtw37ji" path="res://Sprite/story/sprite8-sheet0.png" id="5_mu4a5"]
 [ext_resource type="Texture2D" uid="uid://cf8jwtiknpfeo" path="res://Sprite/story/sprite7-sheet0.png" id="6_7aupy"]
+[ext_resource type="Texture2D" uid="uid://bxt015oln3oqb" path="res://Sprite/researcher/sprite7-sheet0.png" id="7_vgr6e"]
+[ext_resource type="Texture2D" uid="uid://bb0xbjcwxfofd" path="res://Sprite/planner/sprite7-sheet0.png" id="8_w23gv"]
 
 [sub_resource type="Theme" id="Theme_btn"]
 default_font = ExtResource("2")
@@ -49,6 +51,20 @@ z_index = 2
 position = Vector2(162.866, 89)
 scale = Vector2(0.2401502, 0.24015018)
 texture = ExtResource("6_7aupy")
+
+[node name="story2" type="Sprite2D" parent="SlideContainer/MainIntro_01" unique_id=904573579]
+visible = false
+z_index = 2
+position = Vector2(162.866, 89)
+scale = Vector2(0.2401502, 0.24015018)
+texture = ExtResource("7_vgr6e")
+
+[node name="story3" type="Sprite2D" parent="SlideContainer/MainIntro_01" unique_id=1773750714]
+visible = false
+z_index = 2
+position = Vector2(162.866, 89)
+scale = Vector2(0.2401502, 0.24015018)
+texture = ExtResource("8_w23gv")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=209644811]
 layer = 10
