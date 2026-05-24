@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://db8d3kvchb06k"]
+
+[ext_resource type="Script" path="res://Scripts/plant_flower.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bvqgagn5jvto5" path="res://Sprite/planner/coins7-sheet0.png" id="2_tex"]
+
+[node name="PlantFlower" type="Node2D" unique_id=865241416]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=374510343]
+texture_filter = 1
+position = Vector2(-0.24999996, 0.38596538)
+scale = Vector2(0.75, 0.7719299)
+texture = ExtResource("2_tex")
+offset = Vector2(0, -10)

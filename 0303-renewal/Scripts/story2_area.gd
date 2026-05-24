@@ -73,15 +73,27 @@ func _start_sequence() -> void:
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	seq.tween_callback(_finish)
 
+func _get_camera() -> Camera2D:
+	# 카메라가 플레이어 자식(레거시)일 수도, 레벨 직속(분리형)일 수도 있어 둘 다 대응.
+	if player != null and player.has_node("Camera2D_Level2"):
+		return player.get_node("Camera2D_Level2")
+	if has_node("../Camera2D_Level2"):
+		return get_node("../Camera2D_Level2")
+	return get_viewport().get_camera_2d()
+
 func _pin_camera() -> Vector2:
-	var cam : Camera2D = player.get_node("Camera2D_Level2")
+	var cam : Camera2D = _get_camera()
+	if cam == null:
+		return player.global_position
 	var rendered : Vector2 = cam.get_screen_center_position()
 	cam.position_smoothing_enabled = false
 	cam.global_position = rendered
 	return rendered
 
 func _release_camera() -> void:
-	var cam : Camera2D = player.get_node("Camera2D_Level2")
+	var cam : Camera2D = _get_camera()
+	if cam == null:
+		return
 	cam.position = Vector2.ZERO
 	cam.position_smoothing_enabled = true
 

@@ -36,6 +36,12 @@ class_name CharacterData extends Resource
 ## Walk 애니메이션일 때만 sprite_offset에 추가로 더해지는 보정.
 @export var walk_offset_delta: Vector2 = Vector2.ZERO
 
+# ── UI 오프셋 ──────────────────────────────────────────────────────────
+@export_group("UI")
+## 코인 픽업 시 "energy gained!" 라벨이 캐릭터 머리 위 어디에 뜰지(local y).
+## bird 기준 -16 (1칸 위). 키가 큰 캐릭터(researcher/planner)는 더 작은 값(-48 등).
+@export var coin_message_offset_y : float = -16.0
+
 # ── 캐릭터 선택 화면 미리보기 ──────────────────────────────────────────
 @export_group("Select Screen Preview")
 @export var preview_texture: Texture2D

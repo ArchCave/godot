@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cramnu7nfyy1d" path="res://Scripts/character_data.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://cvf321d4nr2yn" path="res://Sprite/researcher/idle/Layer 1_sprite_researcher1.png" id="2_sprite"]
 [ext_resource type="AnimationLibrary" uid="uid://rr6ir1326rc7" path="res://Resorces/Characters/researcher_anims.tres" id="3_anims"]
+[ext_resource type="PackedScene" uid="uid://deyedvn1grknt" path="res://Scenes/letter_paper.tscn" id="4_skill"]
+[ext_resource type="PackedScene" uid="uid://cexdhkidj6msq" path="res://Scenes/explosion_bullet.tscn" id="5_attack"]
 
 [resource]
 script = ExtResource("1_script")
@@ -13,9 +15,12 @@ animation_library = ExtResource("3_anims")
 sprite_offset = Vector2(0, -8)
 idle_offset_delta = Vector2(0, 1)
 walk_offset_delta = Vector2(0, 1)
+coin_message_offset_y = -28.0
 preview_texture = ExtResource("2_sprite")
 move_speed = 50.0
 air_speed_multiplier = 1.5
 jump_force = 140.0
 max_health = 4
 climb_speed = 45.0
+attack_scene = ExtResource("5_attack")
+skill_scene = ExtResource("4_skill")

@@ -84,7 +84,10 @@ func _drop_coin() -> void:
 	var coin = PoopCoin.instantiate()
 	coin.position = global_position
 	coin.drop_ready = true
-	get_parent().add_child(coin)
+	# bullet hit 시그널 콜백(physics query flush 중)에서 호출되므로 add_child를
+	# 미뤄야 한다. 즉시 추가하면 coin._ready가 flush 도중 Area2D 충돌 상태를
+	# 바꾸려다 "Can't change this state while flushing queries" 오류 발생.
+	get_parent().call_deferred("add_child", coin)
 
 func _flash_hit() -> void:
 	sprite.modulate = Color(1, 0.3, 0.3)
@@ -96,6 +99,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
 	if not _is_enemy_to_selected():
+		return
+	if PlayerStats.is_selected_immune_in_current_level():
 		return
 	body.take_damage(1)
 

@@ -31,9 +31,26 @@ func _ready() -> void:
 	health = max_health
 	origin = position
 
+## 게임 디자인: planner가 level_6에 있을 때만 드론 택시가 정지한다 (탑승 컨셉).
+## 그 외 (다른 캐릭터 / 다른 레벨)는 정상 patrol.
+func _is_frozen_for_planner_in_level_6() -> bool:
+	if PlayerStats.selected_character_id != &"planner":
+		return false
+	var tree := get_tree()
+	if tree == null or tree.current_scene == null:
+		return false
+	return tree.current_scene.scene_file_path == "res://Scenes/level_6.tscn"
+
 func _process(delta: float) -> void:
-	if global_position.y > fall_death_y:
+	# fall_death_y <= 0 이면 "이 드론은 추락사 비활성화" 의미로 간주.
+	# (0으로 두면 132 같은 정상 위치도 즉시 queue_free 되어 안 보이는 사고가 남)
+	if fall_death_y > 0.0 and global_position.y > fall_death_y:
 		queue_free()
+		return
+
+	# planner가 level_6에 있을 땐 드론 택시 정지 (게임 디자인: planner가 탑승 중).
+	# patrol/hover 계산 건너뜀 → 그 자리에 멈춰 있음.
+	if _is_frozen_for_planner_in_level_6():
 		return
 
 	time_elapsed += delta
@@ -100,6 +117,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
 	if not _is_enemy_to_selected():
+		return
+	if PlayerStats.is_selected_immune_in_current_level():
 		return
 	body.take_damage(1)
 

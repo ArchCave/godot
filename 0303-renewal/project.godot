@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerStats="*uid://mufgccyx2ikn"
+PlayerStats="*res://Scripts/player_stats.gd"
 PauseMenu="*res://Scenes/pause_menu.tscn"
 
 [display]

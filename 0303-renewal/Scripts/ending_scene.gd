@@ -6,6 +6,11 @@ extends Control
 @export var fade_in_duration : float = 0.8
 @export var fade_out_duration : float = 0.6
 @export var next_scene : String = "res://Scenes/main_menu.tscn"
+## 캐릭터별 next_scene 오버라이드. 비어있으면 기본 next_scene 사용.
+## 예: middle_scene이 planner일 땐 level_5로, 다른 캐릭터일 땐 기본 main_menu로.
+@export_file("*.tscn") var bird_next_scene : String = ""
+@export_file("*.tscn") var researcher_next_scene : String = ""
+@export_file("*.tscn") var planner_next_scene : String = ""
 
 var seq : Tween
 
@@ -34,4 +39,11 @@ func _on_skip_pressed() -> void:
 	_go_to_menu()
 
 func _go_to_menu() -> void:
-	get_tree().change_scene_to_file(next_scene)
+	# 캐릭터별 오버라이드가 설정돼 있으면 그걸 우선.
+	var override : String = ""
+	match PlayerStats.selected_character_id:
+		&"bird": override = bird_next_scene
+		&"researcher": override = researcher_next_scene
+		&"planner": override = planner_next_scene
+	var target : String = override if override != "" else next_scene
+	get_tree().change_scene_to_file(target)

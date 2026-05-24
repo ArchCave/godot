@@ -2,30 +2,42 @@
 
 [ext_resource type="TileSet" uid="uid://buiwdgj4ufhyj" path="res://Resorces/Background.tres" id="1_6ioyp"]
 [ext_resource type="TileSet" uid="uid://bqdy8cx3k8fcj" path="res://Resorces/TileSet.tres" id="2_7p6j4"]
-[ext_resource type="PackedScene" uid="uid://d4bvd3be3npgw" path="res://Scenes/Player.tscn" id="3_6444e"]
 [ext_resource type="PackedScene" uid="uid://cyk3jop4wueu4" path="res://Scenes/Dialogue_area_2d.tscn" id="3_evi0p"]
-[ext_resource type="PackedScene" uid="uid://djj30xi5bbcyc" path="res://Scenes/intro_guide.tscn" id="3_lsmp6"]
-[ext_resource type="Script" uid="uid://bcbf682pm8hli" path="res://Scripts/player.gd" id="4_7p6j4"]
 [ext_resource type="Script" uid="uid://csnqd1xvbctb0" path="res://Scripts/Dialogue_area_2d.gd" id="4_evi0p"]
+[ext_resource type="Texture2D" uid="uid://bitugsl5je2pn" path="res://img/spriteletter2-sheet0.png" id="6_dlmop"]
 [ext_resource type="Script" uid="uid://c8t7rr30ww0pd" path="res://Scripts/bird_intro_talk.gd" id="6_wrinw"]
 [ext_resource type="Texture2D" uid="uid://ddldtftvymwyf" path="res://img/spriteletter4-sheet0.png" id="6_xrdnt"]
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="10_6ioyp"]
-[ext_resource type="PackedScene" uid="uid://5sk76gnawqit" path="res://Scenes/Enemy.tscn" id="11_6r07y"]
 [ext_resource type="Texture2D" uid="uid://d34gai2kcr5eb" path="res://img/sprite21-sheet0.png" id="11_uy8f0"]
-[ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="12_6ioyp"]
 [ext_resource type="PackedScene" uid="uid://clwq1stxa6m3u" path="res://Scenes/poop_coin.tscn" id="13_6r07y"]
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="15_oovug"]
-[ext_resource type="PackedScene" uid="uid://blld4lalwfnpe" path="res://Scenes/level_2.tscn" id="16_level2"]
+[ext_resource type="PackedScene" uid="uid://dqy1o2fe14dy3" path="res://Scenes/level_8.tscn" id="16_dlmop"]
+[ext_resource type="Script" uid="uid://xeyvtk6cwe3t" path="res://Scripts/Intro_Guide.gd" id="16_pjppf"]
 [ext_resource type="Script" uid="uid://cbgpllxlvl5a" path="res://Scripts/background_parallax.gd" id="17_bgpllx"]
+[ext_resource type="Texture2D" uid="uid://ci6t8f3q2noee" path="res://img/bg_pause-sheet0.png" id="17_yltlr"]
+[ext_resource type="Texture2D" uid="uid://ds32ob68vkxib" path="res://Sprite/planner/spriteletter11-sheet0.png" id="18_6ssoq"]
 [ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="18_spawner"]
+[ext_resource type="PackedScene" uid="uid://c8m4r2p7ran1k" path="res://Scenes/BirdEnemy.tscn" id="19_yltlr"]
+[ext_resource type="Texture2D" uid="uid://b0kna3j8gjm55" path="res://Sprite/planner/spriteletter5-sheet0.png" id="20_6ssoq"]
+[ext_resource type="Texture2D" uid="uid://b72ms53u5vnek" path="res://Sprite/planner/spriteletter4-sheet0.png" id="21_imks0"]
+[ext_resource type="Script" path="res://Scripts/bird_group_planner_only.gd" id="22_bgrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+size = Vector2(19, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sda17"]
 size = Vector2(84.5, 20)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gcla0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr6f4"]
 size = Vector2(544.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imks0"]
+size = Vector2(38.5, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlmop"]
+size = Vector2(98, 22.625)
 
 [node name="Main" type="Node2D" unique_id=2010999596]
 metadata/_edit_vertical_guides_ = [0.0]
@@ -41,7 +53,24 @@ tile_set = ExtResource("2_7p6j4")
 script = ExtResource("17_bgpllx")
 parallax = 0.05
 
-[node name="Intro_Guide" parent="." unique_id=1738852016 instance=ExtResource("3_lsmp6")]
+[node name="Intro_Guide" type="Area2D" parent="." unique_id=1738852016]
+script = ExtResource("16_pjppf")
+allowed_character_id = &"bird"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Intro_Guide" unique_id=531491422]
+position = Vector2(26.5, 158)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="IntroBackground" type="Sprite2D" parent="Intro_Guide" unique_id=493555507]
+position = Vector2(180.5, 60.5)
+scale = Vector2(0.63005334, 0.48132813)
+texture = ExtResource("17_yltlr")
+
+[node name="IntroGuide" type="Sprite2D" parent="Intro_Guide" unique_id=896932848]
+texture_filter = 1
+position = Vector2(168, 53.999996)
+scale = Vector2(0.22516558, 0.22516556)
+texture = ExtResource("6_dlmop")
 
 [node name="TileSet1_backimg" type="TileMapLayer" parent="." unique_id=384842635]
 texture_filter = 1
@@ -60,28 +89,28 @@ script = ExtResource("4_evi0p")
 
 [node name="Bird_IntroTalk" type="Area2D" parent="." unique_id=1616908613]
 script = ExtResource("6_wrinw")
+allowed_character_id = &"bird"
 
 [node name="IntroTalk_area" type="CollisionShape2D" parent="Bird_IntroTalk" unique_id=420013115]
 position = Vector2(312.75, 165)
-shape = SubResource("RectangleShape2D_wrinw")
+shape = SubResource("RectangleShape2D_sda17")
 
 [node name="IntroTalk_bubble" type="Sprite2D" parent="Bird_IntroTalk" unique_id=1381304265]
-visible = false
 texture_filter = 1
-position = Vector2(278, 141)
+position = Vector2(278, 136.00002)
 scale = Vector2(0.16560511, 0.1656051)
 texture = ExtResource("6_xrdnt")
 
-[node name="BirdSpawner" parent="." instance=ExtResource("18_spawner")]
+[node name="BirdSpawner" parent="." unique_id=206640771 instance=ExtResource("18_spawner")]
 position = Vector2(26, 161)
 character_id = &"bird"
 
-[node name="ResearcherSpawner" parent="." instance=ExtResource("18_spawner")]
+[node name="ResearcherSpawner" parent="." unique_id=923750904 instance=ExtResource("18_spawner")]
 position = Vector2(56, 61)
 character_id = &"researcher"
 
-[node name="PlannerSpawner" parent="." instance=ExtResource("18_spawner")]
-position = Vector2(86, 61)
+[node name="PlannerSpawner" parent="." unique_id=639725640 instance=ExtResource("18_spawner")]
+position = Vector2(28, 162)
 character_id = &"planner"
 
 [node name="Camera2D_Level1" type="Camera2D" parent="." unique_id=1972069792]
@@ -102,26 +131,23 @@ position = Vector2(486, 164)
 scale = Vector2(0.166, 0.166)
 texture = ExtResource("11_uy8f0")
 
-[node name="Enemy" parent="." unique_id=17306696 instance=ExtResource("11_6r07y")]
-position = Vector2(71, 94)
-script = ExtResource("12_6ioyp")
-
 [node name="PoopCoin" parent="." unique_id=1664107663 instance=ExtResource("13_6r07y")]
 position = Vector2(-82, 0)
 
 [node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("15_oovug")]
 position = Vector2(449, 168)
-scene_to_load = ExtResource("16_level2")
+scene_to_load_path = "res://Scenes/level_2.tscn"
 character_id = &"bird"
 
-[node name="ResearcherEndFlag" parent="." instance=ExtResource("15_oovug")]
+[node name="ResearcherEndFlag" parent="." unique_id=1595735720 instance=ExtResource("15_oovug")]
 position = Vector2(449, 168)
-scene_to_load = ExtResource("16_level2")
+scene_to_load_path = "res://Scenes/level_2.tscn"
 character_id = &"researcher"
 
-[node name="PlannerEndFlag" parent="." instance=ExtResource("15_oovug")]
+[node name="PlannerEndFlag" parent="." unique_id=1286925031 instance=ExtResource("15_oovug")]
 position = Vector2(449, 168)
-scene_to_load = ExtResource("16_level2")
+scene_to_load = ExtResource("16_dlmop")
+scene_to_load_path = "res://Scenes/level_2.tscn"
 character_id = &"planner"
 
 [node name="Floor3" type="StaticBody2D" parent="." unique_id=737695796]
@@ -147,8 +173,109 @@ position = Vector2(403.63635, 138.1818)
 shape = SubResource("RectangleShape2D_vr6f4")
 debug_color = Color(0.67058825, 1, 0, 0.41960785)
 
+[node name="Intro_Guide(planner)" type="Area2D" parent="." unique_id=282597205]
+z_index = 1
+position = Vector2(-80, -75)
+script = ExtResource("16_pjppf")
+allowed_character_id = &"planner"
+
+[node name="IntroBackground" type="Sprite2D" parent="Intro_Guide(planner)" unique_id=426040057]
+position = Vector2(365, 158)
+scale = Vector2(0.8307292, 0.453125)
+texture = ExtResource("17_yltlr")
+
+[node name="IntroGuide" type="Sprite2D" parent="Intro_Guide(planner)" unique_id=1902637148]
+texture_filter = 1
+position = Vector2(150, 169)
+scale = Vector2(0.22516558, 0.22516556)
+texture = ExtResource("18_6ssoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Intro_Guide(planner)" unique_id=709173968]
+position = Vector2(107, 220)
+shape = SubResource("RectangleShape2D_imks0")
+
+[node name="Intro_Guide5" type="Area2D" parent="." unique_id=652610282]
+z_index = 1
+position = Vector2(130, -276)
+script = ExtResource("16_pjppf")
+allowed_character_id = &"planner"
+follow_player_x = true
+
+[node name="IntroGuide" type="Sprite2D" parent="Intro_Guide5" unique_id=1992356232]
+z_index = 2
+position = Vector2(33, 405.00003)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("20_6ssoq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Intro_Guide5" unique_id=1973641293]
+position = Vector2(81, 439.6875)
+shape = SubResource("RectangleShape2D_dlmop")
+
+[node name="Intro_Guide6" type="Area2D" parent="." unique_id=1685272261]
+z_index = 1
+position = Vector2(309, -276)
+script = ExtResource("16_pjppf")
+allowed_character_id = &"planner"
+follow_player_x = true
+
+[node name="IntroGuide" type="Sprite2D" parent="Intro_Guide6" unique_id=1451049924]
+z_index = 2
+position = Vector2(33, 401.00003)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("21_imks0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Intro_Guide6" unique_id=2079693278]
+position = Vector2(81, 439.6875)
+shape = SubResource("RectangleShape2D_dlmop")
+
+[node name="Bird(Planner)" type="Node" parent="." unique_id=683973348]
+script = ExtResource("22_bgrp")
+
+[node name="BirdEnemy" parent="Bird(Planner)" unique_id=1704788381 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(162, 164)
+
+[node name="BirdEnemy2" parent="Bird(Planner)" unique_id=1074696097 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(189, 163)
+
+[node name="BirdEnemy3" parent="Bird(Planner)" unique_id=1796329782 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(375, 157)
+
+[node name="BirdEnemy4" parent="Bird(Planner)" unique_id=1423868857 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(83, 164)
+
+[node name="BirdEnemy5" parent="Bird(Planner)" unique_id=1104351907 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(238, 160)
+
+[node name="BirdEnemy6" parent="Bird(Planner)" unique_id=1045021518 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(268, 164)
+
+[node name="BirdEnemy7" parent="Bird(Planner)" unique_id=1002348225 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(305, 158)
+
+[node name="BirdEnemy8" parent="Bird(Planner)" unique_id=1908724346 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(341, 158)
+
+[node name="BirdEnemy9" parent="Bird(Planner)" unique_id=1931305946 instance=ExtResource("19_yltlr")]
+z_index = 1
+position = Vector2(411, 165)
+
+[connection signal="body_entered" from="Intro_Guide" to="Intro_Guide" method="_on_body_entered"]
+[connection signal="body_exited" from="Intro_Guide" to="Intro_Guide" method="_on_body_exited"]
 [connection signal="body_entered" from="Dialogue_area_2d" to="Dialogue_area_2d" method="_on_body_entered"]
 [connection signal="body_exited" from="Dialogue_area_2d" to="Dialogue_area_2d" method="_on_body_exited"]
 [connection signal="body_entered" from="Bird_IntroTalk" to="Bird_IntroTalk" method="_on_body_entered"]
 [connection signal="body_exited" from="Bird_IntroTalk" to="Bird_IntroTalk" method="_on_body_exited"]
-[connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]
+[connection signal="body_entered" from="Intro_Guide(planner)" to="Intro_Guide(planner)" method="_on_body_entered"]
+[connection signal="body_exited" from="Intro_Guide(planner)" to="Intro_Guide(planner)" method="_on_body_exited"]
+[connection signal="body_entered" from="Intro_Guide5" to="Intro_Guide5" method="_on_body_entered"]
+[connection signal="body_exited" from="Intro_Guide5" to="Intro_Guide5" method="_on_body_exited"]
+[connection signal="body_entered" from="Intro_Guide6" to="Intro_Guide6" method="_on_body_entered"]
+[connection signal="body_exited" from="Intro_Guide6" to="Intro_Guide6" method="_on_body_exited"]

@@ -61,7 +61,12 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	if target == null or not is_instance_valid(target):
+	# 면역 레벨에서 선택된 캐릭터는 적이 아님 — 타겟 자체를 잡지 않고 PATROL 유지.
+	if PlayerStats.is_selected_immune_in_current_level():
+		target = null
+		if state != State.PATROL and state != State.HURT:
+			_enter_state(State.PATROL)
+	elif target == null or not is_instance_valid(target):
 		var players = get_tree().get_nodes_in_group("Player")
 		if players.size() > 0:
 			target = players[0]
@@ -270,6 +275,8 @@ func on_player_contact(body: Node2D) -> void:
 	if state == State.HURT:
 		return
 	if not body.is_in_group("Player"):
+		return
+	if PlayerStats.is_selected_immune_in_current_level():
 		return
 	if body.has_method("take_damage"):
 		body.take_damage(attack_damage)

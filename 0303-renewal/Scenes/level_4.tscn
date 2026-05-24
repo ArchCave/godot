@@ -7,7 +7,6 @@
 [ext_resource type="TileSet" uid="uid://baskfekfh3e30" path="res://Resorces/TileSet_Lab_high.tres" id="5_2rdev"]
 [ext_resource type="TileSet" uid="uid://bqdy8cx3k8fcj" path="res://Resorces/TileSet.tres" id="6_5i4s6"]
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="7_4thwd"]
-[ext_resource type="PackedScene" uid="uid://gp5ahj8223oa" path="res://Scenes/level_5.tscn" id="8_wecx4"]
 [ext_resource type="PackedScene" uid="uid://5sk76gnawqit" path="res://Scenes/Enemy.tscn" id="9_hfdvb"]
 [ext_resource type="Script" uid="uid://cg4jc02hpklo2" path="res://Scripts/Enemy.gd" id="10_1r13y"]
 [ext_resource type="PackedScene" uid="uid://5x6uvrmrie5i" path="res://Scenes/drone_taxi.tscn" id="11_hb764"]
@@ -19,11 +18,32 @@
 [ext_resource type="Texture2D" uid="uid://chatacibclwyl" path="res://Sprite/level4/spriteletter12-sheet0.png" id="17_c5jvk"]
 [ext_resource type="Texture2D" uid="uid://c70lep807n553" path="res://Sprite/level4/spriteletter9-sheet0.png" id="18_l3rrl"]
 [ext_resource type="Texture2D" uid="uid://cnefaqces7j6" path="res://Sprite/level4/spriteletter17-sheet0.png" id="19_8i4py"]
+[ext_resource type="PackedScene" uid="uid://c8m4r2p7ran1k" path="res://Scenes/BirdEnemy.tscn" id="21_o5257"]
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="22_4srgj"]
 [ext_resource type="Script" uid="uid://xeyvtk6cwe3t" path="res://Scripts/Intro_Guide.gd" id="22_qh6br"]
 [ext_resource type="Texture2D" uid="uid://bs13htupoo351" path="res://Sprite/researcher/spriteletter3-sheet0.png" id="23_qh6br"]
 [ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="23_spawner"]
 [ext_resource type="Texture2D" uid="uid://d1cusr8ihnxa0" path="res://Sprite/researcher/spriteletter12-sheet0.png" id="24_nqprj"]
+[ext_resource type="Script" uid="uid://7mswhapendso" path="res://Scripts/coin_drone.gd" id="25_coindrone"]
+[ext_resource type="Texture2D" uid="uid://bjmu80m7kbl1n" path="res://Sprite/planner/spriteletter3-sheet0.png" id="28_sw1t4"]
+[ext_resource type="Texture2D" uid="uid://dk456prrdw7rm" path="res://Sprite/planner/spriteletter17-sheet0.png" id="29_6vef0"]
+[ext_resource type="PackedScene" uid="uid://dbhjmdlehklum" path="res://Scenes/main_menu.tscn" id="29_wn4an"]
+[ext_resource type="Script" uid="uid://dvlnxqy4on84e" path="res://Scripts/endflag.gd" id="30_c040m"]
+[ext_resource type="Texture2D" uid="uid://ci2h1d4jfcw5t" path="res://Sprite/planner/blacksky6-sheet0.png" id="31_koh4j"]
+[ext_resource type="Texture2D" uid="uid://8cwuilelh18x" path="res://Sprite/endflag/Layer 1_endflag_01.png" id="32_wn4an"]
+[ext_resource type="Texture2D" uid="uid://d4ltkjr77iooc" path="res://Sprite/endflag/Layer 1_endflag_02.png" id="33_svydh"]
+[ext_resource type="Texture2D" uid="uid://bwdycp1cb6676" path="res://Sprite/endflag/Layer 1_endflag_03.png" id="34_60kw1"]
+[ext_resource type="Texture2D" uid="uid://cppkpwt8h6xld" path="res://Sprite/endflag/Layer 1_endflag_04.png" id="35_a6441"]
+[ext_resource type="Texture2D" uid="uid://b5sggmrl6rhoj" path="res://Sprite/endflag/Layer 1_endflag_05.png" id="36_ai5w8"]
+[ext_resource type="Texture2D" uid="uid://cvhbyuiadbges" path="res://Sprite/endflag/Layer 1_endflag_06.png" id="37_lg3ys"]
+[ext_resource type="Texture2D" uid="uid://m22hwkley80s" path="res://Sprite/endflag/Layer 1_endflag_07.png" id="38_kytpt"]
+[ext_resource type="Texture2D" uid="uid://cucrb1ha5enkx" path="res://Sprite/endflag/Layer 1_endflag_08.png" id="39_hnp5w"]
+[ext_resource type="Texture2D" uid="uid://dmdhw44xg6ea3" path="res://Sprite/endflag/Layer 1_endflag_09.png" id="40_11vt7"]
+[ext_resource type="Texture2D" uid="uid://cvlyu8dh5g4bw" path="res://Sprite/endflag/Layer 1_endflag_10.png" id="41_g3ojq"]
+[ext_resource type="Texture2D" uid="uid://kjti7p6lj15x" path="res://Sprite/planner/spriteletter10-sheet0.png" id="42_votce"]
+[ext_resource type="Texture2D" uid="uid://bg7krtdjftjtk" path="res://Sprite/researcher/enemy_3-sheet0.png" id="43_svydh"]
+[ext_resource type="Texture2D" uid="uid://v6mibutrgly7" path="res://Sprite/researcher/enemy_3-sheet1.png" id="44_60kw1"]
+[ext_resource type="Texture2D" uid="uid://cf24krt35rfwi" path="res://Sprite/researcher/enemy_3-sheet2.png" id="45_a6441"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c81s1"]
 size = Vector2(16.5, 372)
@@ -920,7 +940,107 @@ size = Vector2(72, 88.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
 size = Vector2(52, 93)
 
-[node name="Node2D" type="Node2D" unique_id=2074801645]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vef0"]
+size = Vector2(38.5, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glsh0"]
+size = Vector2(234.25, 22.625)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sml1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_wn4an")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_svydh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_60kw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_a6441")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ai5w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_lg3ys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_kytpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_hnp5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_11vt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_g3ojq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_11vt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_hnp5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_kytpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_lg3ys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ai5w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_a6441")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_60kw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_svydh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_wn4an")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_wn4an")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_wn4an")
+}],
+"loop": false,
+"name": &"end",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gcla0"]
+radius = 14.285645
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ai5w8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_svydh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_60kw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_a6441")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_60kw1")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}]
+
+[node name="Node2D2" type="Node2D" unique_id=2074801645]
 
 [node name="Sides" type="StaticBody2D" parent="." unique_id=690626671]
 
@@ -975,18 +1095,13 @@ tile_set = ExtResource("5_2rdev")
 
 [node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("7_4thwd")]
 position = Vector2(-389, 38)
-scene_to_load = ExtResource("8_wecx4")
+scene_to_load_path = "res://Scenes/level_5.tscn"
 character_id = &"bird"
 
 [node name="ResearcherEndFlag" parent="." unique_id=494593284 instance=ExtResource("7_4thwd")]
 position = Vector2(295, -112)
-scene_to_load = ExtResource("8_wecx4")
+scene_to_load_path = "res://Scenes/level_8.tscn"
 character_id = &"researcher"
-
-[node name="PlannerEndFlag" parent="." unique_id=1800895676 instance=ExtResource("7_4thwd")]
-position = Vector2(-389, 38)
-scene_to_load = ExtResource("8_wecx4")
-character_id = &"planner"
 
 [node name="Enemy" type="Node" parent="." unique_id=563492252]
 
@@ -1008,6 +1123,10 @@ script = ExtResource("10_1r13y")
 patrol_mode = 1
 enemy_to = &"bird"
 
+[node name="CoinDrone" parent="Enemy" unique_id=1950000001 instance=ExtResource("9_hfdvb")]
+position = Vector2(-277, 29)
+script = ExtResource("25_coindrone")
+
 [node name="DroneTaxi" parent="Enemy" unique_id=2107766674 instance=ExtResource("11_hb764")]
 position = Vector2(-101.86, 0)
 scale = Vector2(1.415, 1.415)
@@ -1015,6 +1134,22 @@ script = ExtResource("12_td06s")
 max_health = 47
 patrol_mode = 1
 enemy_to = &"bird"
+
+[node name="CoinDrone5" parent="Enemy" unique_id=340069624 instance=ExtResource("9_hfdvb")]
+position = Vector2(290, 43)
+script = ExtResource("25_coindrone")
+
+[node name="CoinDrone4" parent="Enemy" unique_id=168356706 instance=ExtResource("9_hfdvb")]
+position = Vector2(-28, -188)
+script = ExtResource("25_coindrone")
+
+[node name="CoinDrone3" parent="Enemy" unique_id=1964967363 instance=ExtResource("9_hfdvb")]
+position = Vector2(-382, -171)
+script = ExtResource("25_coindrone")
+
+[node name="CoinDrone2" parent="Enemy" unique_id=422087262 instance=ExtResource("9_hfdvb")]
+position = Vector2(-69, -150)
+script = ExtResource("25_coindrone")
 
 [node name="Enemy2" type="Node" parent="." unique_id=1533954046]
 
@@ -1135,6 +1270,18 @@ position = Vector2(153, -27)
 scale = Vector2(0.16560511, 0.1656051)
 texture = ExtResource("19_8i4py")
 
+[node name="BirdEnemy" parent="." unique_id=344641764 instance=ExtResource("21_o5257")]
+z_index = 1
+position = Vector2(162, -118)
+
+[node name="BirdEnemy2" parent="." unique_id=1955825774 instance=ExtResource("21_o5257")]
+z_index = 1
+position = Vector2(-152, 52)
+
+[node name="BirdEnemy3" parent="." unique_id=681664398 instance=ExtResource("21_o5257")]
+z_index = 1
+position = Vector2(94, -129)
+
 [node name="BirdSpawner" parent="." unique_id=1555179961 instance=ExtResource("23_spawner")]
 position = Vector2(243, -113)
 character_id = &"bird"
@@ -1142,10 +1289,6 @@ character_id = &"bird"
 [node name="ResearcherSpawner" parent="." unique_id=693859764 instance=ExtResource("23_spawner")]
 position = Vector2(-360, 32)
 character_id = &"researcher"
-
-[node name="PlannerSpawner" parent="." unique_id=260238259 instance=ExtResource("23_spawner")]
-position = Vector2(303, -213)
-character_id = &"planner"
 
 [node name="Camera2D_Level3" type="Camera2D" parent="." unique_id=2105160526]
 position = Vector2(243, -113)
@@ -1197,6 +1340,86 @@ position = Vector2(194.00002, 200.99997)
 scale = Vector2(0.22516558, 0.22516556)
 texture = ExtResource("24_nqprj")
 
+[node name="Intro_Guide(planner)" type="Area2D" parent="." unique_id=1576858560]
+z_index = 1
+position = Vector2(-482, -197)
+script = ExtResource("22_qh6br")
+allowed_character_id = &"planner"
+
+[node name="IntroBackground" type="Sprite2D" parent="Intro_Guide(planner)" unique_id=2085677363]
+position = Vector2(415.3899, 102.32001)
+scale = Vector2(1.0406513, 0.74875)
+texture = ExtResource("14_y233x")
+
+[node name="IntroGuide" type="Sprite2D" parent="Intro_Guide(planner)" unique_id=1671121831]
+texture_filter = 1
+position = Vector2(133, 169)
+scale = Vector2(0.22516558, 0.22516556)
+texture = ExtResource("28_sw1t4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Intro_Guide(planner)" unique_id=1990348474]
+position = Vector2(107, 220)
+shape = SubResource("RectangleShape2D_6vef0")
+
+[node name="Intro_Guide5" type="Area2D" parent="." unique_id=290739965]
+z_index = 1
+position = Vector2(-138, -399)
+script = ExtResource("22_qh6br")
+allowed_character_id = &"planner"
+follow_player_x = true
+
+[node name="IntroGuide" type="Sprite2D" parent="Intro_Guide5" unique_id=800876807]
+position = Vector2(177, 405.00003)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("29_6vef0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Intro_Guide5" unique_id=340528366]
+position = Vector2(149.125, 439.6875)
+shape = SubResource("RectangleShape2D_glsh0")
+
+[node name="PlannerEndFlag" type="Area2D" parent="." unique_id=1800895676]
+z_index = 1
+position = Vector2(295, -112)
+script = ExtResource("30_c040m")
+scene_to_load = ExtResource("29_wn4an")
+character_id = &"planner"
+extra_visible_on_trigger = Array[NodePath]([NodePath("IntroBackground"), NodePath("Sprite2D"), NodePath("Enemy3Bird")])
+hide_animated_sprite_on_trigger = true
+trigger_delay = 6.0
+free_movement_duration = 3.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlannerEndFlag" unique_id=1390748768]
+position = Vector2(0, 3)
+scale = Vector2(1, 0.9974917)
+sprite_frames = SubResource("SpriteFrames_7sml1")
+animation = &"end"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlannerEndFlag" unique_id=794995451]
+position = Vector2(5.9999995, 3)
+scale = Vector2(0.44, 0.36)
+shape = SubResource("CircleShape2D_gcla0")
+
+[node name="IntroBackground" type="Sprite2D" parent="PlannerEndFlag" unique_id=848390309]
+position = Vector2(-406, 8)
+scale = Vector2(2.7846255, 2.003542)
+texture = ExtResource("31_koh4j")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlannerEndFlag" unique_id=1560617973]
+position = Vector2(-32, 30)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("42_votce")
+
+[node name="Enemy3Bird" type="AnimatedSprite2D" parent="PlannerEndFlag" unique_id=912333971]
+texture_filter = 1
+position = Vector2(-32, -56)
+sprite_frames = SubResource("SpriteFrames_ai5w8")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="PlannerSpawner" parent="." unique_id=260238259 instance=ExtResource("23_spawner")]
+position = Vector2(-360, 31)
+character_id = &"planner"
+
 [connection signal="body_entered" from="Enemy/Enemy3" to="Enemy/Enemy3" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemy/Enemy" to="Enemy/Enemy" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemy/Enemy2" to="Enemy/Enemy2" method="_on_body_entered"]
@@ -1216,3 +1439,8 @@ texture = ExtResource("24_nqprj")
 [connection signal="body_exited" from="Intro_Guide" to="Intro_Guide" method="_on_body_exited"]
 [connection signal="body_entered" from="Intro_Guide2" to="Intro_Guide2" method="_on_body_entered"]
 [connection signal="body_exited" from="Intro_Guide2" to="Intro_Guide2" method="_on_body_exited"]
+[connection signal="body_entered" from="Intro_Guide(planner)" to="Intro_Guide(planner)" method="_on_body_entered"]
+[connection signal="body_exited" from="Intro_Guide(planner)" to="Intro_Guide(planner)" method="_on_body_exited"]
+[connection signal="body_entered" from="Intro_Guide5" to="Intro_Guide5" method="_on_body_entered"]
+[connection signal="body_exited" from="Intro_Guide5" to="Intro_Guide5" method="_on_body_exited"]
+[connection signal="body_entered" from="PlannerEndFlag" to="PlannerEndFlag" method="_on_body_entered"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://Scripts/planner_button.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://75sd1x334xyf" path="res://Sprite/planner/spriteletter6-sheet0.png" id="10_bubble"]
+[ext_resource type="Texture2D" uid="uid://b6t22jkl4y8t1" path="res://Sprite/planner/button/Layer 1_sprite_button1.png" id="2_btn1"]
+[ext_resource type="Texture2D" uid="uid://de5dwc1chvmcd" path="res://Sprite/planner/button/Layer 1_sprite_button2.png" id="3_btn2"]
+[ext_resource type="Texture2D" uid="uid://cdk8dlt6lrayy" path="res://Sprite/planner/button/Layer 1_sprite_button3.png" id="4_btn3"]
+[ext_resource type="Texture2D" uid="uid://dc1cdjp65qunt" path="res://Sprite/planner/button/Layer 1_sprite_button4.png" id="5_btn4"]
+[ext_resource type="Texture2D" uid="uid://262f1fvs3je7" path="res://Sprite/planner/button/Layer 1_sprite_button5.png" id="6_btn5"]
+[ext_resource type="Texture2D" uid="uid://rogeoaphq658" path="res://Sprite/planner/button/Layer 1_sprite_button6.png" id="7_btn6"]
+[ext_resource type="Texture2D" uid="uid://dtuwpov4tciv2" path="res://Sprite/planner/button/Layer 1_sprite_button7.png" id="8_btn7"]
+[ext_resource type="Texture2D" uid="uid://cyu2okn1cdoir" path="res://Sprite/planner/button/Layer 1_sprite_button8.png" id="9_btn8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_press"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_btn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_btn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_btn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_btn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_btn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_btn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_btn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_btn8")
+}],
+"loop": false,
+"name": &"press",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btn"]
+size = Vector2(32, 32)
+
+[node name="PlannerButton" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_press")
+animation = &"press"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_btn")
+
+[node name="HoverBubble" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, -36)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("10_bubble")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

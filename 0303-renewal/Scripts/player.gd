@@ -27,7 +27,7 @@ signal OnAttackFired
 @export var invincibility_duration : float = 1.0
 @export var coyote_time : float = 0.08
 @export var jump_buffer_time : float = 0.1
-@export var fall_death_y : float = 260.0
+@export var fall_death_y : float = 520.0
 @export var climb_speed : float = 40.0
 # 사다리가 그려진 TileMapLayer. is_ladder=true 인 타일을 검사함. 비워두면 사다리 비활성.
 @export var ladder_tilemap : TileMapLayer
@@ -295,7 +295,10 @@ func show_coin_message() -> void:
 		coin_msg_label.modulate.a = 0.0
 		add_child(coin_msg_label)
 
-	coin_msg_label.position = Vector2(-coin_msg_label.size.x * 0.5, -16)
+	var msg_y : float = -16.0
+	if character_data != null:
+		msg_y = character_data.coin_message_offset_y
+	coin_msg_label.position = Vector2(-coin_msg_label.size.x * 0.5, msg_y)
 	coin_msg_label.scale = Vector2.ONE
 	coin_msg_label.pivot_offset = coin_msg_label.size * 0.5
 
@@ -331,5 +334,5 @@ func _update_jump_force():
 	
 
 
-func _on_enemy_body_entered(body: Node2D) -> void:
+func _on_enemy_body_entered(_body: Node2D) -> void:
 	pass # Replace with function body.

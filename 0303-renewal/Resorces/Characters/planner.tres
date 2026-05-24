@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cramnu7nfyy1d" path="res://Scripts/character_data.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://b37w22ifcddo4" path="res://Sprite/planner/idle/Layer 1_sprite_planner1.png" id="2_sprite"]
 [ext_resource type="AnimationLibrary" uid="uid://pf1jhsrtuj14" path="res://Resorces/Characters/planner_anims.tres" id="3_anims"]
+[ext_resource type="PackedScene" uid="uid://cexdhkidj6msq" path="res://Scenes/explosion_bullet.tscn" id="4_attack"]
+[ext_resource type="PackedScene" uid="uid://db8d3kvchb06k" path="res://Scenes/plant_flower.tscn" id="5_skill"]
 
 [resource]
 script = ExtResource("1_script")
@@ -13,9 +15,12 @@ animation_library = ExtResource("3_anims")
 sprite_offset = Vector2(0, -8)
 idle_offset_delta = Vector2(0, 1)
 walk_offset_delta = Vector2(0, 1)
+coin_message_offset_y = -28.0
 preview_texture = ExtResource("2_sprite")
 move_speed = 57.5
 air_speed_multiplier = 1.7
 jump_force = 161.0
 max_health = 6
 climb_speed = 38.0
+attack_scene = ExtResource("4_attack")
+skill_scene = ExtResource("5_skill")

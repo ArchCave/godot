@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://bvminqi5lecq1" path="res://Sprite/level2/checkpoint_not_enough_coins-sheet0.png" id="17_yvrk7"]
 [ext_resource type="FontFile" uid="uid://cn61cb2m4bab6" path="res://Resorces/LoRes12OTAltOakland-Bold.ttf" id="26_kjoi8"]
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="29_kwf64"]
-[ext_resource type="PackedScene" uid="uid://tukcr1o4pu6l" path="res://Scenes/level_3.tscn" id="29_nuasi"]
 [ext_resource type="Texture2D" uid="uid://bfejtdyydsat2" path="res://Sprite/level2/hidden_ending/hidden_ending.png" id="30_kwf64"]
 [ext_resource type="Script" uid="uid://dql76umg6q5vh" path="res://Scripts/hidden_ending.gd" id="31_hidend"]
 [ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="32_spawner"]
@@ -169,7 +168,7 @@ tile_map_data = PackedByteArray("AAAeAAkAAAAPABsAAAAdAAkAAAAPABsAAAAcAAkAAAAPABs
 tile_set = ExtResource("2_bl0du")
 
 [node name="TileSet1_layer" type="TileMapLayer" parent="." unique_id=413364562]
-tile_map_data = PackedByteArray("AAAnAAkAAAAaABsAAAAoAAkAAAAaABsAAAApAAkAAAAaABsAAAAqAAkAAAAaABsAAAAsAAoAAAANABsAAEAsAAsAAAANABsAAEAsAAwAAAANABsAAEAuAAkAAAAaABsAAAAwAAoAAAAeABwAAAAwAAkAAAAeABsAAAAwAAgAAAAeABoAAAAzAAoAAAAeABwAAAAzAAkAAAAeABsAAAAzAAgAAAAeABoAAAAxAAkAAAAbABoAAAAyAAkAAAAcABoAAAAyAAoAAAAcABsAAAA=")
+tile_map_data = PackedByteArray("AAAnAAkAAAAaABsAAAAoAAkAAAAaABsAAAApAAkAAAAaABsAAAAqAAkAAAAaABsAAAAsAAoAAAANABsAAEAsAAsAAAANABsAAEAsAAwAAAANABsAAEAuAAkAAAAaABsAAAAwAAoAAAAeABwAAAAwAAkAAAAeABsAAAAwAAgAAAAeABoAAAAzAAoAAAAeABwAAAAzAAkAAAAeABsAAAAzAAgAAAAeABoAAAAxAAkAAAAbABoAAAAyAAkAAAAcABoAAAAyAAoAAAAcABsAAAAuAAoAAAAaABsAACAvAAoAAAAaABsAACAxAAoAAAAaABsAACA0AAoAAAAaABsAACA1AAoAAAAaABsAACA2AAoAAAAaABsAACA3AAoAAAAaABsAACA4AAoAAAAaABsAACA5AAoAAAAaABsAACA6AAoAAAAaABsAACA7AAoAAAAaABsAACA8AAoAAAAaABsAACA9AAoAAAAaABsAACA+AAoAAAAaABsAACA/AAoAAAAaABsAACBAAAoAAAAaABsAACBBAAoAAAAaABsAACBCAAoAAAAaABsAACBDAAoAAAAaABsAACBFAAoAAAAaABsAACBGAAoAAAAaABsAACBHAAoAAAAaABsAACA=")
 tile_set = ExtResource("2_bl0du")
 
 [node name="Bird_IntroTalk" type="Area2D" parent="." unique_id=1616908613]
@@ -350,17 +349,17 @@ shape = SubResource("RectangleShape2D_story2")
 
 [node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("29_kwf64")]
 position = Vector2(534, -25)
-scene_to_load = ExtResource("29_nuasi")
+scene_to_load_path = "res://Scenes/level_3.tscn"
 character_id = &"bird"
 
-[node name="ResearcherEndFlag" parent="." instance=ExtResource("29_kwf64")]
+[node name="ResearcherEndFlag" parent="." unique_id=1923069189 instance=ExtResource("29_kwf64")]
 position = Vector2(534, -25)
-scene_to_load = ExtResource("29_nuasi")
+scene_to_load_path = "res://Scenes/level_3.tscn"
 character_id = &"researcher"
 
-[node name="PlannerEndFlag" parent="." instance=ExtResource("29_kwf64")]
+[node name="PlannerEndFlag" parent="." unique_id=994541347 instance=ExtResource("29_kwf64")]
 position = Vector2(534, -25)
-scene_to_load = ExtResource("29_nuasi")
+scene_to_load_path = "res://Scenes/level_3.tscn"
 character_id = &"planner"
 
 [node name="HiddenEnding" type="Area2D" parent="." unique_id=553608597]

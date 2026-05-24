@@ -16,10 +16,10 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 
-	var ps := get_node_or_null("/root/PlayerStats")
+	# autoload 직접 참조 (절대 경로는 트리 분리 시점에 깨질 수 있음).
 	var selected_id: StringName = &""
-	if ps != null and ps.has_method("get_selected"):
-		var data = ps.get_selected()
+	if PlayerStats.has_method("get_selected"):
+		var data = PlayerStats.get_selected()
 		if data != null:
 			selected_id = data.id
 
@@ -28,8 +28,8 @@ func _ready() -> void:
 		return
 
 	var scene_to_spawn: PackedScene = null
-	if ps != null and ps.has_method("get_selected_scene"):
-		scene_to_spawn = ps.get_selected_scene()
+	if PlayerStats.has_method("get_selected_scene"):
+		scene_to_spawn = PlayerStats.get_selected_scene()
 	if scene_to_spawn == null:
 		scene_to_spawn = fallback_scene
 	if scene_to_spawn == null:

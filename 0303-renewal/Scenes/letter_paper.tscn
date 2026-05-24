@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://deyedvn1grknt"]
+
+[ext_resource type="Script" uid="uid://bdhuk6gy6mvyg" path="res://Scripts/letter_paper.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bwha1skb26o2p" path="res://Sprite/researcher/letterzone1-sheet0.png" id="2_tex"]
+
+[node name="LetterPaper" type="Node2D" unique_id=1556217559]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1186279008]
+texture_filter = 1
+position = Vector2(1.1920929e-07, -4)
+scale = Vector2(0.64705884, 0.6984127)
+texture = ExtResource("2_tex")

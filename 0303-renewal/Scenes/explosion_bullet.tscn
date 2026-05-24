@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cexdhkidj6msq"]
+
+[ext_resource type="Script" path="res://Scripts/explosion_bullet.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dhgs5dt26o4o" path="res://Sprite/researcher/enemy_bullet-sheet2.png" id="2_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frame0"]
+atlas = ExtResource("2_sheet")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frame1"]
+atlas = ExtResource("2_sheet")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_explosion"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frame0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frame1")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_explosion"]
+size = Vector2(12, 10)
+
+[node name="ExplosionBullet" type="Area2D"]
+script = ExtResource("1_script")
+speed = 100.0
+damage = 1
+max_range = 56.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_explosion")
+animation = &"fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_explosion")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

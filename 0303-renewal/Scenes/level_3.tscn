@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bjrq6k0rmv18" path="res://Sprite/level3/spriteletter7-sheet0.png" id="8_l4wr6"]
 [ext_resource type="PackedScene" uid="uid://dd6bl0djm5y0n" path="res://Scenes/end_flag.tscn" id="11_c81s1"]
 [ext_resource type="PackedScene" uid="uid://5x6uvrmrie5i" path="res://Scenes/drone_taxi.tscn" id="13_fxnjf"]
-[ext_resource type="PackedScene" uid="uid://sctva0qlo3rs" path="res://Scenes/level_7.tscn" id="13_n4vm5"]
 [ext_resource type="PackedScene" uid="uid://dlvrschr3lvl3" path="res://Scenes/Researcher.tscn" id="13_rsrch"]
 [ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="14_spawner"]
 [ext_resource type="Script" uid="uid://cwjsayn31x575" path="res://Scripts/drone_taxi.gd" id="14_xjeco"]
@@ -999,17 +998,17 @@ texture = ExtResource("8_l4wr6")
 
 [node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("11_c81s1")]
 position = Vector2(8, -151)
-scene_to_load = ExtResource("13_n4vm5")
+scene_to_load_path = "res://Scenes/level_7.tscn"
 character_id = &"bird"
 
 [node name="ResearcherEndFlag" parent="." instance=ExtResource("11_c81s1")]
 position = Vector2(8, -151)
-scene_to_load = ExtResource("13_n4vm5")
+scene_to_load_path = "res://Scenes/level_7.tscn"
 character_id = &"researcher"
 
 [node name="PlannerEndFlag" parent="." instance=ExtResource("11_c81s1")]
 position = Vector2(8, -151)
-scene_to_load = ExtResource("13_n4vm5")
+scene_to_load_path = "res://Scenes/level_7.tscn"
 character_id = &"planner"
 
 [node name="DroneTaxi" parent="." unique_id=2107766674 instance=ExtResource("13_fxnjf")]

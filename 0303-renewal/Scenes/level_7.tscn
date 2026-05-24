@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://bb0pd0phn3nq" path="res://Sprite/researcher/spriteletter4-sheet0.png" id="20_f8wta"]
 [ext_resource type="Texture2D" uid="uid://dbgain7yyoqrm" path="res://Sprite/researcher/spriteletter5-sheet0.png" id="21_j020x"]
 [ext_resource type="Script" uid="uid://rklkncsu35pm" path="res://Scripts/smooth_camera.gd" id="22_4srgj"]
-[ext_resource type="PackedScene" uid="uid://b7llh2sn4a5l4" path="res://Scenes/level_4.tscn" id="23_lb31r"]
 [ext_resource type="Script" uid="uid://d16psskt52774" path="res://Scripts/researcher_notice4.gd" id="23_notice4"]
 [ext_resource type="PackedScene" uid="uid://b2j5oaq4w7r8t" path="res://Scenes/PlayerSpawner.tscn" id="24_spawner"]
 
@@ -1007,7 +1006,7 @@ texture = ExtResource("8_vfvy1")
 
 [node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("7_4thwd")]
 position = Vector2(299, -92)
-scene_to_load = ExtResource("23_lb31r")
+scene_to_load_path = "res://Scenes/level_4.tscn"
 character_id = &"bird"
 
 [node name="Bobber" type="Node2D" parent="BirdEndFlag" unique_id=1111000001]
@@ -1020,12 +1019,12 @@ target_path = NodePath("..")
 
 [node name="ResearcherEndFlag" parent="." unique_id=1338500572 instance=ExtResource("7_4thwd")]
 position = Vector2(299, -92)
-scene_to_load = ExtResource("23_lb31r")
+scene_to_load_path = "res://Scenes/level_4.tscn"
 character_id = &"researcher"
 
 [node name="PlannerEndFlag" parent="." unique_id=1633663566 instance=ExtResource("7_4thwd")]
 position = Vector2(299, -92)
-scene_to_load = ExtResource("23_lb31r")
+scene_to_load_path = "res://Scenes/level_4.tscn"
 character_id = &"planner"
 
 [node name="Enemy" type="Node" parent="." unique_id=563492252]
@@ -1043,7 +1042,7 @@ scale = Vector2(0.185, 0.185)
 texture = ExtResource("10_j82sc")
 
 [node name="notice2" type="Sprite2D" parent="." unique_id=16263750]
-position = Vector2(309, -120.00001)
+position = Vector2(309, -132)
 scale = Vector2(0.185, 0.185)
 texture = ExtResource("11_irpto")
 script = ExtResource("3_lb31r")
@@ -1065,7 +1064,7 @@ script = ExtResource("23_notice4")
 
 [node name="notice" type="Sprite2D" parent="researcher_notice4" unique_id=153521432]
 visible = false
-position = Vector2(155, -142)
+position = Vector2(155, -113)
 scale = Vector2(0.185, 0.185)
 texture = ExtResource("17_7qh3q")
 
@@ -1183,7 +1182,7 @@ script = ExtResource("23_notice4")
 allowed_character_id = &"researcher"
 
 [node name="notice" type="Sprite2D" parent="researcher_notice2" unique_id=739650526]
-position = Vector2(248, -113)
+position = Vector2(241, -116.00001)
 scale = Vector2(0.185, 0.185)
 texture = ExtResource("21_j020x")
 
@@ -1202,7 +1201,6 @@ character_id = &"researcher"
 [node name="PlannerSpawner" parent="." unique_id=244609488 instance=ExtResource("24_spawner")]
 position = Vector2(58, -79)
 character_id = &"planner"
-fallback_scene = ExtResource("23_lb31r")
 
 [node name="Camera2D_Level3" type="Camera2D" parent="." unique_id=2105160526]
 position = Vector2(57, -84)
