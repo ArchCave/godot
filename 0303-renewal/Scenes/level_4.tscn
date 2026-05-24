@@ -1232,7 +1232,6 @@ script = ExtResource("13_4pl3v")
 allowed_character_id = &"bird"
 
 [node name="pause_background" type="Sprite2D" parent="Bird_Level4Talk2" unique_id=1657617718]
-visible = false
 position = Vector2(98.999954, -125)
 scale = Vector2(1.0429688, 0.75390625)
 texture = ExtResource("14_y233x")
@@ -1244,7 +1243,7 @@ shape = SubResource("RectangleShape2D_5rvg2")
 [node name="Level4Talk_bubble2" type="Sprite2D" parent="Bird_Level4Talk2" unique_id=1728639080]
 visible = false
 texture_filter = 1
-position = Vector2(153, -19.000002)
+position = Vector2(153, -26)
 scale = Vector2(0.16560511, 0.1656051)
 texture = ExtResource("18_l3rrl")
 
@@ -1254,7 +1253,6 @@ script = ExtResource("13_4pl3v")
 allowed_character_id = &"bird"
 
 [node name="pause_background" type="Sprite2D" parent="Bird_Level4Talk4" unique_id=1657617720]
-visible = false
 position = Vector2(422.9999, -128)
 scale = Vector2(1.0429688, 0.75390625)
 texture = ExtResource("14_y233x")
@@ -1266,7 +1264,7 @@ shape = SubResource("RectangleShape2D_5rvg2")
 [node name="Level4Talk_bubble4" type="Sprite2D" parent="Bird_Level4Talk4" unique_id=935863315]
 visible = false
 texture_filter = 1
-position = Vector2(153, -27)
+position = Vector2(153, -37)
 scale = Vector2(0.16560511, 0.1656051)
 texture = ExtResource("19_8i4py")
 

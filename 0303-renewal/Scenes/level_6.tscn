@@ -291,6 +291,7 @@ position = Vector2(-63, -59)
 [node name="Bird_Level5Talk" type="Area2D" parent="." unique_id=455529473]
 position = Vector2(88, -116)
 script = ExtResource("14_hnop6")
+allowed_character_id = &"researcher"
 
 [node name="Level5Talk_area" type="CollisionShape2D" parent="Bird_Level5Talk" unique_id=2035451695]
 position = Vector2(-364, 155)
@@ -704,7 +705,7 @@ z_index = 1
 position = Vector2(-327, -624)
 script = ExtResource("6_fvdwk")
 allowed_character_id = &"planner"
-persistent_notice_paths = Array[NodePath]([NodePath("notice1"), NodePath("notice2")])
+persistent_notice_paths = Array[NodePath]([NodePath("notice1"), NodePath("notice2"), NodePath("notice3"), NodePath("notice4")])
 
 [node name="IntroBackground" type="Sprite2D" parent="Intro_Guide3(planner)" unique_id=972652764]
 position = Vector2(136.00002, 339.57)
@@ -742,11 +743,14 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("33_3roxn")
 
 [node name="planner_notice4" type="Area2D" parent="." unique_id=1155671990]
+visible = false
 position = Vector2(-262, -9)
 script = ExtResource("24_b1wka")
 show_duration = 8.0
+allowed_character_id = &"planner"
 
 [node name="notice" type="Sprite2D" parent="planner_notice4" unique_id=1353136272]
+visible = false
 position = Vector2(143.00002, -80.00001)
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("34_3roxn")
@@ -758,6 +762,7 @@ scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_xudgf")
 
 [node name="PlannerEndFlag(center)" type="Area2D" parent="." unique_id=386677647]
+visible = false
 z_index = 3
 position = Vector2(-278, -277)
 script = ExtResource("20_81jj3")
@@ -777,6 +782,7 @@ scale = Vector2(0.185, 0.185)
 texture = ExtResource("37_hp2jh")
 
 [node name="PlannerEndFlag2(lower)" type="Area2D" parent="." unique_id=103007221]
+visible = false
 z_index = 3
 position = Vector2(11, 22)
 script = ExtResource("20_81jj3")
@@ -797,6 +803,7 @@ scale = Vector2(0.185, 0.185)
 texture = ExtResource("39_81jj3")
 
 [node name="Sides2" type="StaticBody2D" parent="." unique_id=423019999]
+visible = false
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Sides2" unique_id=560239543]
 position = Vector2(-232, -496)

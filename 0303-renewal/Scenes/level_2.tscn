@@ -104,7 +104,6 @@ scale = Vector2(0.3451983, 0.3451983)
 texture = ExtResource("2_e2piv")
 
 [node name="IntroBackground" type="Sprite2D" parent="Hidden" unique_id=2016832526]
-visible = false
 z_index = -1
 position = Vector2(939, 59)
 scale = Vector2(1.4700533, 0.48132813)
@@ -351,6 +350,9 @@ shape = SubResource("RectangleShape2D_story2")
 position = Vector2(534, -25)
 scene_to_load_path = "res://Scenes/level_3.tscn"
 character_id = &"bird"
+free_movement_duration = 4.0
+hold_duration = 2.0
+free_movement_after_hold = 4.0
 
 [node name="ResearcherEndFlag" parent="." unique_id=1923069189 instance=ExtResource("29_kwf64")]
 position = Vector2(534, -25)

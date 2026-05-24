@@ -2,8 +2,9 @@ extends Area2D
 
 @export var fade_in_time : float = 0.8
 @export var fade_out_time : float = 0.6
-@export var hold_time : float = 6.0
-@export var initial_delay : float = 0.6
+@export var free_time_before : float = 4.0   # 진입 직후 자유 이동
+@export var hold_time : float = 2.0           # 정지(홀드)
+@export var free_time_after : float = 4.0     # 홀드 후 다시 자유 이동
 @export var overlay_alpha : float = 0.9
 @export var image_y_offset : float = -25.0
 @export var text_y_offset : float = 30.0
@@ -17,14 +18,16 @@ extends Area2D
 
 var triggered : bool = false
 var player : CharacterBody2D = null
-var seq : Tween
+var _active : bool = false
+var _player_z : int = 0
 
 func _ready() -> void:
 	intro_bg.modulate.a = 0.0
 	intro_bg.z_index = 50
 	for s in [story_image2, story_text2, story_text3]:
 		s.modulate.a = 0.0
-		s.z_index = 51
+		# 어두운 오버레이(50) + 플레이어(51) 위에 그려지도록 이미지/텍스트는 52.
+		s.z_index = 52
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
@@ -34,70 +37,88 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	triggered = true
 	player = body
-	_start_sequence()
+	_run_sequence()
 
-func _start_sequence() -> void:
-	player.set_physics_process(false)
-	player.velocity = Vector2.ZERO
+func _process(_delta: float) -> void:
+	# 시퀀스 동안 오버레이/이미지가 항상 화면 중심에 보이도록 매 프레임 따라다님.
+	if _active:
+		_position_visuals()
 
-	var center : Vector2 = _pin_camera()
-	var anchor_x : float = collision_shape.global_position.x
-
+func _position_visuals() -> void:
+	var cam : Camera2D = _get_camera()
+	if cam == null:
+		return
+	var center : Vector2 = cam.get_screen_center_position()
 	intro_bg.global_position = center
-	story_image2.global_position = Vector2(anchor_x, center.y + image_y_offset)
-	story_text2.global_position = Vector2(anchor_x, center.y + text_y_offset)
-	story_text3.global_position = Vector2(anchor_x, center.y + text_y_offset)
+	story_image2.global_position = Vector2(center.x, center.y + image_y_offset)
+	story_text2.global_position = Vector2(center.x, center.y + text_y_offset)
+	story_text3.global_position = Vector2(center.x, center.y + text_y_offset)
 
-	seq = create_tween()
-	seq.tween_property(intro_bg, "modulate:a", overlay_alpha, fade_out_time)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.tween_interval(initial_delay)
+func _run_sequence() -> void:
+	_active = true
+	# 0.9 어두운 오버레이 위에서도 캐릭터가 보이도록 플레이어를 잠시 올린다.
+	_player_z = player.z_index
+	player.z_index = 51
+	_position_visuals()
 
-	seq.tween_property(story_image2, "modulate:a", 1.0, fade_in_time)\
+	# 페이드 인 — 진입과 동시에 이미지 + 첫 번째 텍스트 표시
+	var fin : Tween = create_tween()
+	fin.tween_property(intro_bg, "modulate:a", overlay_alpha, fade_in_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.parallel().tween_property(story_text2, "modulate:a", 1.0, fade_in_time)\
+	fin.parallel().tween_property(story_image2, "modulate:a", 1.0, fade_in_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.tween_interval(hold_time)
+	fin.parallel().tween_property(story_text2, "modulate:a", 1.0, fade_in_time)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
-	seq.tween_property(story_text2, "modulate:a", 0.0, fade_out_time)\
+	# text2 → text3 전환을 전체 시퀀스(자유+홀드+자유)의 중간 지점에 예약한다.
+	# 이렇게 하면 이동 타이밍(3/2/3)과 무관하게 text2 와 text3 의 표시 시간이 동일해진다.
+	var swap_at : float = (free_time_before + hold_time + free_time_after) * 0.5
+	var swap : Tween = create_tween()
+	swap.tween_interval(swap_at)
+	swap.tween_property(story_text2, "modulate:a", 0.0, fade_out_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.tween_property(story_text3, "modulate:a", 1.0, fade_in_time)\
+	swap.parallel().tween_property(story_text3, "modulate:a", 1.0, fade_in_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.tween_interval(hold_time)
 
-	seq.tween_property(story_image2, "modulate:a", 0.0, fade_out_time)\
+	# 1) 자유 이동
+	await get_tree().create_timer(free_time_before).timeout
+	if not is_instance_valid(player):
+		_active = false
+		return
+
+	# 2) 정지(홀드)
+	player.velocity = Vector2.ZERO
+	if player.has_method("play_anim"):
+		player.play_anim("Idle")
+	player.set_physics_process(false)
+	await get_tree().create_timer(hold_time).timeout
+
+	# 3) 다시 자유 이동
+	if is_instance_valid(player):
+		player.set_physics_process(true)
+	await get_tree().create_timer(free_time_after).timeout
+
+	# 페이드 아웃 후 정리
+	var fout : Tween = create_tween()
+	fout.tween_property(story_image2, "modulate:a", 0.0, fade_out_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.parallel().tween_property(story_text3, "modulate:a", 0.0, fade_out_time)\
+	fout.parallel().tween_property(story_text3, "modulate:a", 0.0, fade_out_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.tween_property(intro_bg, "modulate:a", 0.0, fade_out_time)\
+	fout.parallel().tween_property(intro_bg, "modulate:a", 0.0, fade_out_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	seq.tween_callback(_finish)
+	await fout.finished
+	_finish()
 
 func _get_camera() -> Camera2D:
 	# 카메라가 플레이어 자식(레거시)일 수도, 레벨 직속(분리형)일 수도 있어 둘 다 대응.
-	if player != null and player.has_node("Camera2D_Level2"):
+	if is_instance_valid(player) and player.has_node("Camera2D_Level2"):
 		return player.get_node("Camera2D_Level2")
 	if has_node("../Camera2D_Level2"):
 		return get_node("../Camera2D_Level2")
 	return get_viewport().get_camera_2d()
 
-func _pin_camera() -> Vector2:
-	var cam : Camera2D = _get_camera()
-	if cam == null:
-		return player.global_position
-	var rendered : Vector2 = cam.get_screen_center_position()
-	cam.position_smoothing_enabled = false
-	cam.global_position = rendered
-	return rendered
-
-func _release_camera() -> void:
-	var cam : Camera2D = _get_camera()
-	if cam == null:
-		return
-	cam.position = Vector2.ZERO
-	cam.position_smoothing_enabled = true
-
 func _finish() -> void:
+	_active = false
 	if is_instance_valid(player):
-		_release_camera()
 		player.set_physics_process(true)
+		player.z_index = _player_z

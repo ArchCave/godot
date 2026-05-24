@@ -40,6 +40,12 @@ extends Area2D
 ## 정상 흐름(idle + physics 정지 → 씬 전환)으로 이어진다.
 ## 예: planner 엔딩 — 5초 자유 → 4초 감속 → 정지 → 씬 전환.
 @export var deceleration_duration : float = 0.0
+## 0보다 크면 free_movement_duration(자유) 종료 후 이 시간 동안 player를 정지(홀드)했다가
+## free_movement_after_hold 만큼 다시 자유 이동시킨다. 그 뒤 정상 흐름(정지 → 씬 전환)으로 진입.
+## 예: bird 엔딩 — 2초 자유 → 2초 홀드 → 3초 자유 → 씬 전환.
+@export var hold_duration : float = 0.0
+## hold_duration 종료 후 다시 자유롭게 움직이는 시간. hold_duration > 0 일 때만 의미 있음.
+@export var free_movement_after_hold : float = 0.0
 
 ## 비주얼 노드는 AnimatedSprite2D(있으면) 또는 정적 Sprite2D(fallback).
 ## - AnimatedSprite2D: 시작 visible=true, body_entered 시 "end" 애니메이션 재생 → animation_finished 콜백으로 씬 전환
@@ -123,6 +129,21 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(free_movement_duration).timeout
 		if not is_instance_valid(body):
 			return
+	# hold_duration > 0 이면 잠깐 정지(홀드)한 뒤 free_movement_after_hold 만큼 다시 자유 이동.
+	# 예: bird 엔딩 — (위) 자유 → 홀드 → 자유 → (아래) 정지/씬 전환.
+	if hold_duration > 0.0:
+		body.velocity = Vector2.ZERO
+		if body.has_method("play_anim"):
+			body.play_anim("Idle")
+		body.set_physics_process(false)
+		await get_tree().create_timer(hold_duration).timeout
+		if not is_instance_valid(body):
+			return
+		if free_movement_after_hold > 0.0:
+			body.set_physics_process(true)
+			await get_tree().create_timer(free_movement_after_hold).timeout
+			if not is_instance_valid(body):
+				return
 	# deceleration_duration > 0 이면 move_speed 를 0 으로 부드럽게 줄임.
 	# physics 는 살려둔 채로 속도만 줄어드니까 입력은 들어오지만 점점 안 움직이게 됨.
 	if deceleration_duration > 0.0 and "move_speed" in body:
