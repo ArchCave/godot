@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dlvov2ngiblhm" path="res://Sprite/level6/sprite23-sheet1.png" id="5"]
 [ext_resource type="TileSet" uid="uid://byrq0suqunxap" path="res://Resorces/story.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://cstpcylksg18q" path="res://Sprite/story/bg_pause-sheet1.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dmllv8vrqq08a" path="res://Sprite/bird_intro.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://p1lccre7em4c" path="res://Sprite/researcher_intro.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://b3e27ththefhf" path="res://Sprite/planner_intro.png" id="10"]
 
 [sub_resource type="Theme" id="Theme_choice"]
 default_font = ExtResource("2")
@@ -28,6 +31,10 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="LabelSettings" id="LabelSettings_2kyu5"]
+font = ExtResource("2")
+font_size = 107
+
 [node name="CharacterSelect" type="Control" unique_id=1872455283]
 layout_mode = 3
 anchors_preset = 15
@@ -37,7 +44,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 selected_border_color = Color(0.8039216, 0.9098039, 1, 0)
-selected_fill_color = Color(0.8545635, 0.70500004, 0.09448271, 0.9647059)
+selected_fill_color = Color(0.43137255, 0.80784315, 0.65882355, 1)
+researcher_selected_border_color = Color(1, 0.9019608, 0.3019608, 0)
+researcher_selected_fill_color = Color(0.33333334, 0.73333335, 0.83137256, 1)
+planner_selected_border_color = Color(1, 0.9019608, 0.3019608, 0)
+planner_selected_fill_color = Color(0.41960785, 0.6, 0.79607844, 1)
 corner_radius = 5
 
 [node name="BackgroundScroll" type="Node2D" parent="." unique_id=921398728]
@@ -187,6 +198,7 @@ vertical_alignment = 1
 position = Vector2(60, 90)
 scale = Vector2(3.3, 3.3)
 texture = ExtResource("3")
+flip_h = true
 hframes = 3
 vframes = 3
 frame = 1
@@ -200,6 +212,65 @@ texture = ExtResource("4")
 position = Vector2(260, 90)
 scale = Vector2(3, 3)
 texture = ExtResource("5")
+
+[node name="BirdIntro" type="Sprite2D" parent="Characters" unique_id=1982843119]
+z_index = 10
+texture_filter = 4
+position = Vector2(60.000004, 71.16101)
+scale = Vector2(0.053, 0.053)
+texture = ExtResource("8")
+
+[node name="Label" type="Label" parent="Characters/BirdIntro" unique_id=2126951488]
+offset_left = -754.71704
+offset_top = 374.32056
+offset_right = 735.849
+offset_bottom = 1525.2638
+text = "The flightless bird lost its family and hope in the hot desert. It instinctively climbs by attacking humans to survive.
+"
+label_settings = SubResource("LabelSettings_2kyu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ResearcherIntro" type="Sprite2D" parent="Characters" unique_id=528039315]
+z_index = 10
+texture_filter = 4
+position = Vector2(160, 71.161)
+scale = Vector2(0.053, 0.053)
+texture = ExtResource("9")
+
+[node name="Label" type="Label" parent="Characters/ResearcherIntro" unique_id=1277516837]
+offset_left = -754.717
+offset_top = 393.18866
+offset_right = 735.84906
+offset_bottom = 1670.1887
+text = "The researcher lost job after the birds went extinct. He is now creating and repairing bird-mimicking robot drones.
+"
+label_settings = SubResource("LabelSettings_2kyu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LeaderIntro" type="Sprite2D" parent="Characters" unique_id=1457764638]
+z_index = 10
+texture_filter = 4
+position = Vector2(260, 71.161)
+scale = Vector2(0.053, 0.053)
+texture = ExtResource("10")
+
+[node name="Label" type="Label" parent="Characters/LeaderIntro" unique_id=1378857142]
+offset_left = -754.717
+offset_top = 298.84903
+offset_right = 735.84906
+offset_bottom = 1449.7922
+text = "After the climate crisis, the planner built a cloud city. She gave travel rights based on eco-contribution."
+label_settings = SubResource("LabelSettings_2kyu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1342487256]
 

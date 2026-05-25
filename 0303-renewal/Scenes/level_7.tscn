@@ -1005,7 +1005,7 @@ scale = Vector2(0.22516558, 0.22516556)
 texture = ExtResource("8_vfvy1")
 
 [node name="BirdEndFlag" parent="." unique_id=386677647 instance=ExtResource("7_4thwd")]
-position = Vector2(299, -92)
+position = Vector2(309, -92)
 scene_to_load_path = "res://Scenes/level_4.tscn"
 character_id = &"bird"
 
@@ -1018,12 +1018,12 @@ float_period = 9.0
 target_path = NodePath("..")
 
 [node name="ResearcherEndFlag" parent="." unique_id=1338500572 instance=ExtResource("7_4thwd")]
-position = Vector2(299, -92)
+position = Vector2(309, -92)
 scene_to_load_path = "res://Scenes/level_4.tscn"
 character_id = &"researcher"
 
 [node name="PlannerEndFlag" parent="." unique_id=1633663566 instance=ExtResource("7_4thwd")]
-position = Vector2(299, -92)
+position = Vector2(309, -92)
 scene_to_load_path = "res://Scenes/level_4.tscn"
 character_id = &"planner"
 

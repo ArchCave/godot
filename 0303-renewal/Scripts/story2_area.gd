@@ -6,7 +6,7 @@ extends Area2D
 @export var hold_time : float = 2.0           # 정지(홀드)
 @export var free_time_after : float = 4.0     # 홀드 후 다시 자유 이동
 @export var overlay_alpha : float = 0.9
-@export var image_y_offset : float = -25.0
+@export var image_y_offset : float = -5.0
 @export var text_y_offset : float = 30.0
 
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D

@@ -36,19 +36,6 @@ texture = ExtResource("3_mwo32")
 [node name="UI" type="CanvasLayer" parent="." unique_id=209644811]
 layer = 10
 
-[node name="NextButton" type="Button" parent="UI" unique_id=1003211230]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -20.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = SubResource("Theme_btn")
-text = "Next >"
-
 [node name="SkipButton" type="Button" parent="UI" unique_id=1120296638]
 anchors_preset = 1
 anchor_left = 1.0
@@ -60,5 +47,4 @@ grow_horizontal = 0
 theme = SubResource("Theme_btn")
 text = "Skip >>"
 
-[connection signal="pressed" from="UI/NextButton" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="UI/SkipButton" to="." method="_on_skip_pressed"]

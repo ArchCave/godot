@@ -22,7 +22,12 @@ var _disabled : bool = false
 func disable_kills() -> void:
 	_disabled = true
 
+const PoopCoinScript := preload("res://Scripts/poop_coin.gd")
+
 func _ready() -> void:
+	# 특수 코인 생성 한도 카운터를 레벨 로드마다 깨끗이 초기화
+	# (정적 변수라 씬 재로드 시 잔여값이 남을 수 있음 → 누적 방지).
+	PoopCoinScript.special_alive = 0
 	if slam_source != NodePath(""):
 		var src := get_node_or_null(slam_source)
 		if src != null and src.has_signal("slam_impact"):

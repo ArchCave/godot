@@ -81,6 +81,9 @@ func _ready():
 	if anim_sprite != null:
 		anim_sprite.visible = true
 		anim_sprite.animation_finished.connect(_on_animation_finished)
+		# 모든 EndFlag는 닿기 전 정지 상태에서 0번 프레임을 기본으로 표시한다.
+		# 씬에 frame 오버라이드가 저장돼 있어도 런타임에 0으로 통일.
+		anim_sprite.frame = 0
 	if static_sprite != null:
 		# 정적 Sprite2D는 body_entered 전엔 숨김 (visual cue: "닿는 순간 나타남")
 		static_sprite.visible = false
@@ -112,6 +115,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if not _prerequisite_met:
 		return  # 선행 조건 미충족 — 그냥 통과 (다음 맵 전환 안 함)
 	triggered = true
+	Sfx.play("checkpoint_actived")   # endflag 작동
 	collision.set_deferred("disabled", true)
 	# 정적 Sprite2D는 닿는 순간 visible=true.
 	if static_sprite != null:
@@ -135,6 +139,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.velocity = Vector2.ZERO
 		if body.has_method("play_anim"):
 			body.play_anim("Idle")
+		Sfx.stop_footsteps()
 		body.set_physics_process(false)
 		await get_tree().create_timer(hold_duration).timeout
 		if not is_instance_valid(body):
@@ -155,6 +160,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# physics 멈추기 전에 idle 애니메이션으로 전환 — 그냥 멈추면 walk/jump 그대로 굳음.
 	if body.has_method("play_anim"):
 		body.play_anim("Idle")
+	Sfx.stop_footsteps()   # 멈출 때 걷기 소리도 정지
 	body.set_physics_process(false)
 	# 씬 전환 트리거:
 	#   - trigger_delay > 0: 무조건 그 시간만큼 대기 (10초 강제 대기 같은 케이스)

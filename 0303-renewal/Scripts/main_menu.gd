@@ -15,6 +15,10 @@ var text_origin : Vector2
 var intro_done : bool = false
 
 func _ready():
+	# 메인메뉴로 돌아오면 직전 맵의 BGM·걷기 소리가 따라오지 않게 확실히 정지.
+	# (hidden_ending 등 엔딩씬을 거치지 않고 바로 오는 경로까지 모두 커버.)
+	Sfx.stop_bgm()
+	Sfx.stop_footsteps()
 	bg_origin = bg.position
 	logo_origin = logo.position
 	bird_origin = birdhuman.position
@@ -60,7 +64,10 @@ func _start_loop_motions() -> void:
 func _input(event: InputEvent) -> void:
 	if not intro_done:
 		return
-	if event is InputEventKey and event.pressed:
+	# 키보드 아무 키 또는 듀얼센스 등 컨트롤러 아무 버튼이면 진입
+	if (event is InputEventKey and event.pressed) \
+		or (event is InputEventJoypadButton and event.pressed):
+		Sfx.play("click")
 		get_tree().change_scene_to_file("res://Scenes/story_scene.tscn")
 
 func _start_bg_slide() -> void:

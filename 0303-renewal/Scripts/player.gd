@@ -49,6 +49,7 @@ var jump_buffer_timer : float = 0.0
 var coin_msg_label : Label = null
 var coin_msg_tween : Tween = null
 var is_climbing : bool = false
+var _was_on_floor : bool = true  # 착지음 트리거용 (직전 프레임 바닥 여부)
 
 @onready var ray: RayCast2D = $RayCast2D
 @onready var anim: AnimationPlayer = $AnimationPlayer
@@ -70,6 +71,10 @@ func _ready():
 			ladder_tilemap = found
 	anim.play("Idle")
 	_update_jump_force()
+	# 새 맵에 등장하는 순간 (모든 캐릭터 공통)
+	Sfx.play("spawn")
+	# 맵 시작 시 BGM 시작 (이미 재생 중이면 무시되어 맵 전환/리스폰에도 끊기지 않음)
+	Sfx.play_random_bgm()
 
 # ── CharacterData 적용 ─────────────────────────────────────────────────
 ## PlayerStats.get_selected()를 읽어 비주얼/스탯/스킬을 자기 자신에 적용.
@@ -116,6 +121,7 @@ func _shoot() -> void:
 		bullet.direction = -1.0 if sprite.flip_h else 1.0
 	bullet.position = self.position
 	get_parent().add_child(bullet)
+	Sfx.play("shoot")
 	OnAttackFired.emit()
 
 func _spawn_poop() -> void:
@@ -128,6 +134,7 @@ func _spawn_poop() -> void:
 	else:
 		skill.position = self.position
 	get_parent().add_child(skill)
+	Sfx.play("skill")   # 특기(○ 버튼) 사운드 = land2
 	OnPoopSpawned.emit()
 
 func _physics_process(delta):
@@ -154,8 +161,10 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_jump"):
 			is_climbing = false
 			velocity.y = -jump_force * 0.7
+			Sfx.play("jump")
 		move_and_slide()
 		update_animation()
+		_was_on_floor = is_on_floor()
 		if global_position.y > fall_death_y:
 			_fall_die()
 		return
@@ -180,6 +189,7 @@ func _physics_process(delta):
 		velocity.y = -jump_force
 		coyote_timer = 0.0
 		jump_buffer_timer = 0.0
+		Sfx.play("jump")
 
 	if Input.is_action_just_pressed("ui_attack"):
 		_shoot()
@@ -197,6 +207,12 @@ func _physics_process(delta):
 
 	move_and_slide()
 	update_animation()
+
+	# 착지 감지: 공중 → 바닥으로 바뀌는 순간 한 번 (모든 캐릭터 공통)
+	var on_floor_now := is_on_floor()
+	if on_floor_now and not _was_on_floor:
+		Sfx.play("land")
+	_was_on_floor = on_floor_now
 
 	if global_position.y > fall_death_y:
 		_fall_die()
@@ -216,15 +232,19 @@ func update_animation():
 		play_anim("Ladder")
 		var v_input := Input.get_axis("ui_up", "ui_down")
 		anim.speed_scale = 1.0 if v_input != 0.0 else 0.0
+		Sfx.stop_footsteps()
 		return
 
 	anim.speed_scale = 1.0
 	if not is_on_floor():
 		play_anim("Jump")
+		Sfx.stop_footsteps()
 	elif move_input != 0:
 		play_anim("Walk")
+		Sfx.start_footsteps()   # 걷는 동안 발소리 반복
 	else:
 		play_anim("Idle")
+		Sfx.stop_footsteps()
 
 func play_anim(anim_name: String):
 	if anim.current_animation != anim_name:
@@ -261,6 +281,8 @@ func _start_invincibility() -> void:
 func _die() -> void:
 	set_physics_process(false)
 	is_invincible = true
+	Sfx.stop_footsteps()
+	Sfx.play("dead")
 	anim.play("Death")
 	anim.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)
 
@@ -271,6 +293,8 @@ func _fall_die() -> void:
 	# 플로어 밖으로 떨어졌을 때: 현재 맵을 즉시 리셋
 	set_physics_process(false)
 	is_invincible = true
+	Sfx.stop_footsteps()
+	Sfx.play("dead")
 	get_tree().reload_current_scene()
 
 func increase_score(amount: int):

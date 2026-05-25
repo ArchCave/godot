@@ -20,14 +20,26 @@ extends Area2D
 @export var follow_player_x: bool = false
 ## player.x 기준으로 IntroGuide가 떨어져 따라올 간격(픽셀). 음수면 왼쪽, 양수면 오른쪽.
 @export var follow_player_x_offset: float = 16.0
+## 영역 안에 있는 동안 IntroGuide를 player의 머리 위로 x,y 모두 추종.
+## (follow_player_x보다 우선.) 머리 위 약간의 간격은 follow_player_head_offset으로 조절.
+@export var follow_player_head: bool = false
+## player.global_position 기준 IntroGuide 위치 오프셋. y 음수 = 머리 위, 약간의 간격.
+@export var follow_player_head_offset: Vector2 = Vector2(0, -24)
 ## 한 번 진입하면 영구 visible 유지할 자식 노드들 (예: notice1, notice2).
 @export var persistent_notice_paths: Array[NodePath] = []
+## 이 영역에 (allowed character가) 한 번이라도 진입하면, 지정한 다른 Intro_Guide 영역들의
+## IntroGuide sprite를 이번 플레이 동안 다시 보이지 않게 한다.
+## (런타임 상태이므로 씬 리로드 = 사망/리셋/새 게임 시 자동으로 무효화됨.)
+@export var hide_guides_on_enter: Array[NodePath] = []
 
 @onready var guide_sprite: Sprite2D = get_node_or_null("IntroGuide")
 @onready var into_background: Sprite2D = get_node_or_null("IntroBackground")
 
 var _player_in_area: Node2D = null
 var _persistent_notices: Array[CanvasItem] = []
+## true가 되면 guide_sprite를 (이번 플레이 동안) 다시 visible=true로 켜지 않는다.
+## 인스턴스 변수라 씬 리로드 시 false로 초기화된다 → 1회 한정, 리셋 시 무효화.
+var _force_hide_guide: bool = false
 
 func _ready() -> void:
 	if guide_sprite:
@@ -53,26 +65,41 @@ func _ready() -> void:
 			break
 
 func _process(_delta: float) -> void:
+	_update_follow_position()
+
+func _update_follow_position() -> void:
 	if _player_in_area == null or guide_sprite == null:
 		return
-	# y는 그대로, x만 player + offset 으로 잠금.
-	guide_sprite.global_position.x = _player_in_area.global_position.x + follow_player_x_offset
+	if follow_player_head:
+		# x,y 모두 player 머리 위(약간의 간격)로 추종.
+		guide_sprite.global_position = _player_in_area.global_position + follow_player_head_offset
+	else:
+		# y는 그대로, x만 player + offset 으로 잠금.
+		guide_sprite.global_position.x = _player_in_area.global_position.x + follow_player_x_offset
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
 	if not _is_allowed_character():
 		return
-	if guide_sprite:
+	# 영구 숨김 잠금이 걸려 있으면 sprite는 절대 켜지 않는다.
+	if guide_sprite and not _force_hide_guide:
 		guide_sprite.visible = true
 	if into_background:
 		into_background.visible = true
 	# persistent notices는 한 번 켜지면 다시 끄지 않음 (영구 표시).
 	for n in _persistent_notices:
 		n.visible = true
-	if follow_player_x:
+	# 지정한 다른 Intro_Guide 영역들의 IntroGuide sprite를 영구 숨김으로 고정.
+	for p in hide_guides_on_enter:
+		var target := get_node_or_null(p)
+		if target and target.has_method(&"force_hide_guide_sprite"):
+			target.call(&"force_hide_guide_sprite")
+	if follow_player_x or follow_player_head:
 		_player_in_area = body
 		set_process(true)
+		# 진입 즉시 위치를 맞춰, 설계 위치에서 1프레임 깜빡이는 것을 방지.
+		_update_follow_position()
 
 func _on_body_exited(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
@@ -84,9 +111,16 @@ func _on_body_exited(body: Node2D) -> void:
 	if into_background:
 		into_background.visible = false
 	# persistent notices는 이탈해도 건드리지 않음 → 계속 visible 유지.
-	if follow_player_x and _player_in_area == body:
+	if (follow_player_x or follow_player_head) and _player_in_area == body:
 		_player_in_area = null
 		set_process(false)
+
+## 외부(다른 Intro_Guide 영역)에서 호출. 이 영역의 IntroGuide sprite를 즉시 숨기고,
+## 이번 플레이 동안 다시 켜지지 않게 잠근다. (씬 리로드 시 잠금 해제 → 1회 한정.)
+func force_hide_guide_sprite() -> void:
+	_force_hide_guide = true
+	if guide_sprite:
+		guide_sprite.visible = false
 
 func _is_allowed_character() -> bool:
 	if allowed_character_id == &"":

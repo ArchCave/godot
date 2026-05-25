@@ -4,6 +4,14 @@ extends Area2D
 @export var pre_placed : bool = false
 # 먹었을 때 점수 증가량. 일반 코인은 1, 보너스 코인은 큰 값으로 설정.
 @export var score_value : int = 1
+## false면 특수 코인: 먹어도 점수/점프력으로 전환되지 않고, 시각적으로 약간 다르게 표시됨.
+## (level_8 슬램으로 죽는 새가 떨어뜨리는 코인이 이 모드.)
+@export var grants_power : bool = true
+## 특수 코인일 때 적용하는 색상 틴트 (일반 코인과 구분).
+@export var special_tint : Color = Color(0.55, 0.8, 1.0)
+
+## 현재 살아있는 특수 코인 수. bird_enemy.gd가 생성 상한 체크에 사용.
+static var special_alive : int = 0
 
 @onready var sprite      = $Sprite2D
 @onready var anim_sprite = $AnimatedSprite2D
@@ -34,11 +42,16 @@ func _ready():
 		anim_sprite.visible = true
 		anim_sprite.play("spin")
 		collision.set_deferred("disabled", false)
-		velocity_y = -80.0
+		# velocity_x/velocity_y는 스폰 측이 트리에 넣기 전에 미리 지정해 둔 값을 그대로 사용.
+		# (분수처럼 흩어지려면 스폰 측에서 vx/vy를 설정한다.) 아무것도 지정 안 했으면(0)
+		# 기본값으로 위로 살짝 튀어오르게 한다 — 단일 코인 드롭(Enemy/Researcher) 호환.
+		if velocity_y == 0.0:
+			velocity_y = -80.0
 		falling = true
-		# 바닥 감지용 레이캐스트
+		# 바닥 감지용 레이캐스트. 충분히 길게 두어 아래의 실제 바닥을 항상 인지하고,
+		# 코인이 그 바닥 높이에 도달했을 때만 멈춘다 (공중에서 멈추는 것 방지).
 		ground_ray = RayCast2D.new()
-		ground_ray.target_position = Vector2(0, 6)
+		ground_ray.target_position = Vector2(0, 600)
 		ground_ray.enabled = true
 		add_child(ground_ray)
 	else:
@@ -50,15 +63,34 @@ func _ready():
 		timer.start()
 		timer.timeout.connect(_on_timer_timeout)
 
+	# 특수 코인: 시각적으로 구분하고, 살아있는 개수를 추적 (생성 상한용).
+	# special_alive 증가는 생성 측(bird_enemy.gd)에서 동기적으로 예약하고,
+	# 여기선 트리에서 빠질 때(먹힘/씬 종료) 감소만 담당해 균형을 맞춘다.
+	if not grants_power:
+		modulate = special_tint
+		tree_exited.connect(func(): special_alive -= 1)
+
 func _physics_process(delta: float) -> void:
 	if not falling:
 		return
 	velocity_y += coin_gravity * delta
 	position.x += velocity_x * delta
 	position.y += velocity_y * delta
-	# 바닥에 닿으면 멈춤
-	if ground_ray and ground_ray.is_colliding() and velocity_y > 0:
-		position.y = ground_ray.get_collision_point().y - 4.0
+	# 위로 튀어오르는 동안(velocity_y<=0)엔 착지 판정 안 함.
+	if velocity_y <= 0.0 or ground_ray == null:
+		return
+	ground_ray.force_raycast_update()  # 이동 후 위치 기준으로 즉시 재검사
+	if not ground_ray.is_colliding():
+		return
+	var collider := ground_ray.get_collider()
+	# 새(Enemy)/플레이어/다른 코인 위에는 멈추지 않는다 — 실제 바닥에만 정지.
+	# (전부 기본 레이어 1이라 ray가 모두 감지하므로 그룹으로 구분.)
+	if collider is Node and ((collider as Node).is_in_group("Enemy") or (collider as Node).is_in_group("Player")):
+		return
+	var floor_y : float = ground_ray.get_collision_point().y - 4.0
+	# 바닥 높이에 실제로 도달했을 때만 스냅 (긴 ray로 인한 순간이동 방지, 통과 방지).
+	if position.y >= floor_y:
+		position.y = floor_y
 		velocity_y = 0.0
 		velocity_x = 0.0
 		falling = false
@@ -73,6 +105,9 @@ func _on_timer_timeout() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-	body.increase_score(score_value)
-	body.show_coin_message()
+	# 특수 코인은 먹어도 점수/점프력으로 전환되지 않는다 (그냥 사라짐).
+	if grants_power:
+		body.increase_score(score_value)
+		body.show_coin_message()
+	Sfx.play("coin_collect")   # 코인 획득
 	queue_free()

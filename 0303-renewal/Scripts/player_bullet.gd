@@ -26,4 +26,5 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 	if area.has_method("take_bullet_damage"):
 		area.take_bullet_damage(damage)
+		Sfx.play("enemy_hit")   # 적이 공격받을 때
 	queue_free()
